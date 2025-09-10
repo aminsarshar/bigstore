@@ -1,0 +1,19 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "bulid": "npx tailwindcss -i ./resources/src/input.css -o ./public/front/styles/app.css --watch"
+    },
+    "devDependencies": {
+        "alpinejs": "^3.4.2",
+        "autoprefixer": "^10.4.19",
+        "axios": "^1.1.2",
+        "laravel-vite-plugin": "^2.0.1",
+
+        "tailwindcss": "^3.4.4",
+        "vite": "^7.1.4"
+    },
+    "dependencies": {
+        "download": "^8.0.0"
+    }
+}
