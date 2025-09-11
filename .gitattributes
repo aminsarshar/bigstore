@@ -9,12 +9,26 @@
 /.github export-ignore
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore
-# PHP و Blade اصلی حساب بشن
+
+
+# Laravel main languages
 *.php linguist-detectable=true
 *.blade.php linguist-detectable=true
 
-# فایل‌های build شده یا third-party جزو vendor حساب شن
-/public/*.css linguist-vendored
-/node_modules/* linguist-vendored
+# Count developer-written assets
+/resources/css/*.css linguist-detectable=true
+/resources/js/*.js linguist-detectable=true
 
+# Ignore compiled / vendor / 3rd party files
+/vendor/* linguist-vendored
+/node_modules/* linguist-vendored
+/public/*.css linguist-vendored
+/public/*.js linguist-vendored
+/public/build/* linguist-vendored
+/public/mix-manifest.json linguist-vendored
+
+# Ignore misc files
+*.lock linguist-vendored
+*.json linguist-vendored
+*.md linguist-vendored
 
