@@ -9,3 +9,10 @@
 /.github export-ignore
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore
+# بگو به GitHub که PHP مهم‌تره
+*.php linguist-detectable=true
+*.blade.php linguist-detectable=true
+
+# بگو CSS و JS جزو vendor هستن و حساب نشن
+*.css linguist-vendored
+*.js linguist-vendored
