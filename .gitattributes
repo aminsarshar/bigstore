@@ -1,34 +1,17 @@
-* text=auto eol=lf
-
-*.blade.php diff=html
-*.css diff=css
-*.html diff=html
-*.md diff=markdown
-*.php diff=php
-
-/.github export-ignore
-CHANGELOG.md export-ignore
-.styleci.yml export-ignore
-
-
-# Laravel main languages
+# Detect PHP and Blade properly
 *.php linguist-detectable=true
 *.blade.php linguist-detectable=true
 
-# Count developer-written assets
-/resources/css/*.css linguist-detectable=true
-/resources/js/*.js linguist-detectable=true
+# Ignore compiled assets
+/public/css/* linguist-vendored
+/public/js/* linguist-vendored
+/public/build/* linguist-vendored
 
-# Ignore compiled / vendor / 3rd party files
+# Ignore vendor and node_modules
 /vendor/* linguist-vendored
 /node_modules/* linguist-vendored
-/public/*.css linguist-vendored
-/public/*.js linguist-vendored
-/public/build/* linguist-vendored
-/public/mix-manifest.json linguist-vendored
 
-# Ignore misc files
+# Ignore other generated files
 *.lock linguist-vendored
 *.json linguist-vendored
 *.md linguist-vendored
-
