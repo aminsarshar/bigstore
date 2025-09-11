@@ -9,8 +9,13 @@
 /.github export-ignore
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore
-# بگو به GitHub که PHP مهم‌تره
+# PHP و Blade اصلی حساب بشن
 *.php linguist-detectable=true
 *.blade.php linguist-detectable=true
+
+# فایل‌های build شده یا third-party جزو vendor حساب شن
+/public/*.css linguist-vendored
+/public/*.js linguist-vendored
+/node_modules/* linguist-vendored
 
 
