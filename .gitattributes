@@ -13,6 +13,4 @@ CHANGELOG.md export-ignore
 *.php linguist-detectable=true
 *.blade.php linguist-detectable=true
 
-# بگو CSS و JS جزو vendor هستن و حساب نشن
-*.css linguist-vendored
-*.js linguist-vendored
+
