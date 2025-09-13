@@ -113,13 +113,13 @@
                                         <button
                                             wire:click="decreaseCart({{ $cart->product_id }} , {{ $cart->color_id }} , {{ $cart->guaranty_id }})"
                                             onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                                            class="minus"></button>
+                                            class="minus mt-[10px] pl-6" style="margin-top: 10px;padding-left: 24px;"></button>
                                         <input class="quantity" min="0" name="quantity"
                                             value="{{ $cart->count }}" type="number">
                                         <button
                                             wire:click="increaseCart({{ $cart->product_id }} , {{ $cart->color_id }} , {{ $cart->guaranty_id }})"
                                             onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                                            class="plus"></button>
+                                            class="plus mt-[10px] pl-6" style="margin-top: 10px;padding-left: 24px;"></button>
                                     </div>
 
 
@@ -318,12 +318,12 @@
                 </div>
 
                 <div class="">
-                    <a href=""
+                    <a href="{{route('shipping')}}"
                         class="cart-btn bg-orange-300 hover:bg-orange-400 transition-all inline-flex items-center justify-center w-full p-[10px] rounded-lg mb-[15px]">
                         <svg class="w-5 h-5 ml-2">
                             <use href="#shopping-cart"></use>
                         </svg>
-                        افزون به سبد خرید
+                        ادامه ثبت سفارش
                     </a>
                 </div>
             </div>
@@ -703,7 +703,7 @@
 
     .number-input input[type=number] {
         font-family: sans-serif;
-        max-width: 5rem;
+        max-width: 3rem;
         padding: .5rem;
         border: solid #ddd;
         border-width: 0 2px;

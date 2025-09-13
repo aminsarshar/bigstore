@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Home\ShippingController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\GuarantyController;
 use App\Http\Controllers\Admin\PropertyGroupController;
@@ -75,6 +76,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
 
 Route::get('/products/{product:slug}', [HomeController::class,'singleProduct'])->name('single.product');
 Route::get('/cart', [CartController::class,'cart'])->name('cart');
+Route::get('/shipping', [ShippingController::class,'shipping'])->name('shipping');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

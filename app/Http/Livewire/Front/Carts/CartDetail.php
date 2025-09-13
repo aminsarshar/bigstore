@@ -30,6 +30,8 @@ class CartDetail extends Component
             ]);
         }
         $this->emit('refreshCart');
+        toastr()->success('تعداد محصول با موفقیت افزایش یافت!', 'موفق', ['timeOut' => 5000 , 'positionClass' => 'toast-top-center']);
+
     }
 
     public function decreaseCart($product_id, $color_id, $guaranty_id)
@@ -54,6 +56,7 @@ class CartDetail extends Component
                 ->delete();
         }
         $this->emit('refreshCart');
+        toastr()->success('تعداد محصول با موفقیت کاهش یافت!', 'موفق', ['timeOut' => 5000 , 'positionClass' => 'toast-top-center']);
     }
 
     public function moveToReserveCart($cart_id)
@@ -66,6 +69,7 @@ class CartDetail extends Component
         ]);
 
         $this->emit('refreshCart');
+        toastr()->success('محصول به سبد خرید بعدی منتقل شد!', 'موفق', ['timeOut' => 5000 , 'positionClass' => 'toast-top-center']);
     }
 
     public function moveToMainCart($cart_id)
@@ -78,6 +82,7 @@ class CartDetail extends Component
         ]);
 
         $this->emit('refreshCart');
+        toastr()->success('محصول به سبد خرید منتقل شد!', 'موفق', ['timeOut' => 5000 , 'positionClass' => 'toast-top-center']);
     }
 
     public function moveAllToMainCart()
@@ -91,6 +96,7 @@ class CartDetail extends Component
         }
 
         $this->emit('refreshCart');
+        toastr()->success('همه محصولات به سبد خرید منتقل شدند!', 'موفق', ['timeOut' => 5000 , 'positionClass' => 'toast-top-center']);
     }
 
     public function deleteCart($cart_id)
@@ -100,6 +106,7 @@ class CartDetail extends Component
         $cart->delete();
 
         $this->emit('refreshCart');
+        toastr()->success(' محصول مورد نظر از سبد خرید حذف شد  !', 'موفق', ['timeOut' => 5000 , 'positionClass' => 'toast-top-center']);
     }
 
 
