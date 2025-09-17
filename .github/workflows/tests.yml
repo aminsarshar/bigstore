@@ -24,6 +24,9 @@ jobs:
         with:
           php-version: '8.2'
 
+      - name: Check PHP version
+        run: php -v
+
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-interaction --no-progress
 
@@ -34,4 +37,4 @@ jobs:
         run: php artisan key:generate
 
       - name: Execute tests
-        run: vendor/bin/phpunit
+        run: vendor/bin/pest
