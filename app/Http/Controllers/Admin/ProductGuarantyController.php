@@ -181,7 +181,7 @@ class ProductGuarantyController extends Controller
             'product_id' => $request->product_id,
             'color_id' => $request->color_id,
             'guaranty_id' => $request->guaranty_id,
-            'special_start' => $request->special_start != null ? DateManager::shamsi_to_miladi($request->special_start) : null,
+            'special_start' => DateManager::shamsi_to_miladi($request->special_start),
             'special_expiration' => $request->special_expiration != null ? DateManager::shamsi_to_miladi($request->special_expiration) : null,
 
         ]);
@@ -195,7 +195,7 @@ class ProductGuarantyController extends Controller
                 'count' => $request->count,
                 'max_sell' => $request->max_sell,
                 'guaranty_id' => $request->guaranty_id,
-                'special_start' => $request->special_start != null ? DateManager::shamsi_to_miladi($request->special_start) : null,
+                'special_start'=> DateManager::shamsi_to_miladi($request->special_start),
                 'special_expiration' => $request->special_expiration != null ? DateManager::shamsi_to_miladi($request->special_expiration) : null,
 
             ]);

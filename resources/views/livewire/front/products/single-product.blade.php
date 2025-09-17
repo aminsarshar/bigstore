@@ -23,11 +23,11 @@
                 <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
                     class="swiper mySwiper2" wire:ignore>
                     <div class="swiper-wrapper" style="height: 320px !important">
-                        @foreach ($products->galleries as $gallery)
+                        {{-- @foreach ($products->galleries as $gallery) --}}
                             <div class="swiper-slide" >
-                                <img src="{{ url('admin/images/ImageGalleries/' . $gallery->image) }}" />
+                                <img src="{{ url('admin/images/products/' . $products->image) }}" />
                             </div>
-                        @endforeach
+                        {{-- @endforeach --}}
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>

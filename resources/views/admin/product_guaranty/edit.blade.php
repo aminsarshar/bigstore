@@ -94,10 +94,10 @@
 
                                         <div class="form-group col-md-6 mb-2">
                                             <div class="controls">
-                                                <label>فروش شگفت انگیز</label>
-                                                <input type="text" placeholder="فروش شگفت انگیز" name="is_spacial"  id="special_start"
+                                                <label>تاریخ انقضا شگفت انگیز</label>
+                                                <input type="text" placeholder=" تاریخ انقضا شگفت انگیز" name="special_start" id="special_start"
                                                     value="{{ verta($product_guaranty->special_start)->format('%d  %B   %Y') }}" class="form-control" required
-                                                    data-validation-required-message="فیلد فروش شگفت انگیز الزامی است">
+                                                    data-validation-required-message="فیلد  تاریخ انقضا شگفت انگیز الزامی است">
                                             </div>
                                         </div>
 

@@ -630,11 +630,11 @@
                                         <div class="flex gap-x-2 md:gap-x-2.5 mt-1.5 md:mt-2.5">
                                             <div class="text-teal-600 dark:text-emerald-500">
                                                 <span
-                                                    class="text-base md:text-xl font-DanaDemiBold">{{ $special_product->price }}</span>
+                                                    class="text-base md:text-xl font-DanaDemiBold">{{ number_format($special_product->price) }}</span>
                                                 <span class="text-xs md:text-sm tracking-tightest">تومان</span>
                                             </div>
                                             <div class="offer">
-                                                <span class="text-xs md:text-xl">{{ $special_product->main_price }}</span>
+                                                <span class="text-xs md:text-xl">{{ number_format($special_product->main_price) }}</span>
                                                 <span
                                                     class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
                                             </div>
@@ -799,7 +799,7 @@
                                         {{ $sold->title }}</h5>
                                     <div class="flex gap-x-2 md:gap-x-2.5 mt-1.5 md:mt-2.5">
                                         <div class="text-teal-600 dark:text-emerald-500">
-                                            <span class="text-base md:text-xl font-DanaDemiBold">{{ $sold->price }}</<
+                                            <span class="text-base md:text-xl font-DanaDemiBold">{{ number_format($sold->price) }}</<
                                                     /span>
                                                 <span class="text-xs md:text-sm tracking-tightest">تومان</span>
                                         </div>
