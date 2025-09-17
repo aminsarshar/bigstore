@@ -21,9 +21,9 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: laravel
-          MYSQL_USER: laravel
-          MYSQL_PASSWORD: secret
+          MYSQL_DATABASE: bigstore
+          MYSQL_USER: root
+          MYSQL_PASSWORD: ""
         ports:
           - 3306:3306
         options: >-
@@ -59,7 +59,7 @@ jobs:
           DB_PORT: 3306
           DB_DATABASE: bigstore
           DB_USERNAME: root
-          DB_PASSWORD: secret
+          DB_PASSWORD: ""
 
       - name: Run migrations
         run: php artisan migrate --force
@@ -69,7 +69,7 @@ jobs:
           DB_PORT: 3306
           DB_DATABASE: bigstore
           DB_USERNAME: root
-          DB_PASSWORD: secret
+          DB_PASSWORD: ""
 
       - name: Generate app key
         run: php artisan key:generate
