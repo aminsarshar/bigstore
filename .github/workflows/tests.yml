@@ -1,4 +1,4 @@
-name: Tests
+name: Laravel Tests
 
 on:
   push:
@@ -13,23 +13,21 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  tests:
     runs-on: ubuntu-latest
-
     services:
-    mysql:
-    image: mysql:8.0
-    env:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: bigstore
-    ports:
-      - 3306:3306
-    options: >-
-      --health-cmd="mysqladmin ping --silent"
-      --health-interval=10s
-      --health-timeout=5s
-      --health-retries=3
-
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: bigstore
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -uroot -proot" 
+          --health-interval=10s 
+          --health-timeout=5s 
+          --health-retries=5
 
     steps:
       - name: Checkout code
@@ -39,9 +37,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-
-      - name: Check PHP version
-        run: php -v
+          extensions: mbstring, bcmath, mysql
 
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-interaction --no-progress
@@ -49,18 +45,26 @@ jobs:
       - name: Copy environment file
         run: cp .env.example .env
 
-      - name: Set database environment
+      - name: Configure environment
         run: |
           php artisan config:clear
+          php artisan key:generate
         env:
           DB_CONNECTION: mysql
           DB_HOST: 127.0.0.1
           DB_PORT: 3306
           DB_DATABASE: bigstore
           DB_USERNAME: root
-          DB_PASSWORD: ""
+          DB_PASSWORD: root
 
-      - name: Run migrations
+      - name: Wait for MySQL to be ready
+        run: |
+          until mysqladmin ping -h 127.0.0.1 -P 3306 -uroot -proot --silent; do
+            echo "Waiting for MySQL..."
+            sleep 2
+          done
+
+      - name: Run Migrations
         run: php artisan migrate --force
         env:
           DB_CONNECTION: mysql
@@ -68,17 +72,14 @@ jobs:
           DB_PORT: 3306
           DB_DATABASE: bigstore
           DB_USERNAME: root
-          DB_PASSWORD: ""
+          DB_PASSWORD: root
 
-      - name: Generate app key
-        run: php artisan key:generate
-
-      - name: Execute tests
+      - name: Run Pest Tests
         run: vendor/bin/pest
         env:
           DB_CONNECTION: mysql
           DB_HOST: 127.0.0.1
           DB_PORT: 3306
-          DB_DATABASE: laravel
-          DB_USERNAME: laravel
-          DB_PASSWORD: secret
+          DB_DATABASE: bigstore
+          DB_USERNAME: root
+          DB_PASSWORD: root
