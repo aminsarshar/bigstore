@@ -15,30 +15,33 @@
 
         <!-- محتوای اسلایدی -->
         <div id="collapseContent2" class="collapse-content mt-2 rounded-lg shadow bg-white">
-            <form class="p-4 space-y-4">
+            <form class="p-4 space-y-4" wire:submit.prevent="submit">
                 <div>
                     <label class="block text-sm font-medium text-gray-700">نام نام خانوادگی</label>
-                    <input type="text" placeholder="امین سرشار" wire:model="name"
+                    <input type="text" placeholder="امین سرشار" wire:model.defer="name"
                         class="mt-1 w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200" />
                 </div>
 
                 <div>
                     <label class="block text-sm font-medium text-gray-700">شماره موبایل</label>
-                    <input type="text" placeholder="09336116359" wire:model="mobile"
+                    <input type="text" placeholder="09336116359" wire:model.defer="mobile"
                         class="mt-1 w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200" />
                 </div>
 
                 <div class="flex">
                     <div class="w-full ml-2">
                         <label class="block text-sm font-medium text-gray-700">استان</label>
-                    <select wire:model="province" class="mt-1 w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200">
+                    <select wire:model.defer="province" class="mt-1 w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200">
                         <option value="" selected>استان</option>
+                        <option value="teh" selected>teh</option>
                     </select>
                     </div>
                      <div class="w-full">
                         <label class="block text-sm font-medium text-gray-700">شهر</label>
-                    <select wire:model="city" class="mt-1 w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200">
+                    <select wire:model.defer="city" class="mt-1 w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200">
                         <option value="" selected>شهر</option>
+                        <option value="teh" selected>teh</option>
+
                     </select>
                      </div>
                 </div>
@@ -47,13 +50,13 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700">کد
                         پستی</label>
-                    <input type="text" placeholder="کد پستی" wire:model="postal_code"
+                    <input type="text" placeholder="کد پستی" wire:model.defer="postal_code"
                         class="mt-1 w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200" />
                 </div>
 
                 <div>
                     <label class="block text-sm font-medium text-gray-700">آدرس</label>
-                    <textarea class="mt-1 w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200" cols="30" rows="5"></textarea>
+                    <textarea wire:model.defer="address" class="mt-1 w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200" cols="30" rows="5"></textarea>
                 </div>
 
                 <button type="submit"
