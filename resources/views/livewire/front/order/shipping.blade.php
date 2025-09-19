@@ -24,7 +24,7 @@
                           <section class="" id="products-section">
                               <div class="container">
                                   <!-- Section Body -->
-                                  <div
+                                  <div 
                                       class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-3.5 md:gap-5 child:md:p-5 child:p-2 child:bg-white child:dark:bg-zinc-700 child:rounded-2xl child:shadow-normal child:dark:shadow-normal">
                                       <div class="border border-gray-100">
                                           <div class="xl:flex xl:justify-between md:block mb-2 md:mb-5">
