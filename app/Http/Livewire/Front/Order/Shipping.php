@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Front\Order;
 
 use App\Models\Cart;
+use App\Models\Address;
 use Livewire\Component;
 use App\Models\ProductGuaranty;
 
@@ -15,6 +16,7 @@ class Shipping extends Component
     {
         $userId = auth()->id();
         $carts = Cart::query()->where('type', 'main')->where('user_id', $userId)->get();
+        $addresses = Address::query()->where('user_id', $userId)->orderByDesc('is_default')->get();
         $total_price = 0;
         $discount_price = 0;
 
@@ -28,6 +30,6 @@ class Shipping extends Component
             $total_price += ($product->price) * $cart->count;
             $discount_price += ($product->main_price - $product->price) * $cart->count;
         }
-        return view('livewire.front.order.shipping' , compact('carts' , 'total_price' , 'discount_price'));
+        return view('livewire.front.order.shipping' , compact('carts' , 'addresses' , 'total_price' , 'discount_price'));
     }
 }

@@ -75,8 +75,8 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
 });
 
 Route::get('/products/{product:slug}', [HomeController::class,'singleProduct'])->name('single.product');
-Route::get('/cart', [CartController::class,'cart'])->name('cart');
-Route::get('/shipping', [ShippingController::class,'shipping'])->name('shipping');
+Route::get('/cart', [CartController::class,'cart'])->middleware(['auth'])->name('cart');
+Route::get('/shipping', [ShippingController::class,'shipping'])->middleware(['auth'])->name('shipping');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

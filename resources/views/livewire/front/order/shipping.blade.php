@@ -24,120 +24,164 @@
                           <section class="" id="products-section">
                               <div class="container">
                                   <!-- Section Body -->
-                                  <div 
+                                  <div
                                       class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-3.5 md:gap-5 child:md:p-5 child:p-2 child:bg-white child:dark:bg-zinc-700 child:rounded-2xl child:shadow-normal child:dark:shadow-normal">
-                                      <div class="border border-gray-100">
-                                          <div class="xl:flex xl:justify-between md:block mb-2 md:mb-5">
-                                              <div>
-                                                  <span class="lg:text-xl xl:text-base">گیرنده :
-                                                  </span>
-                                                  <span class="lg:text-xl xl:text-base">امین سرشار</span>
-                                              </div>
-                                          </div>
-                                          <div class="xl:flex md:block mb-2 md:mb-5">
-                                              <div>
-                                                  <span class="lg:text-lg xl:text-base">شماره تماس :
-                                                  </span>
-                                                  <span class="lg:text-lg xl:text-base xl:ml-[10px]">09336116359</span>
-                                              </div>
-                                              |
-                                              <div>
-                                                  <span class="lg:text-lg xl:text-base xl:mr-[10px]">شماره تماس :
-                                                  </span>
-                                                  <span class="lg:text-lg xl:text-base">09336116359</span>
-                                              </div>
-                                          </div>
-                                          <div class="xl:flex md:block mb-2 md:mb-5">
-                                              <div>
-                                                  <span class="lg:text-xl xl:text-base">استان :
-                                                  </span>
-                                                  <span class="lg:text-xl xl:text-base">البرز</span>
-                                              </div>
-                                              ,
-                                              <div>
-                                                  <span class="lg:text-xl xl:text-base mr-4">استان :
-                                                  </span>
-                                                  <span class="lg:text-xl xl:text-base">البرز</span>
-                                              </div>
-                                          </div>
-
-                                          <div class="w-full max-w-md mx-auto">
-                                              <!-- دکمه کوچک -->
-                                              <button id="toggleBtn" aria-expanded="false"
-                                                  aria-controls="collapseContent"
-                                                  style="background-color: rgb(253 186 116 / 0.2);color: rgb(253 186 116 / var(--tw-text-opacity));"
-                                                  class="flex items-center gap-2 px-3 py-1.5 text-white rounded-md text-sm hover:bg-orange-400">
-                                                  <!-- آیکون کوچک -->
-                                                  <svg id="toggleIcon" class="w-4 h-4 chev2" fill="none"
-                                                      stroke="currentColor" viewBox="0 0 24 24"
-                                                      xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                                      <path stroke-linecap="round" stroke-linejoin="round"
-                                                          stroke-width="2" d="M19 9l-7 7-7-7" />
-                                                  </svg>
-
-                                                  <span>تغییر آدرس</span>
-                                              </button>
-
-                                              <!-- محتوای اسلایدی -->
-                                              <div id="collapseContent"
-                                                  class="collapse-content mt-2 rounded-lg shadow bg-white">
-                                                  <form class="p-4 space-y-4">
+                                      @foreach ($addresses as $address)
+                                          @if ($loop->first)
+                                              <div class="border border-gray-100">
+                                                  <div class="xl:flex xl:justify-between md:block mb-2 md:mb-5">
                                                       <div>
-                                                          <label
-                                                              class="block text-sm font-medium text-gray-700">آدرس</label>
-                                                          <input type="text" placeholder="خیابان، کوچه، پلاک..."
-                                                              class="mt-1 w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                                          <span class="lg:text-xl xl:text-base">گیرنده :
+                                                              {{ $address->name }}
+                                                          </span>
+                                                          <span class="lg:text-xl xl:text-base"></span>
                                                       </div>
-
+                                                  </div>
+                                                  <div class="xl:flex md:block mb-2 md:mb-5">
                                                       <div>
-                                                          <label
-                                                              class="block text-sm font-medium text-gray-700">شهر</label>
-                                                          <input type="text" placeholder="نام شهر"
-                                                              class="mt-1 w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                                          <span class="lg:text-lg xl:text-base">شماره تماس :
+                                                              {{ $address->moile }}
+                                                          </span>
+                                                          <span class="lg:text-lg xl:text-base xl:ml-[10px]"></span>
                                                       </div>
-
+                                                      |
                                                       <div>
-                                                          <label class="block text-sm font-medium text-gray-700">کد
-                                                              پستی</label>
-                                                          <input type="text" placeholder="کد پستی"
-                                                              class="mt-1 w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                                          <span class="lg:text-lg xl:text-base xl:mr-[10px]">کد پستی :
+                                                              {{ $address->postal_code }}
+                                                          </span>
+                                                          <span class="lg:text-lg xl:text-base"></span>
                                                       </div>
+                                                  </div>
+                                                  <div class="xl:flex md:block mb-2 md:mb-5">
+                                                      <div>
+                                                          <span class="lg:text-xl xl:text-base">استان :
+                                                              {{ $address->province->province }}
+                                                          </span>
+                                                          <span class="lg:text-xl xl:text-base"></span>
+                                                      </div>
+                                                      ,
+                                                      <div>
+                                                          <span class="lg:text-xl xl:text-base mr-4">شهر :
+                                                              {{ $address->city->city }}
+                                                          </span>
+                                                          <span class="lg:text-xl xl:text-base"></span>
+                                                      </div>
+                                                  </div>
 
-                                                      <button type="submit"
-                                                          class="w-full bg-orange-300 text-white py-2 rounded-lg hover:bg-orange-400 transition">
-                                                          ثبت تغییرات
-                                                      </button>
-                                                  </form>
+                                                  <div>
+                                                      <span class="lg:text-lg xl:text-base xl:mr-[10px]">آدرس:
+                                                          {{ $address->address }}
+                                                      </span>
+                                                      <span class="lg:text-lg xl:text-base"></span>
+                                                  </div>
                                               </div>
-                                          </div>
+                                      <livewire:front.order.address />
 
-                                          <style>
-                                              /* انیمیشن نرم برای محتوا */
-                                              .collapse-content,
-                                              .collapse-content2 {
-                                                  max-height: 0;
-                                                  overflow: hidden;
-                                                  transition: max-height 350ms cubic-bezier(0.4,
-                                                          0,
-                                                          0.2,
-                                                          1);
-                                              }
 
-                                              /* انیمیشن چرخش آیکون */
-                                              .chev,
-                                              .chev2 {
-                                                  transition: transform 250ms ease;
-                                                  transform-origin: center;
-                                                  display: inline-block;
-                                              }
+                                              <div class="w-full max-w-md mx-auto">
+                                                  <!-- دکمه کوچک -->
+                                                  <button id="toggleBtn" aria-expanded="false"
+                                                      aria-controls="collapseContent"
+                                                      style="background-color: rgb(253 186 116 / 0.2);color: rgb(253 186 116 / var(--tw-text-opacity));"
+                                                      class="flex items-center gap-2 px-3 py-1.5 text-white rounded-md text-sm hover:bg-orange-400">
+                                                      <!-- آیکون کوچک -->
+                                                      <svg id="toggleIcon" class="w-4 h-4 chev2" fill="none"
+                                                          stroke="currentColor" viewBox="0 0 24 24"
+                                                          xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                          <path stroke-linecap="round" stroke-linejoin="round"
+                                                              stroke-width="2" d="M19 9l-7 7-7-7" />
+                                                      </svg>
 
-                                              .chev.open {
-                                                  transform: rotate(180deg);
-                                              }
-                                          </style>
-                                      </div>
+                                                      <span>تغییر آدرس</span>
+                                                  </button>
 
-                                      <livewire:front.order.address/>
+                                                  <!-- محتوای اسلایدی -->
+                                                  <div id="collapseContent"
+                                                      class="collapse-content mt-2 rounded-lg shadow bg-white">
+                                                      @foreach ($addresses as $address)
+                                                          <div class="border border-gray-100 p-3 mb-5">
+                                                              <div
+                                                                  class="xl:flex xl:justify-between md:block mb-2 md:mb-5">
+                                                                  <div>
+                                                                      <span class="lg:text-xl xl:text-base">گیرنده :
+                                                                          {{ $address->name }}
+                                                                      </span>
+                                                                      <span class="lg:text-xl xl:text-base"></span>
+                                                                  </div>
+                                                              </div>
+                                                              <div class="xl:flex md:block mb-2 md:mb-5">
+                                                                  <div>
+                                                                      <span class="lg:text-lg xl:text-base">شماره
+                                                                          تماس :
+                                                                          {{ $address->moile }}
+                                                                      </span>
+                                                                      <span
+                                                                          class="lg:text-lg xl:text-base xl:ml-[10px]"></span>
+                                                                  </div>
+                                                                  |
+                                                                  <div>
+                                                                      <span
+                                                                          class="lg:text-lg xl:text-base xl:mr-[10px]">کد
+                                                                          پستی : {{ $address->postal_code }}
+                                                                      </span>
+                                                                      <span class="lg:text-lg xl:text-base"></span>
+                                                                  </div>
+                                                              </div>
+                                                              <div class="xl:flex md:block mb-2 md:mb-5">
+                                                                  <div>
+                                                                      <span class="lg:text-xl xl:text-base">استان :
+                                                                          {{ $address->province->province }}
+                                                                      </span>
+                                                                      <span class="lg:text-xl xl:text-base"></span>
+                                                                  </div>
+                                                                  ,
+                                                                  <div>
+                                                                      <span class="lg:text-xl xl:text-base mr-4">شهر
+                                                                          :
+                                                                          {{ $address->city->city }}
+                                                                      </span>
+                                                                      <span class="lg:text-xl xl:text-base"></span>
+                                                                  </div>
+                                                              </div>
+
+                                                              <div>
+                                                                  <span
+                                                                      class="lg:text-lg xl:text-base xl:mr-[10px]">آدرس:
+                                                                      {{ $address->address }}
+                                                                  </span>
+                                                                  <span class="lg:text-lg xl:text-base"></span>
+                                                              </div>
+                                                          </div>
+                                                      @endforeach
+                                                  </div>
+                                              </div>
+
+                                              <style>
+                                                  /* انیمیشن نرم برای محتوا */
+                                                  .collapse-content,
+                                                  .collapse-content2 {
+                                                      max-height: 0;
+                                                      overflow: hidden;
+                                                      transition: max-height 350ms cubic-bezier(0.4,
+                                                              0,
+                                                              0.2,
+                                                              1);
+                                                  }
+
+                                                  /* انیمیشن چرخش آیکون */
+                                                  .chev,
+                                                  .chev2 {
+                                                      transition: transform 250ms ease;
+                                                      transform-origin: center;
+                                                      display: inline-block;
+                                                  }
+
+                                                  .chev.open {
+                                                      transform: rotate(180deg);
+                                                  }
+                                              </style>
+                                          @endif
+                                      @endforeach
                                   </div>
                               </div>
                           </section>
@@ -145,36 +189,37 @@
                           <hr class="mt-8">
 
                           <section class="best-selling mb-8 md:mb-20">
-            <div class="container">
-                <div class="flex justify-between items-end mt-5 md:mb-12">
-                    <div class="flex items-center">
-                        <div class="w-2 h-2 rounded-full ml-1 bg-gray-300"></div>
-                        <div class="w-4 h-4 rounded-full ml-3 bg-gray-400"></div>
-                        <span class="section-subtitle text-xl">مرسوله 1 از 1</span>
-                    </div>
-                </div>
-                <div
-                    class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5 md:gap-5 child:md:p-5 child:p-2 mt-10 child:bg-white child:dark:bg-zinc-700 child:rounded-2xl child:shadow-normal child:dark:shadow-normal">
+                              <div class="container">
+                                  <div class="flex justify-between items-end mt-5 md:mb-12">
+                                      <div class="flex items-center">
+                                          <div class="w-2 h-2 rounded-full ml-1 bg-gray-300"></div>
+                                          <div class="w-4 h-4 rounded-full ml-3 bg-gray-400"></div>
+                                          <span class="section-subtitle text-xl">مرسوله 1 از 1</span>
+                                      </div>
+                                  </div>
+                                  <div
+                                      class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5 md:gap-5 child:md:p-5 child:p-2 mt-10 child:bg-white child:dark:bg-zinc-700 child:rounded-2xl child:shadow-normal child:dark:shadow-normal">
 
-                        @foreach ($carts as $cart)
-                        <a href="{{route('single.product' , $cart->product->slug)}}">
-                            <div style="box-shadow:3px 4px 14px 5px rgba(214,214,214,0.12);height: 360px !important">
-                        <div class="relative mb-2 md:mb-5">
-                            <img src="{{ asset('admin/images/products/' . $cart->product->image) }}" alt="product-1"
-                                class="w-32 md:w-auto md:h-auto mx-auto h-40">
-                        </div>
-                        <h5
-                        class="font-DanaMedium text-sm md:text-xl text-zinc-700 dark:text-white line-clamp-2 md:min-h-[56px] min-h-[40px]">
-                        {{ $cart->product->title }}</h5>
+                                      @foreach ($carts as $cart)
+                                          <a href="{{ route('single.product', $cart->product->slug) }}">
+                                              <div
+                                                  style="box-shadow:3px 4px 14px 5px rgba(214,214,214,0.12);height: 360px !important">
+                                                  <div class="relative mb-2 md:mb-5">
+                                                      <img src="{{ asset('admin/images/products/' . $cart->product->image) }}"
+                                                          alt="product-1" class="w-32 md:w-auto md:h-auto mx-auto h-40">
+                                                  </div>
+                                                  <h5
+                                                      class="font-DanaMedium text-sm md:text-xl text-zinc-700 dark:text-white line-clamp-2 md:min-h-[56px] min-h-[40px]">
+                                                      {{ $cart->product->title }}</h5>
 
 
-                    </div>
-                        </a>
-                        @endforeach
+                                              </div>
+                                          </a>
+                                      @endforeach
 
-                </div>
-            </div>
-        </section>
+                                  </div>
+                              </div>
+                          </section>
                           {{-- <section class="best-selling mb-8 md:mb-20">
                               <div class="container">
                                   <!-- Section Head -->
@@ -248,9 +293,8 @@
                                       class="text-gray-600 dark:text-gray-100 border-b border-gray-200 dark:border-gray-600">
                                       <div class="flex text-sm mb-[10px]">
                                           <li class="flex">
-                                              <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                  class="size-6">
+                                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                  stroke-width="1.5" stroke="currentColor" class="size-6">
                                                   <path stroke-linecap="round" stroke-linejoin="round"
                                                       d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" />
                                               </svg>
@@ -328,7 +372,7 @@
                                               </div>
 
                                               <div>
-                                                  <span>{{number_format($total_price)}}</span>
+                                                  <span>{{ number_format($total_price) }}</span>
                                                   <span>تومان</span>
                                               </div>
                                           </div>
@@ -348,7 +392,7 @@
                                               </div>
 
                                               <div>
-                                                  <span>{{number_format($discount_price)}}</span>
+                                                  <span>{{ number_format($discount_price) }}</span>
                                                   <span>تومان</span>
                                               </div>
                                           </div>
