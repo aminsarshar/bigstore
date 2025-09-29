@@ -603,20 +603,20 @@
                     <!-- Additional required wrapper -->
                     <div class="swiper-wrapper">
                         <!-- Slides -->
-                        <div class="swiper-slide" style="height: 460px !important;background: #fed7aa !important">
+                        <div class="" style="height: 460px !important;background: #fed7aa !important">
                             <img class="w-[250px] h-[400px]" src="{{ asset('admin/images/amazingv2.png') }}"
                                 alt="" style="background: #fed7aa !important">
                         </div>
 
 
                         @foreach ($special_products as $special_product)
-                            <div class="swiper-slide rounded-2xl" style="height: 460px !important">
-                                <div class="w-full h-full">
+                            <div class="swiper-slide rounded-2xl" style="height:460px !important">
+                                <div class="w-[85%] h-full text-right">
                                     <a href="{{ route('single.product', $special_product->product->slug) }}">
                                         <div class="relative mb-2 md:mb-5">
                                             <img src="{{ asset('admin/images/products/' . $special_product->product->image) }}"
                                                 alt="product-1"
-                                                class="w-32 h-[260px] md:w-auto mx-auto transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                                                class="w-full h-[260px] md:w-auto mx-auto transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
                                             @if ($special_product->product->discount != 0)
                                                 <span
                                                     class="absolute top-1.5 right-1.5 font-DanaDemiBold text-xs md:text-base text-white dark:text-zinc-700 px-2.5 md:px-3.5 rounded-full h-5 md:h-[30px] block bg-orange-300 leading-[25px] md:leading-[34px]">
@@ -718,13 +718,13 @@
             <div class="container">
                 <div class="flex items-center justify-center gap-y-6 gap-x-[29px] md:gap-[65px] flex-wrap">
                     <!-- Slider main container -->
-                    <div class="swiper">
+                    {{-- <div class="swiper">
                         <!-- Additional required wrapper -->
-                        <div class="swiper-wrapper">
+                        <div class="swiper-wrapper"> --}}
                             <!-- Slides -->
                             @foreach ($product_category as $category)
                                 {{-- <div class="swiper-slide"> --}}
-                                <a href="#" class="swiper-slide w-25 md:w-50 text-center">
+                                <a href="#" class="w-25 md:w-50 text-center">
                                     <div class="bg-gray-100 dark:bg-zinc-800">
                                         <img src="{{ asset('admin/images/categories/' . $category->image) }}"
                                             alt="" loading="lazy">
@@ -735,8 +735,8 @@
                                 {{-- </div> --}}
                             @endforeach
 
-                        </div>
-                    </div>
+                        {{-- </div>
+                    </div> --}}
                     {{-- @foreach ($categories as $category)
           <a href="#" class="w-25 md:w-50 text-center">
             <div>
@@ -783,7 +783,7 @@
 
                         @foreach ($most_sold as $sold)
                             <div class="swiper-slide rounded-2xl" style="height: 460px">
-                                <div class="w-full h-full">
+                                <div class="w-[80%] h-full">
                                     <a href="{{ route('single.product', $sold->slug) }}">
                                         <div class="relative mb-2 md:mb-5">
                                             <img src="{{ asset('admin/images/products/' . $sold->image) }}"
@@ -1453,12 +1453,12 @@
 
     <script>
         const swiper = new Swiper(".swiper", {
-            slidesPerView: 2,
+            slidesPerView: 1,
             autoplay: {
-                delay: 3000,
+                delay: 4000,
                 disableOnInteraction: false,
             },
-            spaceBetween: 14,
+            spaceBetween: 10,
             loop: true,
             // Navigation arrows
             navigation: {
@@ -1468,16 +1468,16 @@
 
             breakpoints: {
                 640: {
-                    slidesPerView: 3,
+                    slidesPerView: 1,
                     spaceBetween: 14,
                 },
                 768: {
-                    slidesPerView: 3,
+                    slidesPerView: 1,
                     spaceBetween: 20,
                 },
                 1024: {
                     slidesPerView: 4,
-                    spaceBetween: 20,
+                    spaceBetween: 10,
                 },
             }
         });

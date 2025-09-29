@@ -75,10 +75,10 @@
                                                       <span class="lg:text-lg xl:text-base"></span>
                                                   </div>
                                               </div>
-                                      <livewire:front.order.address />
+                                              <livewire:front.order.address />
 
 
-                                              <div class="w-full max-w-md mx-auto">
+                                              <div class="w-full max-w-md">
                                                   <!-- دکمه کوچک -->
                                                   <button id="toggleBtn" aria-expanded="false"
                                                       aria-controls="collapseContent"
