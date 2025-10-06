@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('title')->index();
             $table->string('etitle');
-            $table->string('slug');
             $table->integer('price')->default(0);
             $table->integer('discount')->default(0);
             $table->integer('count')->default(0);
@@ -27,13 +26,11 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->timestamp('special_start')->nullable();
             $table->timestamp('special_expiration')->nullable();
-            $table->enum('status' , ['waiting' , 'available' , 'unavailable' , 'stop_production' , 'rejected']);
+            $table->enum('status' , ['waiting' , 'available' , 'unavailable' , 'stop_production' , 'rejected'])->default('waiting');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete()->cascadeOnUpdate();
             $table->unsignedBigInteger('brand_id');
             $table->foreign('brand_id')->references('id')->on('brands')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->unsignedBigInteger('color_id');
-            $table->foreign('color_id')->references('id')->on('color')->cascadeOnDelete()->cascadeOnUpdate();
             $table->softDeletes();
             $table->timestamps();
 
