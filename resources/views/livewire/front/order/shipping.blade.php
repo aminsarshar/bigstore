@@ -55,14 +55,14 @@
                                                   <div class="xl:flex md:block mb-2 md:mb-5">
                                                       <div>
                                                           <span class="lg:text-xl xl:text-base">استان :
-                                                              {{ $address->province->province }}
+                                                              {{-- {{ $address->province }} --}}
                                                           </span>
                                                           <span class="lg:text-xl xl:text-base"></span>
                                                       </div>
                                                       ,
                                                       <div>
                                                           <span class="lg:text-xl xl:text-base mr-4">شهر :
-                                                              {{ $address->city->city }}
+                                                              {{-- {{ $address->city }} --}}
                                                           </span>
                                                           <span class="lg:text-xl xl:text-base"></span>
                                                       </div>
@@ -130,7 +130,7 @@
                                                               <div class="xl:flex md:block mb-2 md:mb-5">
                                                                   <div>
                                                                       <span class="lg:text-xl xl:text-base">استان :
-                                                                          {{ $address->province->province }}
+                                                                          {{ $address->province }}
                                                                       </span>
                                                                       <span class="lg:text-xl xl:text-base"></span>
                                                                   </div>
@@ -138,7 +138,7 @@
                                                                   <div>
                                                                       <span class="lg:text-xl xl:text-base mr-4">شهر
                                                                           :
-                                                                          {{ $address->city->city }}
+                                                                          {{ $address->city }}
                                                                       </span>
                                                                       <span class="lg:text-xl xl:text-base"></span>
                                                                   </div>
