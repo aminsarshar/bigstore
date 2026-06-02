@@ -301,26 +301,137 @@
                     <li class="font-DanaMedium text-orange-200">
                         <a href="{{route('home.index')}}">صفحه اصلی</a>
                     </li>
-                    <li class="relative group">
-                        <a href="#" class="group-hover:text-orange-300">فروشگاه</a>
-                        <!-- SunMenu -->
-                        <div
-                            class="absolute top-full opacity-0 invisible group-hover:opacity-100 group-hover:visible w-52 p-6 bg-white dark:bg-zinc-700 text-zinc-700 dark:text-white rounded-2xl border-t-[3px] border-t-orange-300 text-base space-y-4 tracking-normal shadow-normal transition-all delay-75 child:block child:transition-colors child-hover:text-orange-300">
-                            @foreach ($categories as $key => $category)
-                                <div class="relative group">
+                   <style>
+.cate:hover .category-item{
+    display:block;
+}
 
-                                    <a href="#" class="child:text-orange-500">
-                                        {{ $category->name }}
-                                    </a>
-                                    @foreach ($category->Categorychild as $categorychild)
-                                        <div class="mt-1.5">
-                                            <a href="">{{ $categorychild->name }}</a>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            @endforeach
-                        </div>
-                    </li>
+.category-item:hover .submenu{
+    display:block;
+}
+
+.cate{
+    position: relative;
+}
+
+/* منوی دسته ها */
+.category-item{
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all .3s ease;
+    background: white;
+    border-radius: 10px;
+    padding: 8px 12px;
+    margin-top: 4px;
+}
+
+.cate:hover .category-item{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* زیر دسته ها */
+.submenu{
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all .3s ease;
+    background: #f8fafc;
+    border-radius: 8px;
+    margin-top: 6px;
+    padding-right: 10px;
+}
+
+.category-item:hover .submenu{
+    max-height: 300px;
+    opacity: 1;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+/* افکت هاور */
+.category-item:hover{
+    background: #fff7ed;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+.submenu a:hover{
+    color: #fb923c;
+    padding-right: 5px;
+    transition: .2s;
+}
+/* زیر دسته ها */
+.submenu{
+    max-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    opacity: 0;
+
+    transition:
+        max-height .35s ease,
+        opacity .25s ease,
+        padding .25s ease;
+
+    background: #f8fafc;
+    border-radius: 8px;
+    margin-top: 6px;
+    padding: 0 10px;
+}
+
+/* نمایش زیرمنو */
+.category-item:hover .submenu{
+    max-height: 220px; /* ارتفاع دلخواه */
+    opacity: 1;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+/* استایل اسکرول */
+.submenu::-webkit-scrollbar{
+    width: 6px;
+}
+
+.submenu::-webkit-scrollbar-track{
+    background: #e5e7eb;
+    border-radius: 10px;
+}
+
+.submenu::-webkit-scrollbar-thumb{
+    background: #fb923c;
+    border-radius: 10px;
+}
+
+.submenu::-webkit-scrollbar-thumb:hover{
+    background: #f97316;
+}
+
+</style>
+
+<li class="cate relative">
+    <a href="#">دیکشنری</a>
+
+    @foreach ($categories as $category)
+        <div class="category-item hidden">
+
+            <a href="#" class="block py-2 text-orange-500" style="color: #f97316 !important">
+                {{ $category->name }}
+            </a>
+
+            <div class="submenu hidden pr-4">
+                @foreach ($category->Categorychild as $categorychild)
+                    <a href="#" class="block py-1" style="color: #fb923c !important">
+                        {{ $categorychild->name }}
+                    </a>
+                @endforeach
+            </div>
+
+        </div>
+    @endforeach
+</li>
+
                     <li>
                         <a href="#">دیکشنری</a>
                     </li>
@@ -498,7 +609,67 @@
                     </a>
 
                 </li>
+<li>
 
+    <!-- فروشگاه toggle -->
+    <input type="checkbox" id="shop-toggle" class="hidden peer">
+
+    <label for="shop-toggle"
+           class="flex items-center justify-between mt-4 cursor-pointer">
+
+        <span class="flex items-center gap-x-2">
+            <svg class="w-5 h-5">
+                <use href="#bag-cart"></use>
+            </svg>
+            فروشگاه
+        </span>
+
+        <svg class="w-4 h-4 transition-transform duration-300 peer-checked:rotate-180">
+            <use href="#chevron-down"></use>
+        </svg>
+
+    </label>
+
+    <!-- 🔴 این بخش اول مخفی است -->
+    <div
+        class="mt-3 space-y-2 overflow-hidden max-h-0
+               transition-all duration-300
+               peer-checked:max-h-[500px]">
+
+        @foreach($categories as $category)
+
+            <details class="group border border-zinc-200 dark:border-zinc-700 rounded-lg">
+
+                <summary
+                    class="flex items-center justify-between cursor-pointer list-none px-3 py-2">
+
+                    <span class="text-sm">
+                        {{ $category->name }}
+                    </span>
+
+                    <svg class="w-4 h-4 transition-transform duration-300 group-open:rotate-180">
+                        <use href="#chevron-down"></use>
+                    </svg>
+
+                </summary>
+
+                <div class="px-4 pb-3 mt-2 flex flex-col gap-y-2 text-sm">
+
+                    @foreach($category->Categorychild as $child)
+                        <a href="#" class="hover:text-orange-500 transition">
+                            {{ $child->name }}
+                        </a>
+                    @endforeach
+
+                </div>
+
+            </details>
+
+        @endforeach
+
+    </div>
+
+</li>
                 <li>
                     <div class="flex items-center justify-between mt-4">
                         <a href="#" class="flex items-center gap-x-2">

@@ -2,28 +2,30 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\City;
+use App\Models\Province;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Address extends Model
 {
-    use HasFactory , SoftDeletes;
+    use HasFactory, SoftDeletes;
     protected $guarded = ['id'];
 
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function province(){
-        return $this->belongsTo(Province::class);
-    }
+    // public function province()
+    // {
+    //     return $this->belongsTo(Province::class);
+    // }
 
-    public function city(){
-        return $this->belongsTo(City::class);
-    }
-
-
-
+    // public function city()
+    // {
+    //     return $this->belongsTo(City::class);
+    // }
 }

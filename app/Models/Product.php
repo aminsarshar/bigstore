@@ -18,22 +18,30 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
+
     protected $guarded = ['id'];
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class)
+            ->withTrashed()
+            ->withDefault([
+                'name' => 'بدون دسته‌بندی'
+            ]);
     }
 
     public function brand()
     {
-        return $this->belongsTo(Brand::class);
+        return $this->belongsTo(Brand::class)
+            ->withDefault([
+                'name' => 'بدون برند'
+            ]);
     }
 
     public function tags()
     {
-        return $this->morphToMany(Tag::class , 'taggable');
+        return $this->morphToMany(Tag::class, 'taggable');
     }
 
     public function guaranty()
@@ -48,7 +56,7 @@ class Product extends Model
 
     public function colors()
     {
-        return $this->belongsToMany(Color::class , 'color_product');
+        return $this->belongsToMany(Color::class, 'color_product');
     }
 
     public function properties()
@@ -58,7 +66,7 @@ class Product extends Model
 
     public function propertyGroups()
     {
-        return $this->belongsToMany(PropertyGroup::class , 'product_property_group');
+        return $this->belongsToMany(PropertyGroup::class, 'product_property_group');
     }
 
     public function galleries()
@@ -73,14 +81,13 @@ class Product extends Model
 
     public function comments()
     {
-        return $this->morphMany(Comment::class , 'commentable');
-
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     public function Subcomments()
     {
-        return $this->morphMany(Comment::class , 'commentable')->where('status' , 'approved');
-
+        return $this->morphMany(Comment::class, 'commentable')
+            ->where('status', 'approved');
     }
 
     public function product()

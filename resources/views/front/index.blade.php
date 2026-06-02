@@ -171,9 +171,9 @@
                                 <span class="text-xs md:text-sm tracking-tightest">تومان</span>
                             </div>
                             <!-- <div class="offer">
-                                <span class="text-xs md:text-xl">175,000</span>
-                                <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
-                              </div> -->
+                                    <span class="text-xs md:text-xl">175,000</span>
+                                    <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
+                                  </div> -->
                         </div>
 
                         <div class="flex items-center justify-between mt-2.5">
@@ -288,9 +288,9 @@
                                 <span class="text-xs md:text-sm tracking-tightest">تومان</span>
                             </div>
                             <!-- <div class="offer">
-                                <span class="text-xs md:text-xl">175,000</span>
-                                <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
-                              </div> -->
+                                    <span class="text-xs md:text-xl">175,000</span>
+                                    <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
+                                  </div> -->
                         </div>
 
                         <div class="flex items-center justify-between mt-2.5">
@@ -342,13 +342,13 @@
                             قهوه اسپرسو بن مانو مدل پریسکا 250 گرمی</h5>
                         <div class="flex gap-x-2 md:gap-x-2.5 mt-1.5 md:mt-2.5">
                             <!-- <div class="text-teal-600 dark:text-emerald-500">
-                                <span class="text-base md:text-xl font-DanaDemiBold">154,000</span>
-                                <span class="text-xs md:text-sm tracking-tightest">تومان</span>
-                              </div>
-                              <div class="offer">
-                                <span class="text-xs md:text-xl">175,000</span>
-                                <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
-                              </div> -->
+                                    <span class="text-base md:text-xl font-DanaDemiBold">154,000</span>
+                                    <span class="text-xs md:text-sm tracking-tightest">تومان</span>
+                                  </div>
+                                  <div class="offer">
+                                    <span class="text-xs md:text-xl">175,000</span>
+                                    <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
+                                  </div> -->
                             <div class="text-red-400">
                                 <span class="text-base md:text-xl">فعلا موجود نیست</span>
                             </div>
@@ -407,9 +407,9 @@
                                 <span class="text-xs md:text-sm tracking-tightest">تومان</span>
                             </div>
                             <!-- <div class="offer">
-                                <span class="text-xs md:text-xl">175,000</span>
-                                <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
-                              </div> -->
+                                    <span class="text-xs md:text-xl">175,000</span>
+                                    <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
+                                  </div> -->
                         </div>
 
                         <div class="flex items-center justify-between mt-2.5">
@@ -465,9 +465,9 @@
                                 <span class="text-xs md:text-sm tracking-tightest">تومان</span>
                             </div>
                             <!-- <div class="offer">
-                                <span class="text-xs md:text-xl">175,000</span>
-                                <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
-                              </div> -->
+                                    <span class="text-xs md:text-xl">175,000</span>
+                                    <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
+                                  </div> -->
                         </div>
 
                         <div class="flex items-center justify-between mt-2.5">
@@ -519,13 +519,13 @@
                             قهوه اسپرسو بن مانو مدل پریسکا 250 گرمی</h5>
                         <div class="flex gap-x-2 md:gap-x-2.5 mt-1.5 md:mt-2.5">
                             <!-- <div class="text-teal-600 dark:text-emerald-500">
-                                <span class="text-base md:text-xl font-DanaDemiBold">154,000</span>
-                                <span class="text-xs md:text-sm tracking-tightest">تومان</span>
-                              </div>
-                              <div class="offer">
-                                <span class="text-xs md:text-xl">175,000</span>
-                                <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
-                              </div> -->
+                                    <span class="text-base md:text-xl font-DanaDemiBold">154,000</span>
+                                    <span class="text-xs md:text-sm tracking-tightest">تومان</span>
+                                  </div>
+                                  <div class="offer">
+                                    <span class="text-xs md:text-xl">175,000</span>
+                                    <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
+                                  </div> -->
                             <div class="text-red-400">
                                 <span class="text-base md:text-xl font-DanaDemiBold">فعلا موجود نیست</span>
                             </div>
@@ -611,7 +611,7 @@
 
                         @foreach ($special_products as $special_product)
                             <div class="swiper-slide rounded-2xl" style="height:460px !important">
-                                <div class="w-[85%] h-full text-right">
+                                <div class="w-100 h-full text-right">
                                     <a href="{{ route('single.product', $special_product->product->slug) }}">
                                         <div class="relative mb-2 md:mb-5">
                                             <img src="{{ asset('admin/images/products/' . $special_product->product->image) }}"
@@ -634,7 +634,8 @@
                                                 <span class="text-xs md:text-sm tracking-tightest">تومان</span>
                                             </div>
                                             <div class="offer">
-                                                <span class="text-xs md:text-xl">{{ number_format($special_product->main_price) }}</span>
+                                                <span
+                                                    class="text-xs md:text-xl">{{ number_format($special_product->main_price) }}</span>
                                                 <span
                                                     class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
                                             </div>
@@ -721,21 +722,21 @@
                     {{-- <div class="swiper">
                         <!-- Additional required wrapper -->
                         <div class="swiper-wrapper"> --}}
-                            <!-- Slides -->
-                            @foreach ($product_category as $category)
-                                {{-- <div class="swiper-slide"> --}}
-                                <a href="#" class="w-25 md:w-50 text-center">
-                                    <div class="bg-gray-100 dark:bg-zinc-800">
-                                        <img src="{{ asset('admin/images/categories/' . $category->image) }}"
-                                            alt="" loading="lazy">
-                                        <span
-                                            class="inline-block font-DanaDemiBold text-sm md:text-xl text-zinc-700 dark:text-white mt-1.5 md:mt-2.5">{{ $category->name }}</span>
-                                    </div>
-                                </a>
-                                {{-- </div> --}}
-                            @endforeach
+                    <!-- Slides -->
+                    @foreach ($product_category as $category)
+                        {{-- <div class="swiper-slide"> --}}
+                        <a href="#" class="w-25 md:w-50 text-center">
+                            <div class="bg-gray-100 dark:bg-zinc-800">
+                                <img src="{{ asset('admin/images/categories/' . $category->image) }}" alt=""
+                                    loading="lazy">
+                                <span
+                                    class="inline-block font-DanaDemiBold text-sm md:text-xl text-zinc-700 dark:text-white mt-1.5 md:mt-2.5">{{ $category->name }}</span>
+                            </div>
+                        </a>
+                        {{-- </div> --}}
+                    @endforeach
 
-                        {{-- </div>
+                    {{-- </div>
                     </div> --}}
                     {{-- @foreach ($categories as $category)
           <a href="#" class="w-25 md:w-50 text-center">
@@ -783,71 +784,72 @@
 
                         @foreach ($most_sold as $sold)
                             <div class="swiper-slide rounded-2xl" style="height: 460px">
-                                <div class="w-[80%] h-full">
+                                <div class="w-100 h-full">
                                     <a href="{{ route('single.product', $sold->slug) }}">
                                         <div class="relative mb-2 md:mb-5">
                                             <img src="{{ asset('admin/images/products/' . $sold->image) }}"
                                                 alt="product-1"
-                                                class="w-32 h-[260px] md:w-auto mx-auto transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                                                class="w-32 h-[260px] rounded-xl md:w-auto mx-auto transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
                                             {{-- <span
                                                 class="absolute top-1.5 right-1.5 font-DanaDemiBold text-xs md:text-base text-white dark:text-zinc-700 px-2.5 md:px-3.5 rounded-full h-5 md:h-[30px] block bg-orange-300 leading-[25px] md:leading-[34px]">{{ $sold->discount }}%</span> --}}
                                         </div>
-                                    </a>
 
-                                    <h5
-                                        class="font-DanaMedium text-sm md:text-xl text-zinc-700 dark:text-white line-clamp-2 md:min-h-[56px] min-h-[40px]">
-                                        {{ $sold->title }}</h5>
-                                    <div class="flex gap-x-2 md:gap-x-2.5 mt-1.5 md:mt-2.5">
-                                        <div class="text-teal-600 dark:text-emerald-500">
-                                            <span class="text-base md:text-xl font-DanaDemiBold">{{ number_format($sold->price) }}</<
-                                                    /span>
-                                                <span class="text-xs md:text-sm tracking-tightest">تومان</span>
-                                        </div>
-                                        {{-- <div class="offer">
+
+                                        <h5
+                                            class="font-DanaMedium text-sm md:text-xl text-zinc-700 dark:text-white line-clamp-2 md:min-h-[56px] min-h-[40px]">
+                                            {{ $sold->title }}</h5>
+                                        <div class="flex gap-x-2 md:gap-x-2.5 mt-1.5 md:mt-2.5">
+                                            <div class="text-teal-600 dark:text-emerald-500">
+                                                <span
+                                                    class="text-base md:text-xl font-DanaDemiBold">{{ number_format($sold->price) }}
+                                                    </< /span>
+                                                    <span class="text-xs md:text-sm tracking-tightest">تومان</span>
+                                            </div>
+                                            {{-- <div class="offer">
                                             <span class="text-xs md:text-xl">175,000</span>
                                             <span
                                                 class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
                                         </div> --}}
-                                    </div>
+                                        </div>
 
-                                    <div class="flex items-center justify-between mt-2.5">
-                                        <div class="flex gap-x-2 md:gap-x-3">
-                                            <span
-                                                class="flex-center bg-gray-100 text-gray-400 hover:text-white dark:bg-zinc-800 hover:bg-teal-600 hover:dark:bg-emerald-500 w-[26px] h-[26px] md:w-9 md:h-9 rounded-full cursor-pointer">
-                                                <svg class="w-4 h-4 md:w-[22px] md:h-[22px]">
-                                                    <use href="#shopping-cart"></use>
+                                        <div class="flex items-center justify-between mt-2.5">
+                                            <div class="flex gap-x-2 md:gap-x-3">
+                                                <span
+                                                    class="flex-center bg-gray-100 text-gray-400 hover:text-white dark:bg-zinc-800 hover:bg-teal-600 hover:dark:bg-emerald-500 w-[26px] h-[26px] md:w-9 md:h-9 rounded-full cursor-pointer">
+                                                    <svg class="w-4 h-4 md:w-[22px] md:h-[22px]">
+                                                        <use href="#shopping-cart"></use>
+                                                    </svg>
+                                                </span>
+
+
+                                                <span
+                                                    class="flex-center text-gray-400 hover:text-teal-600 dark:hover:text-emerald-500 w-[26px] h-[26px] md:w-9 md:h-9 rounded-full cursor-pointer">
+                                                    <svg class="w-4 h-4 md:w-6 md:h-6">
+                                                        <use href="#arrows-right-left"></use>
+                                                    </svg>
+                                                </span>
+
+                                            </div>
+                                            <div class="flex text-yellow-400">
+                                                <svg class="w-4 h-4 md:w-6 md:h-6 text-gray-300 dark:text-gray-400">
+                                                    <use href="#star"></use>
                                                 </svg>
-                                            </span>
-
-
-                                            <span
-                                                class="flex-center text-gray-400 hover:text-teal-600 dark:hover:text-emerald-500 w-[26px] h-[26px] md:w-9 md:h-9 rounded-full cursor-pointer">
                                                 <svg class="w-4 h-4 md:w-6 md:h-6">
-                                                    <use href="#arrows-right-left"></use>
+                                                    <use href="#star"></use>
                                                 </svg>
-                                            </span>
-
+                                                <svg class="w-4 h-4 md:w-6 md:h-6">
+                                                    <use href="#star"></use>
+                                                </svg>
+                                                <svg class="w-4 h-4 md:w-6 md:h-6">
+                                                    <use href="#star"></use>
+                                                </svg>
+                                                <svg class="w-4 h-4 md:w-6 md:h-6">
+                                                    <use href="#star"></use>
+                                                </svg>
+                                            </div>
                                         </div>
-                                        <div class="flex text-yellow-400">
-                                            <svg class="w-4 h-4 md:w-6 md:h-6 text-gray-300 dark:text-gray-400">
-                                                <use href="#star"></use>
-                                            </svg>
-                                            <svg class="w-4 h-4 md:w-6 md:h-6">
-                                                <use href="#star"></use>
-                                            </svg>
-                                            <svg class="w-4 h-4 md:w-6 md:h-6">
-                                                <use href="#star"></use>
-                                            </svg>
-                                            <svg class="w-4 h-4 md:w-6 md:h-6">
-                                                <use href="#star"></use>
-                                            </svg>
-                                            <svg class="w-4 h-4 md:w-6 md:h-6">
-                                                <use href="#star"></use>
-                                            </svg>
-                                        </div>
-                                    </div>
 
-
+                                    </a>
                                 </div>
                             </div>
                         @endforeach

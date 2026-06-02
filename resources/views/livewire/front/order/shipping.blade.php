@@ -26,6 +26,9 @@
                                   <!-- Section Body -->
                                   <div
                                       class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-3.5 md:gap-5 child:md:p-5 child:p-2 child:bg-white child:dark:bg-zinc-700 child:rounded-2xl child:shadow-normal child:dark:shadow-normal">
+                                      @if (!$addresses->count = 0)
+                                      <livewire:front.order.address />
+                                      @endif
                                       @foreach ($addresses as $address)
                                           @if ($loop->first)
                                               <div class="border border-gray-100">
@@ -55,14 +58,14 @@
                                                   <div class="xl:flex md:block mb-2 md:mb-5">
                                                       <div>
                                                           <span class="lg:text-xl xl:text-base">استان :
-                                                              {{-- {{ $address->province }} --}}
+                                                              {{ province_name($address->province_id) }}
                                                           </span>
                                                           <span class="lg:text-xl xl:text-base"></span>
                                                       </div>
                                                       ,
                                                       <div>
                                                           <span class="lg:text-xl xl:text-base mr-4">شهر :
-                                                              {{-- {{ $address->city }} --}}
+                                                              {{ city_name($address->city_id) }}
                                                           </span>
                                                           <span class="lg:text-xl xl:text-base"></span>
                                                       </div>
@@ -130,7 +133,7 @@
                                                               <div class="xl:flex md:block mb-2 md:mb-5">
                                                                   <div>
                                                                       <span class="lg:text-xl xl:text-base">استان :
-                                                                          {{ $address->province }}
+                                                                          {{ province_name($address->province_id) }}
                                                                       </span>
                                                                       <span class="lg:text-xl xl:text-base"></span>
                                                                   </div>
@@ -138,7 +141,7 @@
                                                                   <div>
                                                                       <span class="lg:text-xl xl:text-base mr-4">شهر
                                                                           :
-                                                                          {{ $address->city }}
+                                                                          {{ city_name($address->city_id) }}
                                                                       </span>
                                                                       <span class="lg:text-xl xl:text-base"></span>
                                                                   </div>
@@ -182,6 +185,7 @@
                                               </style>
                                           @endif
                                       @endforeach
+
                                   </div>
                               </div>
                           </section>

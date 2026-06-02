@@ -32,7 +32,10 @@
     },
     "autoload": {
         "files" : [
-            "app/Helpers/DateManager.php"
+            "app/Helpers/DateManager.php",
+            "app/Helpers/ProvinceName.php",
+            "app/Helpers/CityName.php",
+            "app/helpers.php"
         ],
         "psr-4": {
             "App\\": "app/",

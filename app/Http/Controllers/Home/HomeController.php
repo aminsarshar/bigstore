@@ -13,13 +13,17 @@ class HomeController extends Controller
     public function index()
     {
 
-        $categories = Category::query()->where('parent_id', 0)->get();
+        $categories = Category::query()
+            ->with('Categorychild')
+            ->where('parent_id', 0)
+            ->get();
+
         $product_category = Category::query()->where('parent_id', 0)->take(5)->get();
-        $most_sold = Product::query()->where('discount' , '=' , 0)->get();
-        $special_products = ProductGuaranty::query()->where('special_start', '<=', now())->where('special_expiration', '>=', now())->where('discount' , '!=' , 0)->get();
+        $most_sold = Product::query()->where('discount', '=', 0)->get();
+        $special_products = ProductGuaranty::query()->where('special_start', '<=', now())->where('special_expiration', '>=', now())->where('discount', '!=', 0)->get();
         $products = ProductGuaranty::query()->get();
         $carts = Cart::query()->get();
-        return view('front.index', compact('categories', 'most_sold', 'product_category', 'special_products' , 'products' , 'carts'));
+        return view('front.index', compact('categories', 'most_sold', 'product_category', 'special_products', 'products', 'carts'));
     }
 
     public function singleProduct($slug)
@@ -27,7 +31,6 @@ class HomeController extends Controller
         $products = Product::query()->with(['category', 'brand', 'colors', 'tags', 'properties', 'propertyGroups', 'galleries', 'guaranty'])->where('slug', $slug)->first();
         $categories = Category::query()->where('parent_id', 0)->get();
         $carts = Cart::query()->get();
-        return view('front.products.show', compact('categories', 'products' , 'carts'));
+        return view('front.products.show', compact('categories', 'products', 'carts'));
     }
-
 }

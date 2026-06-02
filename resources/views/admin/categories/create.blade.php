@@ -21,16 +21,25 @@
                                 <div class="form-body">
                                     <div class="row">
 
-                                            <div class="form-group col-md-6 mb-2">
-                                                <div class="custom-file">
-                                                <div class="controls">
-                                                    <input type="file" class="custom-file-input" id="inputGroupFile01" name="image">
-                                                    <label class="custom-file-label" for="inputGroupFile01">انتخاب فایل</label>
-                                                </div>
-                                                </div>
-                                            </div>
+                                        <div class="form-group col-md-6 mb-3">
 
-                                            <div class="form-group col-md-6 mb-2">
+                                            <label for="inputGroupFile01" class="upload-box">
+                                                <div class="upload-content">
+                                                    <div class="upload-icon">📷</div>
+                                                    <h5>عکس خود را آپلود کنید</h5>
+                                                    <p>برای انتخاب تصویر کلیک کنید</p>
+                                                    <small>فرمت‌های مجاز: JPG, PNG, WEBP</small>
+                                                </div>
+
+                                                <img id="imagePreview" src="" alt="" style="display:none;">
+                                            </label>
+
+                                            <input type="file" id="inputGroupFile01" name="image" accept="image/*"
+                                                hidden>
+                                        </div>
+                                        <br>
+
+                                        <div class="form-group col-md-6 mb-2">
                                             <div class="controls">
                                                 <label class="sr-only" for="projectinput2">نام دسته بندی</label>
                                                 <input type="text" placeholder="نام دسته بندی" name="name"
@@ -52,8 +61,8 @@
                                                 <label class="sr-only">دسته والد</label>
                                                 <select name="parent_id" class="form-control form-select">
                                                     <option selected value="0"> دسته اصلی </option>
-                                                    @foreach($categories as $key => $value)
-                                                        <option value="{{$key}}"> {{$value}} </option>
+                                                    @foreach ($categories as $key => $value)
+                                                        <option value="{{ $key }}"> {{ $value }} </option>
                                                     @endforeach
                                                 </select>
                                             </div>

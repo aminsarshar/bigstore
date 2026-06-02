@@ -31,7 +31,7 @@ class Address extends Component
     {
         $this->provinces = Province::query()->pluck('name', 'id');
         $this->cities = collect();
-    }
+    } 
 
     public function ChangeProvince($province_id)
     {

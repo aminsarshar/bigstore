@@ -43,11 +43,21 @@
                                         </fieldset>
                                         </div>
 
-                                        <div class="col-xl-6 col-lg-6 col-md-12 mb-1">
-                                            <fieldset class="form-group">
-                                                <label for="basicInput">عکس</label>
-                                                <input name="image" type="file" class="form-control" id="basicInput">
-                                            </fieldset>
+                                        <div class="form-group col-md-6 mb-3">
+
+                                            <label for="inputGroupFile01" class="upload-box">
+                                                <div class="upload-content">
+                                                    <div class="upload-icon">📷</div>
+                                                    <h5>عکس خود را آپلود کنید</h5>
+                                                    <p>برای انتخاب تصویر کلیک کنید</p>
+                                                    <small>فرمت‌های مجاز: JPG, PNG, WEBP</small>
+                                                </div>
+
+                                                <img id="imagePreview" src="" alt="" style="display:none;">
+                                            </label>
+
+                                            <input type="file" id="inputGroupFile01" name="image" accept="image/*"
+                                                hidden>
                                         </div>
 
 

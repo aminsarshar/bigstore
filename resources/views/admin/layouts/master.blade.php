@@ -66,7 +66,52 @@
     @livewireScripts
     {{-- @include('sweetalert::alert') --}}
     @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9'])
+    <style>
+        .upload-box {
+            width: 100%;
+            min-height: 250px;
+            border: 2px dashed #0d6efd;
+            border-radius: 15px;
+            background: #f8f9fa;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: all .3s ease;
+            overflow: hidden;
+        }
 
+        .upload-box:hover {
+            background: #eef5ff;
+            border-color: #0b5ed7;
+        }
+
+        .upload-content h5 {
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .upload-content p {
+            margin: 5px 0;
+            color: #6c757d;
+        }
+
+        .upload-content small {
+            color: #999;
+        }
+
+        .upload-icon {
+            font-size: 55px;
+        }
+
+        #imagePreview {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+    </style>
     <script src="/admin/vendors/js/core/jquery-3.3.1.min.js"></script>
     <script src="/admin/js/persian-datepicker.min.js"></script>
     <script src="/admin/vendors/js/core/popper.min.js"></script>
@@ -113,6 +158,27 @@
             },
             error: {
                 'fileSize': 'حجم فایل بیشتر از حد مجاز است (1M).'
+            }
+        });
+    </script>
+
+
+    <script>
+        document.getElementById('inputGroupFile01').addEventListener('change', function() {
+
+            const file = this.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    document.getElementById('imagePreview').src = e.target.result;
+                    document.getElementById('imagePreview').style.display = 'block';
+
+                    document.querySelector('.upload-content').style.display = 'none';
+                }
+
+                reader.readAsDataURL(file);
             }
         });
     </script>

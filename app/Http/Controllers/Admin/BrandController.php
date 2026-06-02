@@ -74,27 +74,37 @@ class BrandController extends Controller
     public function update(Request $request, string $id)
     {
         $brand = Brand::findOrFail($id);
-        $file = $request->file('image');
-        $image = '';
 
-        if(!empty($file)){
-            if(file_exists('admin/images/brands/'.$brand->image)){
-                unlink('admin/images/brands/'.$brand->image);
-            }
-            $image = time().".".$file->getClientOriginalExtension();
-            $file->move('admin/images/brands/',$image);
-        }else{
-            $image = $brand->image;
-        }
+$image = $brand->image;
 
-        $brand->update([
-            'image' =>$image,
-            'name' => $request->name,
-            'link' => $request->link,
+if ($request->hasFile('image')) {
 
-        ]);
-        toastr()->success('برند با موفقیت ویرایش شد!', 'موفق', ['timeOut' => 5000 , 'positionClass' => 'toast-top-center']);
-        return redirect()->route('brands.index');
+    $file = $request->file('image');
+
+    $oldImage = public_path('admin/images/brands/' . $brand->image);
+
+    if (!empty($brand->image) && is_file($oldImage)) {
+        unlink($oldImage);
+    }
+
+    $image = time() . '.' . $file->getClientOriginalExtension();
+
+    $file->move(public_path('admin/images/brands'), $image);
+}
+
+$brand->update([
+    'image' => $image,
+    'name'  => $request->name,
+    'link'  => $request->link,
+]);
+
+toastr()->success(
+    'برند با موفقیت ویرایش شد!',
+    'موفق',
+    ['timeOut' => 5000, 'positionClass' => 'toast-top-center']
+);
+
+return redirect()->route('brands.index');
     }
 
     /**
