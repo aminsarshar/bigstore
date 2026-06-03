@@ -75,6 +75,91 @@
   </div>
       </div>
     </section> --}}
+       <section class="best-selling mb-8 md:mb-20">
+            <div class="container">
+
+                <!-- Header -->
+                <div class="flex justify-between items-end mb-5 md:mb-12">
+                    <div>
+                        <h3 class="section-title">محصولات پر فروش</h3>
+                        <span class="section-subtitle">پیشنهاد قهوه خور ها ...</span>
+                    </div>
+
+                    <div class="flex gap-x-3 md:gap-x-[18px]">
+                        <div class="swiper-button-prev-custom">
+                            <svg class="w-5 h-5 md:w-[26px] md:h-[26px]">
+                                <use href="#chevron-right-mini"></use>
+                            </svg>
+                        </div>
+
+                        <div class="swiper-button-next-custom">
+                            <svg class="w-5 h-5 md:w-[26px] md:h-[26px]">
+                                <use href="#chevron-left-mini"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- دکمه دسته ها -->
+                <div class="flex flex-wrap gap-2 mb-8">
+                    @foreach ($categories as $category)
+                        <button data-category="{{ $category->id }}"
+                            class="category-btn px-4 py-2 rounded-lg bg-zinc-100 dark:bg-zinc-700 hover:bg-orange-300 hover:text-white transition">
+
+                            {{ $category->name }}
+
+                        </button>
+                    @endforeach
+                </div>
+
+                <!-- اسلایدر هر دسته -->
+                @foreach ($categories as $category)
+                    <div id="category-{{ $category->id }}" class="category-slider {{ !$loop->first ? 'hidden' : '' }}">
+
+                        <div class="swiper categorySwiper">
+
+                            <div class="swiper-wrapper">
+
+                                @foreach ($category->Categorychild as $child)
+                                    @foreach ($child->products as $product)
+                                        <div class="swiper-slide rounded-2xl"  >
+
+                                            <div class="w-[full]" style="height: 500px !important;">
+
+                                                <a href="{{ route('single.product', $product->slug) }}">
+
+                                                    {{-- <div class="relative mb-2 md:mb-5"> --}}
+                                                        <img src="{{ asset('admin/images/products/' . $product->image) }}"
+                                                            class="w-full h-[260px]  object-contain mx-auto transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                                                    {{-- </div> --}}
+
+                                                    <h5
+                                                        class="font-DanaMedium text-sm md:text-xl text-zinc-700 dark:text-white line-clamp-2">
+                                                        {{ $product->title }}
+                                                    </h5>
+
+                                                    <div class="mt-2 text-teal-600 dark:text-emerald-500">
+                                                        {{ number_format($product->price) }}
+                                                        تومان
+                                                    </div>
+
+                                                </a>
+
+                                            </div>
+
+                                        </div>
+                                    @endforeach
+                                @endforeach
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                @endforeach
+
+            </div>
+        </section>
 
         <section class="products pt-8 md:pt-24 lg:pt-48" id="products-section">
 
@@ -171,9 +256,9 @@
                                 <span class="text-xs md:text-sm tracking-tightest">تومان</span>
                             </div>
                             <!-- <div class="offer">
-                                    <span class="text-xs md:text-xl">175,000</span>
-                                    <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
-                                  </div> -->
+                                            <span class="text-xs md:text-xl">175,000</span>
+                                            <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
+                                          </div> -->
                         </div>
 
                         <div class="flex items-center justify-between mt-2.5">
@@ -288,9 +373,9 @@
                                 <span class="text-xs md:text-sm tracking-tightest">تومان</span>
                             </div>
                             <!-- <div class="offer">
-                                    <span class="text-xs md:text-xl">175,000</span>
-                                    <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
-                                  </div> -->
+                                            <span class="text-xs md:text-xl">175,000</span>
+                                            <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
+                                          </div> -->
                         </div>
 
                         <div class="flex items-center justify-between mt-2.5">
@@ -342,13 +427,13 @@
                             قهوه اسپرسو بن مانو مدل پریسکا 250 گرمی</h5>
                         <div class="flex gap-x-2 md:gap-x-2.5 mt-1.5 md:mt-2.5">
                             <!-- <div class="text-teal-600 dark:text-emerald-500">
-                                    <span class="text-base md:text-xl font-DanaDemiBold">154,000</span>
-                                    <span class="text-xs md:text-sm tracking-tightest">تومان</span>
-                                  </div>
-                                  <div class="offer">
-                                    <span class="text-xs md:text-xl">175,000</span>
-                                    <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
-                                  </div> -->
+                                            <span class="text-base md:text-xl font-DanaDemiBold">154,000</span>
+                                            <span class="text-xs md:text-sm tracking-tightest">تومان</span>
+                                          </div>
+                                          <div class="offer">
+                                            <span class="text-xs md:text-xl">175,000</span>
+                                            <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
+                                          </div> -->
                             <div class="text-red-400">
                                 <span class="text-base md:text-xl">فعلا موجود نیست</span>
                             </div>
@@ -407,9 +492,9 @@
                                 <span class="text-xs md:text-sm tracking-tightest">تومان</span>
                             </div>
                             <!-- <div class="offer">
-                                    <span class="text-xs md:text-xl">175,000</span>
-                                    <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
-                                  </div> -->
+                                            <span class="text-xs md:text-xl">175,000</span>
+                                            <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
+                                          </div> -->
                         </div>
 
                         <div class="flex items-center justify-between mt-2.5">
@@ -465,9 +550,9 @@
                                 <span class="text-xs md:text-sm tracking-tightest">تومان</span>
                             </div>
                             <!-- <div class="offer">
-                                    <span class="text-xs md:text-xl">175,000</span>
-                                    <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
-                                  </div> -->
+                                            <span class="text-xs md:text-xl">175,000</span>
+                                            <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
+                                          </div> -->
                         </div>
 
                         <div class="flex items-center justify-between mt-2.5">
@@ -519,13 +604,13 @@
                             قهوه اسپرسو بن مانو مدل پریسکا 250 گرمی</h5>
                         <div class="flex gap-x-2 md:gap-x-2.5 mt-1.5 md:mt-2.5">
                             <!-- <div class="text-teal-600 dark:text-emerald-500">
-                                    <span class="text-base md:text-xl font-DanaDemiBold">154,000</span>
-                                    <span class="text-xs md:text-sm tracking-tightest">تومان</span>
-                                  </div>
-                                  <div class="offer">
-                                    <span class="text-xs md:text-xl">175,000</span>
-                                    <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
-                                  </div> -->
+                                            <span class="text-base md:text-xl font-DanaDemiBold">154,000</span>
+                                            <span class="text-xs md:text-sm tracking-tightest">تومان</span>
+                                          </div>
+                                          <div class="offer">
+                                            <span class="text-xs md:text-xl">175,000</span>
+                                            <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
+                                          </div> -->
                             <div class="text-red-400">
                                 <span class="text-base md:text-xl font-DanaDemiBold">فعلا موجود نیست</span>
                             </div>
@@ -715,152 +800,8 @@
 
         </section>
 
-        <section class="products-category mb-10 md:mb-20">
-            <div class="container">
-                <div class="flex items-center justify-center gap-y-6 gap-x-[29px] md:gap-[65px] flex-wrap">
-                    <!-- Slider main container -->
-                    {{-- <div class="swiper">
-                        <!-- Additional required wrapper -->
-                        <div class="swiper-wrapper"> --}}
-                    <!-- Slides -->
-                    @foreach ($product_category as $category)
-                        {{-- <div class="swiper-slide"> --}}
-                        <a href="#" class="w-25 md:w-50 text-center">
-                            <div class="bg-gray-100 dark:bg-zinc-800">
-                                <img src="{{ asset('admin/images/categories/' . $category->image) }}" alt=""
-                                    loading="lazy">
-                                <span
-                                    class="inline-block font-DanaDemiBold text-sm md:text-xl text-zinc-700 dark:text-white mt-1.5 md:mt-2.5">{{ $category->name }}</span>
-                            </div>
-                        </a>
-                        {{-- </div> --}}
-                    @endforeach
-
-                    {{-- </div>
-                    </div> --}}
-                    {{-- @foreach ($categories as $category)
-          <a href="#" class="w-25 md:w-50 text-center">
-            <div>
-              <img src="{{asset('admin/images/categories/'.$category->image)}}" alt="" loading="lazy">
-              <span class="inline-block font-DanaDemiBold text-sm md:text-xl text-zinc-700 dark:text-white mt-1.5 md:mt-2.5">{{$category->name}}</span>
-            </div>
-          </a>
-          @endforeach --}}
 
 
-
-                </div>
-            </div>
-        </section>
-
-        <section class="best-selling mb-8 md:mb-20">
-            <div class="container">
-                <!-- Section Head -->
-                <div class="flex justify-between items-end mb-5 md:mb-12">
-                    <div>
-                        <h3 class="section-title">محصولات پر فروش</h3>
-                        <span class="section-subtitle">پیشنهاد قهوه خور ها ...</span>
-                    </div>
-                    <div class="flex gap-x-3 md:gap-x-[18px]">
-                        <div class="swiper-button-prev-custom">
-                            <svg class="w-5 h-5 md:w-[26px] md:h-[26px]">
-                                <use href="#chevron-right-mini"></use>
-                            </svg>
-                        </div>
-                        <div class="swiper-button-next-custom">
-                            <svg class="w-5 h-5 md:w-[26px] md:h-[26px]">
-                                <use href="#chevron-left-mini"></use>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slider main container -->
-                <div class="swiper">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper">
-                        <!-- Slides -->
-
-
-                        @foreach ($most_sold as $sold)
-                            <div class="swiper-slide rounded-2xl" style="height: 460px">
-                                <div class="w-100 h-full">
-                                    <a href="{{ route('single.product', $sold->slug) }}">
-                                        <div class="relative mb-2 md:mb-5">
-                                            <img src="{{ asset('admin/images/products/' . $sold->image) }}"
-                                                alt="product-1"
-                                                class="w-32 h-[260px] rounded-xl md:w-auto mx-auto transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
-                                            {{-- <span
-                                                class="absolute top-1.5 right-1.5 font-DanaDemiBold text-xs md:text-base text-white dark:text-zinc-700 px-2.5 md:px-3.5 rounded-full h-5 md:h-[30px] block bg-orange-300 leading-[25px] md:leading-[34px]">{{ $sold->discount }}%</span> --}}
-                                        </div>
-
-
-                                        <h5
-                                            class="font-DanaMedium text-sm md:text-xl text-zinc-700 dark:text-white line-clamp-2 md:min-h-[56px] min-h-[40px]">
-                                            {{ $sold->title }}</h5>
-                                        <div class="flex gap-x-2 md:gap-x-2.5 mt-1.5 md:mt-2.5">
-                                            <div class="text-teal-600 dark:text-emerald-500">
-                                                <span
-                                                    class="text-base md:text-xl font-DanaDemiBold">{{ number_format($sold->price) }}
-                                                    </< /span>
-                                                    <span class="text-xs md:text-sm tracking-tightest">تومان</span>
-                                            </div>
-                                            {{-- <div class="offer">
-                                            <span class="text-xs md:text-xl">175,000</span>
-                                            <span
-                                                class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
-                                        </div> --}}
-                                        </div>
-
-                                        <div class="flex items-center justify-between mt-2.5">
-                                            <div class="flex gap-x-2 md:gap-x-3">
-                                                <span
-                                                    class="flex-center bg-gray-100 text-gray-400 hover:text-white dark:bg-zinc-800 hover:bg-teal-600 hover:dark:bg-emerald-500 w-[26px] h-[26px] md:w-9 md:h-9 rounded-full cursor-pointer">
-                                                    <svg class="w-4 h-4 md:w-[22px] md:h-[22px]">
-                                                        <use href="#shopping-cart"></use>
-                                                    </svg>
-                                                </span>
-
-
-                                                <span
-                                                    class="flex-center text-gray-400 hover:text-teal-600 dark:hover:text-emerald-500 w-[26px] h-[26px] md:w-9 md:h-9 rounded-full cursor-pointer">
-                                                    <svg class="w-4 h-4 md:w-6 md:h-6">
-                                                        <use href="#arrows-right-left"></use>
-                                                    </svg>
-                                                </span>
-
-                                            </div>
-                                            <div class="flex text-yellow-400">
-                                                <svg class="w-4 h-4 md:w-6 md:h-6 text-gray-300 dark:text-gray-400">
-                                                    <use href="#star"></use>
-                                                </svg>
-                                                <svg class="w-4 h-4 md:w-6 md:h-6">
-                                                    <use href="#star"></use>
-                                                </svg>
-                                                <svg class="w-4 h-4 md:w-6 md:h-6">
-                                                    <use href="#star"></use>
-                                                </svg>
-                                                <svg class="w-4 h-4 md:w-6 md:h-6">
-                                                    <use href="#star"></use>
-                                                </svg>
-                                                <svg class="w-4 h-4 md:w-6 md:h-6">
-                                                    <use href="#star"></use>
-                                                </svg>
-                                            </div>
-                                        </div>
-
-                                    </a>
-                                </div>
-                            </div>
-                        @endforeach
-
-
-
-                    </div>
-
-                </div>
-            </div>
-        </section>
 
         <section class="coffee-club mb-8 md:mb-20">
             <div class="container">
@@ -1434,6 +1375,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-top: -150px
         }
 
         .swiper-slide img {
@@ -1454,34 +1396,34 @@
     <!-- Initialize Swiper -->
 
     <script>
-        const swiper = new Swiper(".swiper", {
-            slidesPerView: 1,
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
-            spaceBetween: 10,
-            loop: true,
-            // Navigation arrows
-            navigation: {
-                nextEl: '.swiper-button-next-custom',
-                prevEl: '.swiper-button-prev-custom',
-            },
+        const swipers = document.querySelectorAll('.categorySwiper');
 
-            breakpoints: {
-                640: {
-                    slidesPerView: 1,
-                    spaceBetween: 14,
+        swipers.forEach(swiper => {
+            new Swiper(swiper, {
+                slidesPerView: 1,
+                spaceBetween: 10,
+                loop: true,
+
+                navigation: {
+                    nextEl: '.swiper-button-next-custom',
+                    prevEl: '.swiper-button-prev-custom',
                 },
-                768: {
-                    slidesPerView: 1,
-                    spaceBetween: 20,
-                },
-                1024: {
-                    slidesPerView: 4,
-                    spaceBetween: 10,
-                },
-            }
+
+                breakpoints: {
+                    640: {
+                        slidesPerView: 1,
+                        spaceBetween: 14,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 10,
+                    },
+                }
+            });
         });
 
         var swiper2 = new Swiper(".mySwiper", {
@@ -1497,5 +1439,43 @@
                 prevEl: ".swiper-button-prev",
             },
         });
+                document.querySelectorAll('.category-btn').forEach(btn => {
+
+            btn.addEventListener('click', function() {
+
+                document.querySelectorAll('.category-slider')
+                    .forEach(slider => slider.classList.add('hidden'));
+
+                const currentSlider =
+                    document.getElementById('category-' + this.dataset.category);
+
+                currentSlider.classList.remove('hidden');
+
+                const swiperInstance =
+                    currentSlider.querySelector('.categorySwiper').swiper;
+
+                swiperInstance.update();
+            });
+
+        });
     </script>
+
+    {{-- <script>
+        // document.querySelectorAll('.category-btn').forEach(btn => {
+
+        //     btn.addEventListener('click', function() {
+
+        //         document.querySelectorAll('.category-slider')
+        //             .forEach(slider => slider.classList.add('hidden'));
+
+        //         document
+        //             .getElementById('category-' + this.dataset.category)
+        //             .classList.remove('hidden');
+
+        //     });
+
+        // });
+
+
+    </script> --}}
 @endsection

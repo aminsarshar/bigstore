@@ -18,6 +18,8 @@ class HomeController extends Controller
             ->where('parent_id', 0)
             ->get();
 
+
+
         $product_category = Category::query()->where('parent_id', 0)->take(5)->get();
         $most_sold = Product::query()->where('discount', '=', 0)->get();
         $special_products = ProductGuaranty::query()->where('special_start', '<=', now())->where('special_expiration', '>=', now())->where('discount', '!=', 0)->get();
