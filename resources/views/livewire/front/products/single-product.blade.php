@@ -2,46 +2,75 @@
     <div class="grid grid-cols-1 md:grid-cols-3 text-white">
         <div>
             <div
-                class="border border-orange-200 dark:border-zinc-800 shadow-md rounded-lg mx-auto mt-6 w-[70%] h-[530px]">
+                class="border border-orange-200 dark:border-zinc-800 shadow-md rounded-lg mx-auto mt-6 w-[70%] h-[420px]">
                 @if ($products->special_expiration != null && $products->special_expiration > now())
                     <div class="product-timeout position-relative pt-5 mb-3">
                         <div
                             class="promotion-badge text-center text-orange-300 border-b border-orange-300 w-[90%] m-auto">
                             فروش ویژه
                         </div>
-                        <div class="countdown-timer mt-3 text-black dark:text-white" countdown wire:ignore
+                        {{-- <div class="countdown-timer mt-3 text-black dark:text-white" countdown wire:ignore
                             data-date="{{ $product_guaranty->special_expiration }}">
                             <span data-days>0</span>:
                             <span data-hours>0</span>:
                             <span data-minutes>0</span>:
                             <span data-seconds>0</span>
-                        </div>
+                        </div> --}}
                     </div>
                 @endif
 
+                <div class="border border-orange-200 rounded-lg overflow-hidden">
 
-                <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
-                    class="swiper mySwiper2" wire:ignore>
-                    <div class="swiper-wrapper" style="height: 320px !important">
-                        {{-- @foreach ($products->galleries as $gallery) --}}
-                            <div class="swiper-slide" >
-                                <img src="{{ url('admin/images/products/' . $products->image) }}" />
-                            </div>
-                        {{-- @endforeach --}}
-                    </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
+    <!-- Main -->
+    <div class="swiper mySwiper2" wire:ignore>
+        <div class="swiper-wrapper">
 
-                <div thumbsSlider="" class="swiper mySwiper"wire:ignore>
-                    <div class="swiper-wrapper">
-                        @foreach ($products->galleries as $gallery)
-                            <div class="swiper-slide">
-                                <img src="{{ url('admin/images/ImageGalleries/' . $gallery->image) }}" />
-                            </div>
-                        @endforeach
-                    </div>
+            <div class="swiper-slide">
+                <img
+                    class="w-full h-[320px] object-contain !rounded-xl"
+                    src="{{ url('admin/images/products/' . $products->image) }}">
+            </div>
+
+            @foreach ($products->galleries as $gallery)
+                <div class="swiper-slide">
+                    <img
+                        class="w-full h-[320px] object-contain"
+                        src="{{ url('admin/images/ImageGalleries/' . $gallery->image) }}">
                 </div>
+            @endforeach
+
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+    <!-- Thumbs -->
+    <div class="swiper mySwiper px-3 pb-3 mt-2" wire:ignore style="    height: 93px;
+    margin-top: -93px;">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide !w-20">
+                <img
+                    class="w-20 h-20 object-cover rounded-lg border"
+                    src="{{ url('admin/images/products/' . $products->image) }}">
+            </div>
+
+            @foreach ($products->galleries as $gallery)
+                <div class="swiper-slide !w-20">
+                    <img
+                        class="w-20 h-20 object-cover rounded-lg border"
+                        src="{{ url('admin/images/ImageGalleries/' . $gallery->image) }}">
+                </div>
+            @endforeach
+
+        </div>
+    </div>
+
+</div>
+
+
+
 
             </div>
 
@@ -80,27 +109,13 @@
                 <ul
                     class="child:list-disc child:mr-[18px] child:gap-y-3 child:m-3 child:tracking-wide child:leading-7 child:font-medium">
                     <li class="text-zinc-500 dark:text-white">
-                        نوشیدنی اسپرسو از عصاره گیری قهوه اسیا‌شده تحت فشار ۷ تا ۹
-                        بار و دمای حدودی بین هشتاد و پنج تا نود و پنج درجه
-                        سانتیگراد تهیه می‌شود
-                    </li>
-                    <li class="text-zinc-500 dark:text-white">
-                        اصولا آماده سازی یک اسپرسو خوب نیاز به مهارت و تجربه بالا
-                        دارد و در کافه ها بصورت خالص و یا پایه نوشیدنیهای دیگر
-                        مانند کاپوچینو سرو می‌گردد
-                    </li>
-                    <li class="text-zinc-500 dark:text-white">
-                        متدهای دیگر دم آوری قهوه مانند ترک و فرانسه در درجه اسیا و
-                        درجه برشتگی و ابزار دم اوری متفاوت هستند ، برای مثال قهوه
-                        های دمی چکه‌ای مانند وی شصت آسیاب درشت‌تری به نسبت اسپرسو
-                        دارد و با کمک نیروی گرانش و عبور آب از فیلتر ،قهوه ما
-                        عصاره‌گیری می‌شود.
+                       {!! $products->description !!}
                     </li>
                 </ul>
             </div>
 
             <div class="mt-4">
-                <div class="product-variant dt-sl">
+                {{-- <div class="product-variant dt-sl">
                     <div class="section-title text-sm-title title-wide no-after-title-wide mb-0">
                         <h2>انتخاب رنگ:</h2>
                     </div>
@@ -118,7 +133,7 @@
                             </li>
                         @endforeach
                     </ul>
-                </div>
+                </div> --}}
             </div>
         </div>
 
@@ -206,18 +221,21 @@
                                 <span class="text-2xl">{{ number_format($product_guaranty->price) }}</span>
                                 <span>تومان</span>
                             </div>
+                            @if ($products->discount != 0 )
                             <div class="offer mt-1.5">
-                                <span
-                                    class="text-sm text-gray-400 mr-1.5">{{ number_format(($product_guaranty->price * 100) / (100 - $products->discount)) }}</span>
-                                <span class="text-sm text-gray-400">تومان</span>
-                            </div>
+                                 <span
+                                     class="text-sm text-gray-400 mr-1.5">{{ number_format(($product_guaranty->price * 100) / (100 - $products->discount)) }}</span>
+                                 <span class="text-sm text-gray-400">تومان</span>
+                             </div>
+                            @endif
                         </div>
 
                     </div>
                 </div>
 
 
-                <div class="flex justify-center flex-wrap md:justify-between text-gray-700 py-3">
+                <hr>
+                {{-- <div class="flex justify-center flex-wrap md:justify-between text-gray-700 py-3 hidden">
                     <div>
                         <span class="block text-sm">نوع آسیاب</span>
                         <select
@@ -235,9 +253,9 @@
                             name="" id="" value="1" />
                         <!-- </input> -->
                     </div>
-                </div>
+                </div> --}}
 
-                <div class="">
+                <div class="pt-8">
                     <a
                         wire:click="addToCart({{$product_guaranty->color_id}} , {{$product_guaranty->guaranty_id}})"
                         class="cart-btn cursor-pointer bg-orange-300 hover:bg-orange-400 transition-all inline-flex items-center justify-center w-full p-[10px] rounded-lg mb-[15px]">
@@ -520,3 +538,31 @@
         </div>
     </div>
 </div>
+<style>
+    .mySwiper {
+    margin-top: 10px;
+}
+
+.mySwiper .swiper-wrapper {
+    justify-content: center;
+}
+
+.mySwiper .swiper-slide {
+    width: 80px !important;
+    height: 80px;
+    opacity: .6;
+    cursor: pointer;
+}
+
+.mySwiper .swiper-slide-thumb-active {
+    opacity: 1;
+}
+
+.mySwiper .swiper-slide-thumb-active img {
+    border: 2px solid #f59e0b;
+}
+
+.mySwiper2 {
+    margin-bottom: 0;
+}
+</style>

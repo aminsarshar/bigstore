@@ -35,4 +35,26 @@ class HomeController extends Controller
         $carts = Cart::query()->get();
         return view('front.products.show', compact('categories', 'products', 'carts'));
     }
+
+    public function aboutUs()
+    {
+        $categories = Category::query()
+            ->with('Categorychild')
+            ->where('parent_id', 0)
+            ->get();
+        $carts = Cart::query()->get();
+
+        return view('front.about-us', compact('categories', 'carts'));
+    }
+
+    public function contactUs()
+    {
+        $categories = Category::query()
+            ->with('Categorychild')
+            ->where('parent_id', 0)
+            ->get();
+        $carts = Cart::query()->get();
+
+        return view('front.contact-us' , compact('categories' , 'carts'));
+    }
 }

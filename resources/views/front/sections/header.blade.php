@@ -299,153 +299,43 @@
                 <ul
                     class="flex gap-x-5 lg:gap-x-9 text-xl text-gray-300 tracking-tightest h-full child:leading-[56px]">
                     <li class="font-DanaMedium text-orange-200">
-                        <a href="{{route('home.index')}}">صفحه اصلی</a>
+                        <a href="{{ route('home.index') }}">صفحه اصلی</a>
                     </li>
-                   <style>
-.cate:hover .category-item{
-    display:block;
-}
 
-.category-item:hover .submenu{
-    display:block;
-}
-
-.cate{
-    position: relative;
-}
-
-/* منوی دسته ها */
-.category-item{
-    display: block;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all .3s ease;
-    background: white;
-    border-radius: 10px;
-    padding: 8px 12px;
-    margin-top: 4px;
-}
-
-.cate:hover .category-item{
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-/* زیر دسته ها */
-.submenu{
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: all .3s ease;
-    background: #f8fafc;
-    border-radius: 8px;
-    margin-top: 6px;
-    padding-right: 10px;
-}
-
-.category-item:hover .submenu{
-    max-height: 300px;
-    opacity: 1;
-    padding-top: 8px;
-    padding-bottom: 8px;
-}
-
-/* افکت هاور */
-.category-item:hover{
-    background: #fff7ed;
-    box-shadow: 0 4px 15px rgba(0,0,0,.08);
-}
-
-.submenu a:hover{
-    color: #fb923c;
-    padding-right: 5px;
-    transition: .2s;
-}
-/* زیر دسته ها */
-.submenu{
-    max-height: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
-    opacity: 0;
-
-    transition:
-        max-height .35s ease,
-        opacity .25s ease,
-        padding .25s ease;
-
-    background: #f8fafc;
-    border-radius: 8px;
-    margin-top: 6px;
-    padding: 0 10px;
-}
-
-/* نمایش زیرمنو */
-.category-item:hover .submenu{
-    max-height: 220px; /* ارتفاع دلخواه */
-    opacity: 1;
-    padding-top: 8px;
-    padding-bottom: 8px;
-}
-
-/* استایل اسکرول */
-.submenu::-webkit-scrollbar{
-    width: 6px;
-}
-
-.submenu::-webkit-scrollbar-track{
-    background: #e5e7eb;
-    border-radius: 10px;
-}
-
-.submenu::-webkit-scrollbar-thumb{
-    background: #fb923c;
-    border-radius: 10px;
-}
-
-.submenu::-webkit-scrollbar-thumb:hover{
-    background: #f97316;
-}
-
-</style>
-
-<li class="cate relative">
-    <a href="#">دیکشنری</a>
-
-    @foreach ($categories as $category)
-        <div class="category-item hidden">
-
-            <a href="#" class="block py-2 text-orange-500" style="color: #f97316 !important">
-                {{ $category->name }}
-            </a>
-
-            <div class="submenu hidden pr-4">
-                @foreach ($category->Categorychild as $categorychild)
-                    <a href="#" class="block py-1" style="color: #fb923c !important">
-                        {{ $categorychild->name }}
-                    </a>
-                @endforeach
-            </div>
-
-        </div>
-    @endforeach
-</li>
-
-                    <li>
+                    <li class="cate relative" >
                         <a href="#">دیکشنری</a>
+
+                        @foreach ($categories as $category)
+                            <details class="category-item hidden">
+
+                                <summary class="block py-2 text-orange-500 cursor-pointer list-none">
+                                    {{ $category->name }}
+                                </summary>
+
+                                <div class="submenu pr-4">
+                                    @foreach ($category->Categorychild as $categorychild)
+                                        <a href="#" class="block py-1" style="color:#fb923c !important">
+                                            {{ $categorychild->name }}
+                                        </a>
+                                    @endforeach
+                                </div>
+
+                            </details>
+                        @endforeach
                     </li>
+
                     <li>
                         <a href="#">بلاگ</a>
                     </li>
                     <li>
-                        <a href="#">درباره ما</a>
+                        <a href="{{route('home.about-us')}}">درباره ما</a>
                     </li>
                     <li>
-                        <a href="#">تماس با ما</a>
+                        <a href="{{route('home.contact-us')}}">تماس با ما</a>
                     </li>
                 </ul>
             </nav>
+
             <!-- Cart & Theme Toggle & Login Link -->
             <div class="flex gap-x-4 lg:gap-x-5 xl:gap-x-10 text-orange-200 text-xl" id="head-sec">
                 <!-- Cart Icon & Theme Swich -->
@@ -476,90 +366,95 @@
                 <span class="block w-px h-14 bg-white/20"></span>
 
                 @auth
-                <li class="relative group flex items-center" style="list-style: none">
-                    <a href="#"
-                        class="group-hover:text-orange-300 border border-orange-200 md:px-4.5 md:py-1 rounded-lg flex items-center md:gap-x-2">
-                        <span class="hidden xl:block">
-                           {{auth()->user()->name}}
-                        </span>
-                        <svg class="w-6 h-6">
-                            <use href="#user"></use>
-                        </svg>
-                    </a>
-                    <!-- SunMenu -->
-                    <div
-                        class="absolute left-[-10px] top-full backdrop-blur-[6px] opacity-0 invisible group-hover:opacity-100 group-hover:visible w-52 p-6 bg-white/90 dark:bg-zinc-700 text-zinc-700 dark:text-white rounded-lg border-t-[3px] border-t-orange-300 text-base space-y-4 tracking-normal shadow-normal transition-all delay-75 child:block child:transition-colors child-hover:text-orange-300">
+                    <li class="relative group flex items-center" style="list-style: none">
+                        <a href="#"
+                            class="group-hover:text-orange-300 border border-orange-200 md:px-4.5 md:py-1 rounded-lg flex items-center md:gap-x-2">
+                            <span class="hidden xl:block">
+                                {{ auth()->user()->name }}
+                            </span>
+                            <svg class="w-6 h-6">
+                                <use href="#user"></use>
+                            </svg>
+                        </a>
+                        <!-- SunMenu -->
+                        <div
+                            class="absolute left-[-10px] top-full backdrop-blur-[6px] opacity-0 invisible group-hover:opacity-100 group-hover:visible w-52 p-6 bg-white/90 dark:bg-zinc-700 text-zinc-700 dark:text-white rounded-lg border-t-[3px] border-t-orange-300 text-base space-y-4 tracking-normal shadow-normal transition-all delay-75 child:block child:transition-colors child-hover:text-orange-300">
 
-                        @if(auth()->user()->is_admin == 1)
-                        <div class="relative group">
-                            <a href="{{route('dashboard')}}" target="__blank" class="flex items-center gap-x-2 child:text-zinc-600 child:dark:text-white">
-                                <svg class="w-6 h-6">
-                                    <use href="#user"></use>
-                                </svg>
-                                <span>
-                                    پنل ادمین
-                                </span>
-                            </a>
+                            @if (auth()->user()->is_admin == 1)
+                                <div class="relative group">
+                                    <a href="{{ route('dashboard') }}" target="__blank"
+                                        class="flex items-center gap-x-2 child:text-zinc-600 child:dark:text-white">
+                                        <svg class="w-6 h-6">
+                                            <use href="#user"></use>
+                                        </svg>
+                                        <span>
+                                            پنل ادمین
+                                        </span>
+                                    </a>
 
+                                </div>
+                            @else
+                                <div class="relative group">
+                                    <a href="#"
+                                        class="flex items-center gap-x-2 child:text-zinc-600 child:dark:text-white">
+                                        <svg class="w-6 h-6">
+                                            <use href="#user"></use>
+                                        </svg>
+                                        <span>
+                                            پروفایل
+                                        </span>
+                                    </a>
+
+                                </div>
+                            @endif
+
+                            <div class="relative group">
+                                <a href="#"
+                                    class="flex items-center gap-x-2 child:text-zinc-600 child:dark:text-white">
+                                    <svg class="w-6 h-6">
+                                        <use href="#buy-cart"></use>
+                                    </svg>
+                                    <span>
+                                        سفارشات
+                                    </span>
+                                </a>
+
+                            </div>
+
+                            <div class="relative group">
+                                <a href="#"
+                                    class="flex items-center gap-x-2 child:text-zinc-600 child:dark:text-white">
+                                    <svg class="w-6 h-6">
+                                        <use href="#comments"></use>
+                                    </svg>
+                                    <span>
+                                        کامنت ها
+                                    </span>
+                                </a>
+
+                            </div>
+                            <hr class="bg-zinc-500">
+                            <div class="relative group">
+                                <a href="{{ route('logout') }}" class="flex items-center gap-x-2 child:text-red-600">
+                                    <svg class="w-6 h-6">
+                                        <use href="#arrow-right-login"></use>
+                                    </svg>
+                                    <span>
+                                        خروج
+                                    </span>
+                                </a>
+
+                            </div>
                         </div>
-                        @else
-                        <div class="relative group">
-                            <a href="#" class="flex items-center gap-x-2 child:text-zinc-600 child:dark:text-white">
-                                <svg class="w-6 h-6">
-                                    <use href="#user"></use>
-                                </svg>
-                                <span>
-                                    پروفایل
-                                </span>
-                            </a>
-
-                        </div>
-                        @endif
-
-                        <div class="relative group">
-                            <a href="#" class="flex items-center gap-x-2 child:text-zinc-600 child:dark:text-white">
-                                <svg class="w-6 h-6">
-                                    <use href="#buy-cart"></use>
-                                </svg>
-                                <span>
-                                    سفارشات
-                                </span>
-                            </a>
-
-                        </div>
-
-                        <div class="relative group">
-                            <a href="#" class="flex items-center gap-x-2 child:text-zinc-600 child:dark:text-white">
-                                <svg class="w-6 h-6">
-                                    <use href="#comments"></use>
-                                </svg>
-                                <span>
-                                    کامنت ها
-                                </span>
-                            </a>
-
-                        </div>
-                        <hr class="bg-zinc-500">
-                        <div class="relative group">
-                            <a href="{{route('logout')}}" class="flex items-center gap-x-2 child:text-red-600">
-                                <svg class="w-6 h-6">
-                                    <use href="#arrow-right-login"></use>
-                                </svg>
-                                <span>
-                                    خروج
-                                </span>
-                            </a>
-
-                        </div>
-                    </div>
-                </li>
+                    </li>
                 @else
-                <div class="flex items-center gap-x-2.5 tracking-tightest">
-                    <svg class="w-8 h-8">
-                        <use href="#arrow-right-login"></use>
-                    </svg>
-                    <span class="hidden xl:inline-block"><a href="{{route('login')}}" class="inline-block">ورود</a> | <a href="{{route('register')}}" class="inline-block">ثبت نام</a></span>
-                </div>
+                    <div class="flex items-center gap-x-2.5 tracking-tightest">
+                        <svg class="w-8 h-8">
+                            <use href="#arrow-right-login"></use>
+                        </svg>
+                        <span class="hidden xl:inline-block"><a href="{{ route('login') }}" class="inline-block">ورود</a>
+                            | <a href="{{ route('register') }}" class="inline-block">ثبت نام</a></span>
+                    </div>
                 @endauth
 
             </div>
@@ -609,67 +504,63 @@
                     </a>
 
                 </li>
-<li>
+                <li>
 
-    <!-- فروشگاه toggle -->
-    <input type="checkbox" id="shop-toggle" class="hidden peer">
+                    <!-- فروشگاه toggle -->
+                    <input type="checkbox" id="shop-toggle" class="hidden peer">
 
-    <label for="shop-toggle"
-           class="flex items-center justify-between mt-4 cursor-pointer">
+                    <label for="shop-toggle" class="flex items-center justify-between mt-4 cursor-pointer">
 
-        <span class="flex items-center gap-x-2">
-            <svg class="w-5 h-5">
-                <use href="#bag-cart"></use>
-            </svg>
-            فروشگاه
-        </span>
+                        <span class="flex items-center gap-x-2">
+                            <svg class="w-5 h-5">
+                                <use href="#bag-cart"></use>
+                            </svg>
+                            فروشگاه
+                        </span>
 
-        <svg class="w-4 h-4 transition-transform duration-300 peer-checked:rotate-180">
-            <use href="#chevron-down"></use>
-        </svg>
+                        <svg class="w-4 h-4 transition-transform duration-300 peer-checked:rotate-180">
+                            <use href="#chevron-down"></use>
+                        </svg>
 
-    </label>
+                    </label>
 
-    <!-- 🔴 این بخش اول مخفی است -->
-    <div
-        class="mt-3 space-y-2 overflow-hidden max-h-0
+                    <!-- 🔴 این بخش اول مخفی است -->
+                    <div
+                        class="mt-3 space-y-2 overflow-hidden max-h-0
                transition-all duration-300
                peer-checked:max-h-[500px]">
 
-        @foreach($categories as $category)
+                        @foreach ($categories as $category)
+                            <details class="group border border-zinc-200 dark:border-zinc-700 rounded-lg">
 
-            <details class="group border border-zinc-200 dark:border-zinc-700 rounded-lg">
+                                <summary class="flex items-center justify-between cursor-pointer list-none px-3 py-2">
 
-                <summary
-                    class="flex items-center justify-between cursor-pointer list-none px-3 py-2">
+                                    <span class="text-sm">
+                                        {{ $category->name }}
+                                    </span>
 
-                    <span class="text-sm">
-                        {{ $category->name }}
-                    </span>
+                                    <svg class="w-4 h-4 transition-transform duration-300 group-open:rotate-180">
+                                        <use href="#chevron-down"></use>
+                                    </svg>
 
-                    <svg class="w-4 h-4 transition-transform duration-300 group-open:rotate-180">
-                        <use href="#chevron-down"></use>
-                    </svg>
+                                </summary>
 
-                </summary>
+                                <div class="px-4 pb-3 mt-2 flex flex-col gap-y-2 text-sm">
 
-                <div class="px-4 pb-3 mt-2 flex flex-col gap-y-2 text-sm">
+                                    @foreach ($category->Categorychild as $child)
+                                        <a href="#" class="hover:text-orange-500 transition">
+                                            {{ $child->name }}
+                                        </a>
+                                    @endforeach
 
-                    @foreach($category->Categorychild as $child)
-                        <a href="#" class="hover:text-orange-500 transition">
-                            {{ $child->name }}
-                        </a>
-                    @endforeach
+                                </div>
 
-                </div>
+                            </details>
+                        @endforeach
 
-            </details>
+                    </div>
 
-        @endforeach
-
-    </div>
-
-</li>
+                </li>
                 <li>
                     <div class="flex items-center justify-between mt-4">
                         <a href="#" class="flex items-center gap-x-2">
@@ -704,7 +595,7 @@
                 </li>
 
                 <li>
-                    <a href="#" class="flex items-center gap-x-2">
+                    <a href="{{route('home.about-us')}}" class="flex items-center gap-x-2">
                         <svg class="w-5 h-5">
                             <use href="#briefcase"></use>
                         </svg>
@@ -722,7 +613,7 @@
                 </li>
 
                 <li>
-                    <a href="#" class="flex items-center gap-x-2">
+                    <a href="{{route('home.contact-us')}}" class="flex items-center gap-x-2">
                         <svg class="w-5 h-5">
                             <use href="#phone"></use>
                         </svg>
@@ -874,3 +765,120 @@
 
         <!-- End Cart Section -->
     </div>
+ <style>
+.cate:hover .category-item{
+    display:block;
+}
+
+.category-item:hover .submenu{
+    display:block;
+}
+
+.cate{
+    position: relative;
+    padding: 0 px !important;
+    margin: 0 px !important;
+}
+
+/* منوی دسته ها */
+.category-item{
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all .3s ease;
+    background: white;
+    border-radius: 10px;
+    padding: 8px 12px;
+    margin-top: 4px;
+}
+
+.cate:hover .category-item{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* زیر دسته ها */
+.submenu{
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all .3s ease;
+    background: #f8fafc;
+    border-radius: 8px;
+    margin-top: 6px;
+    padding-right: 10px;
+}
+
+.category-item:hover .submenu{
+    max-height: 300px;
+    opacity: 1;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+/* افکت هاور */
+.category-item:hover{
+    background: #fff7ed;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+.submenu a:hover{
+    color: #fb923c;
+    padding-right: 5px;
+    transition: .2s;
+}
+/* زیر دسته ها */
+.submenu{
+    max-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    opacity: 0;
+
+    transition:
+        max-height .35s ease,
+        opacity .25s ease,
+        padding .25s ease;
+
+    background: #f8fafc;
+    border-radius: 8px;
+    margin-top: 6px;
+    padding: 0 10px;
+}
+
+.category-item[open] .submenu{
+    max-height: 220px;
+    opacity: 1;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.category-item summary::-webkit-details-marker{
+    display:none;
+}
+
+.category-item summary{
+    cursor:pointer;
+}
+
+/* استایل اسکرول */
+.submenu::-webkit-scrollbar{
+    width: 6px;
+}
+
+.submenu::-webkit-scrollbar-track{
+    background: #e5e7eb;
+    border-radius: 10px;
+}
+
+.submenu::-webkit-scrollbar-thumb{
+    background: #fb923c;
+    border-radius: 10px;
+}
+
+.submenu::-webkit-scrollbar-thumb:hover{
+    background: #f97316;
+}
+
+</style>

@@ -35,6 +35,8 @@ use App\Http\Controllers\Admin\ProductGuarantyController;
 //     return view('welcome');
 // });
 Route::get('/' , [HomeController::class , 'index'])->name('home.index');
+Route::get('/about-us' , [HomeController::class , 'aboutUs'])->name('home.about-us');
+Route::get('/contact-us' , [HomeController::class , 'contactUs'])->name('home.contact-us');
 
 
 Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () {

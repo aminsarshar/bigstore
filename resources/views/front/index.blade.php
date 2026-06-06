@@ -75,7 +75,7 @@
   </div>
       </div>
     </section> --}}
-       <section class="best-selling mb-8 md:mb-20">
+        <section class="best-selling mb-8 md:mb-20 mt-8 md:mt-20">
             <div class="container">
 
                 <!-- Header -->
@@ -104,10 +104,11 @@
                 <div class="flex flex-wrap gap-2 mb-8">
                     @foreach ($categories as $category)
                         <button data-category="{{ $category->id }}"
-                            class="category-btn px-4 py-2 rounded-lg bg-zinc-100 dark:bg-zinc-700 hover:bg-orange-300 hover:text-white transition">
-
+                            class="category-btn px-4 py-2 rounded-lg transition
+                {{ $loop->first
+                    ? 'bg-orange-300 text-white shadow-md'
+                    : 'bg-zinc-100 dark:bg-zinc-700 text-zinc-700 dark:text-white' }}">
                             {{ $category->name }}
-
                         </button>
                     @endforeach
                 </div>
@@ -122,19 +123,19 @@
 
                                 @foreach ($category->Categorychild as $child)
                                     @foreach ($child->products as $product)
-                                        <div class="swiper-slide rounded-2xl"  >
+                                        <div class="swiper-slide rounded-2xl">
 
-                                            <div class="w-[full]" style="height: 500px !important;">
+                                            <div class="w-[full]" style="height: 430px !important;">
 
                                                 <a href="{{ route('single.product', $product->slug) }}">
 
                                                     {{-- <div class="relative mb-2 md:mb-5"> --}}
-                                                        <img src="{{ asset('admin/images/products/' . $product->image) }}"
-                                                            class="w-full h-[260px]  object-contain mx-auto transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                                                    <img src="{{ asset('admin/images/products/' . $product->image) }}"
+                                                        class="w-full h-[260px]  object-contain mx-auto transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 rounded-2xl">
                                                     {{-- </div> --}}
 
                                                     <h5
-                                                        class="font-DanaMedium text-sm md:text-xl text-zinc-700 dark:text-white line-clamp-2">
+                                                        class="font-DanaMedium text-sm md:text-xl text-zinc-700 dark:text-white line-clamp-2 md:min-h-[56px] min-h-[40px] mt-3">
                                                         {{ $product->title }}
                                                     </h5>
 
@@ -256,9 +257,9 @@
                                 <span class="text-xs md:text-sm tracking-tightest">تومان</span>
                             </div>
                             <!-- <div class="offer">
-                                            <span class="text-xs md:text-xl">175,000</span>
-                                            <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
-                                          </div> -->
+                                                <span class="text-xs md:text-xl">175,000</span>
+                                                <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
+                                              </div> -->
                         </div>
 
                         <div class="flex items-center justify-between mt-2.5">
@@ -373,9 +374,9 @@
                                 <span class="text-xs md:text-sm tracking-tightest">تومان</span>
                             </div>
                             <!-- <div class="offer">
-                                            <span class="text-xs md:text-xl">175,000</span>
-                                            <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
-                                          </div> -->
+                                                <span class="text-xs md:text-xl">175,000</span>
+                                                <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
+                                              </div> -->
                         </div>
 
                         <div class="flex items-center justify-between mt-2.5">
@@ -427,13 +428,13 @@
                             قهوه اسپرسو بن مانو مدل پریسکا 250 گرمی</h5>
                         <div class="flex gap-x-2 md:gap-x-2.5 mt-1.5 md:mt-2.5">
                             <!-- <div class="text-teal-600 dark:text-emerald-500">
-                                            <span class="text-base md:text-xl font-DanaDemiBold">154,000</span>
-                                            <span class="text-xs md:text-sm tracking-tightest">تومان</span>
-                                          </div>
-                                          <div class="offer">
-                                            <span class="text-xs md:text-xl">175,000</span>
-                                            <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
-                                          </div> -->
+                                                <span class="text-base md:text-xl font-DanaDemiBold">154,000</span>
+                                                <span class="text-xs md:text-sm tracking-tightest">تومان</span>
+                                              </div>
+                                              <div class="offer">
+                                                <span class="text-xs md:text-xl">175,000</span>
+                                                <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
+                                              </div> -->
                             <div class="text-red-400">
                                 <span class="text-base md:text-xl">فعلا موجود نیست</span>
                             </div>
@@ -492,9 +493,9 @@
                                 <span class="text-xs md:text-sm tracking-tightest">تومان</span>
                             </div>
                             <!-- <div class="offer">
-                                            <span class="text-xs md:text-xl">175,000</span>
-                                            <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
-                                          </div> -->
+                                                <span class="text-xs md:text-xl">175,000</span>
+                                                <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
+                                              </div> -->
                         </div>
 
                         <div class="flex items-center justify-between mt-2.5">
@@ -550,9 +551,9 @@
                                 <span class="text-xs md:text-sm tracking-tightest">تومان</span>
                             </div>
                             <!-- <div class="offer">
-                                            <span class="text-xs md:text-xl">175,000</span>
-                                            <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
-                                          </div> -->
+                                                <span class="text-xs md:text-xl">175,000</span>
+                                                <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
+                                              </div> -->
                         </div>
 
                         <div class="flex items-center justify-between mt-2.5">
@@ -604,13 +605,13 @@
                             قهوه اسپرسو بن مانو مدل پریسکا 250 گرمی</h5>
                         <div class="flex gap-x-2 md:gap-x-2.5 mt-1.5 md:mt-2.5">
                             <!-- <div class="text-teal-600 dark:text-emerald-500">
-                                            <span class="text-base md:text-xl font-DanaDemiBold">154,000</span>
-                                            <span class="text-xs md:text-sm tracking-tightest">تومان</span>
-                                          </div>
-                                          <div class="offer">
-                                            <span class="text-xs md:text-xl">175,000</span>
-                                            <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
-                                          </div> -->
+                                                <span class="text-base md:text-xl font-DanaDemiBold">154,000</span>
+                                                <span class="text-xs md:text-sm tracking-tightest">تومان</span>
+                                              </div>
+                                              <div class="offer">
+                                                <span class="text-xs md:text-xl">175,000</span>
+                                                <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
+                                              </div> -->
                             <div class="text-red-400">
                                 <span class="text-base md:text-xl font-DanaDemiBold">فعلا موجود نیست</span>
                             </div>
@@ -1378,6 +1379,13 @@
             margin-top: -150px
         }
 
+        /* موبایل */
+        @media (max-width: 768px) {
+            .swiper-slide {
+                margin-top: -70px;
+            }
+        }
+
         .swiper-slide img {
             display: block;
 
@@ -1439,22 +1447,55 @@
                 prevEl: ".swiper-button-prev",
             },
         });
-                document.querySelectorAll('.category-btn').forEach(btn => {
+        document.addEventListener("DOMContentLoaded", () => {
 
-            btn.addEventListener('click', function() {
+            const buttons = document.querySelectorAll(".category-btn");
+            const sliders = document.querySelectorAll(".category-slider");
 
-                document.querySelectorAll('.category-slider')
-                    .forEach(slider => slider.classList.add('hidden'));
+            buttons.forEach(button => {
 
-                const currentSlider =
-                    document.getElementById('category-' + this.dataset.category);
+                button.addEventListener("click", function() {
 
-                currentSlider.classList.remove('hidden');
+                    const categoryId = this.dataset.category;
 
-                const swiperInstance =
-                    currentSlider.querySelector('.categorySwiper').swiper;
+                    // حذف اکتیو از همه دکمه‌ها
+                    buttons.forEach(btn => {
+                        btn.classList.remove(
+                            "bg-orange-300",
+                            "text-white",
+                            "shadow-md"
+                        );
 
-                swiperInstance.update();
+                        btn.classList.add(
+                            "bg-zinc-100",
+                            "dark:bg-zinc-700"
+                        );
+                    });
+
+                    // اکتیو کردن دکمه فعلی
+                    this.classList.remove(
+                        "bg-zinc-100",
+                        "dark:bg-zinc-700"
+                    );
+
+                    this.classList.add(
+                        "bg-orange-300",
+                        "text-white",
+                        "shadow-md"
+                    );
+
+                    // مخفی کردن همه اسلایدرها
+                    sliders.forEach(slider => {
+                        slider.classList.add("hidden");
+                    });
+
+                    // نمایش اسلایدر مربوطه
+                    document
+                        .getElementById(`category-${categoryId}`)
+                        .classList.remove("hidden");
+
+                });
+
             });
 
         });
