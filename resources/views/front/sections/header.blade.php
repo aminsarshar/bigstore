@@ -301,9 +301,22 @@
                     <li class="font-DanaMedium text-orange-200">
                         <a href="{{ route('home.index') }}">صفحه اصلی</a>
                     </li>
+                    <li>
+                        <a href="{{ route('home.shop') }}">فروشگاه</a>
+                    </li>
 
-                    <li class="cate relative" >
-                        <a href="#">دیکشنری</a>
+                    <li>
+                        <a href="{{ route('home.blogs') }}">بلاگ</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('home.about-us') }}">درباره ما</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('home.contact-us') }}">تماس با ما</a>
+                    </li>
+
+                    <li class="cate relative">
+                        <a href="#">دسته بندی</a>
 
                         @foreach ($categories as $category)
                             <details class="category-item hidden">
@@ -322,16 +335,6 @@
 
                             </details>
                         @endforeach
-                    </li>
-
-                    <li>
-                        <a href="#">بلاگ</a>
-                    </li>
-                    <li>
-                        <a href="{{route('home.about-us')}}">درباره ما</a>
-                    </li>
-                    <li>
-                        <a href="{{route('home.contact-us')}}">تماس با ما</a>
                     </li>
                 </ul>
             </nav>
@@ -452,7 +455,8 @@
                         <svg class="w-8 h-8">
                             <use href="#arrow-right-login"></use>
                         </svg>
-                        <span class="hidden xl:inline-block"><a href="{{ route('login') }}" class="inline-block">ورود</a>
+                        <span class="hidden xl:inline-block"><a href="{{ route('login') }}"
+                                class="inline-block">ورود</a>
                             | <a href="{{ route('register') }}" class="inline-block">ثبت نام</a></span>
                     </div>
                 @endauth
@@ -595,7 +599,7 @@
                 </li>
 
                 <li>
-                    <a href="{{route('home.about-us')}}" class="flex items-center gap-x-2">
+                    <a href="{{ route('home.about-us') }}" class="flex items-center gap-x-2">
                         <svg class="w-5 h-5">
                             <use href="#briefcase"></use>
                         </svg>
@@ -604,7 +608,7 @@
                 </li>
 
                 <li>
-                    <a href="#" class="flex items-center gap-x-2">
+                    <a href="{{ route('home.blogs') }}" class="flex items-center gap-x-2">
                         <svg class="w-5 h-5">
                             <use href="#document-text"></use>
                         </svg>
@@ -613,11 +617,20 @@
                 </li>
 
                 <li>
-                    <a href="{{route('home.contact-us')}}" class="flex items-center gap-x-2">
+                    <a href="{{ route('home.contact-us') }}" class="flex items-center gap-x-2">
                         <svg class="w-5 h-5">
                             <use href="#phone"></use>
                         </svg>
                         تماس با ما
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('home.shop') }}" class="flex items-center gap-x-2">
+                        <svg class="w-5 h-5">
+                            <use href="#phone"></use>
+                        </svg>
+                        فروشگاه
                     </a>
                 </li>
 
@@ -765,120 +778,120 @@
 
         <!-- End Cart Section -->
     </div>
- <style>
-.cate:hover .category-item{
-    display:block;
-}
+    <style>
+        .cate:hover .category-item {
+            display: block;
+        }
 
-.category-item:hover .submenu{
-    display:block;
-}
+        .category-item:hover .submenu {
+            display: block;
+        }
 
-.cate{
-    position: relative;
-    padding: 0 px !important;
-    margin: 0 px !important;
-}
+        .cate {
+            position: relative;
+            padding: 0 px !important;
+            margin: 0 px !important;
+        }
 
-/* منوی دسته ها */
-.category-item{
-    display: block;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all .3s ease;
-    background: white;
-    border-radius: 10px;
-    padding: 8px 12px;
-    margin-top: 4px;
-}
+        /* منوی دسته ها */
+        .category-item {
+            display: block;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all .3s ease;
+            background: white;
+            border-radius: 10px;
+            padding: 8px 12px;
+            margin-top: 4px;
+        }
 
-.cate:hover .category-item{
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
+        .cate:hover .category-item {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
 
-/* زیر دسته ها */
-.submenu{
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: all .3s ease;
-    background: #f8fafc;
-    border-radius: 8px;
-    margin-top: 6px;
-    padding-right: 10px;
-}
+        /* زیر دسته ها */
+        .submenu {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all .3s ease;
+            background: #f8fafc;
+            border-radius: 8px;
+            margin-top: 6px;
+            padding-right: 10px;
+        }
 
-.category-item:hover .submenu{
-    max-height: 300px;
-    opacity: 1;
-    padding-top: 8px;
-    padding-bottom: 8px;
-}
+        .category-item:hover .submenu {
+            max-height: 300px;
+            opacity: 1;
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
 
-/* افکت هاور */
-.category-item:hover{
-    background: #fff7ed;
-    box-shadow: 0 4px 15px rgba(0,0,0,.08);
-}
+        /* افکت هاور */
+        .category-item:hover {
+            background: #fff7ed;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, .08);
+        }
 
-.submenu a:hover{
-    color: #fb923c;
-    padding-right: 5px;
-    transition: .2s;
-}
-/* زیر دسته ها */
-.submenu{
-    max-height: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
-    opacity: 0;
+        .submenu a:hover {
+            color: #fb923c;
+            padding-right: 5px;
+            transition: .2s;
+        }
 
-    transition:
-        max-height .35s ease,
-        opacity .25s ease,
-        padding .25s ease;
+        /* زیر دسته ها */
+        .submenu {
+            max-height: 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+            opacity: 0;
 
-    background: #f8fafc;
-    border-radius: 8px;
-    margin-top: 6px;
-    padding: 0 10px;
-}
+            transition:
+                max-height .35s ease,
+                opacity .25s ease,
+                padding .25s ease;
 
-.category-item[open] .submenu{
-    max-height: 220px;
-    opacity: 1;
-    padding-top: 8px;
-    padding-bottom: 8px;
-}
+            background: #f8fafc;
+            border-radius: 8px;
+            margin-top: 6px;
+            padding: 0 10px;
+        }
 
-.category-item summary::-webkit-details-marker{
-    display:none;
-}
+        .category-item[open] .submenu {
+            max-height: 220px;
+            opacity: 1;
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
 
-.category-item summary{
-    cursor:pointer;
-}
+        .category-item summary::-webkit-details-marker {
+            display: none;
+        }
 
-/* استایل اسکرول */
-.submenu::-webkit-scrollbar{
-    width: 6px;
-}
+        .category-item summary {
+            cursor: pointer;
+        }
 
-.submenu::-webkit-scrollbar-track{
-    background: #e5e7eb;
-    border-radius: 10px;
-}
+        /* استایل اسکرول */
+        .submenu::-webkit-scrollbar {
+            width: 6px;
+        }
 
-.submenu::-webkit-scrollbar-thumb{
-    background: #fb923c;
-    border-radius: 10px;
-}
+        .submenu::-webkit-scrollbar-track {
+            background: #e5e7eb;
+            border-radius: 10px;
+        }
 
-.submenu::-webkit-scrollbar-thumb:hover{
-    background: #f97316;
-}
+        .submenu::-webkit-scrollbar-thumb {
+            background: #fb923c;
+            border-radius: 10px;
+        }
 
-</style>
+        .submenu::-webkit-scrollbar-thumb:hover {
+            background: #f97316;
+        }
+    </style>

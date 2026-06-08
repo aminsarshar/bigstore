@@ -37,6 +37,8 @@ use App\Http\Controllers\Admin\ProductGuarantyController;
 Route::get('/' , [HomeController::class , 'index'])->name('home.index');
 Route::get('/about-us' , [HomeController::class , 'aboutUs'])->name('home.about-us');
 Route::get('/contact-us' , [HomeController::class , 'contactUs'])->name('home.contact-us');
+Route::get('/blogs' , [HomeController::class , 'blogs'])->name('home.blogs');
+Route::get('/shop' , [HomeController::class , 'shop'])->name('home.shop');
 
 
 Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () {
