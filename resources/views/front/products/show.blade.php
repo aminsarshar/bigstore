@@ -9,7 +9,7 @@
         <section class="category-banner mt-10 md:mt-[210px] mb-10">
             <div class="container">
 
-                <livewire:front.products.single-product :products="$products"/>
+                <livewire:front.products.single-product :products="$products" />
 
                 <div class="shadow-xl rounded-xl bg-white dark:bg-zinc-700 mt-10">
                     <div class="w-full">
@@ -31,8 +31,7 @@
                                 </li>
                                 <li class="z-30 flex-auto text-center">
                                     <a class="z-30 flex items-center justify-center w-full px-0 py-1 mb-0 transition-all ease-in-out border-0 rounded-lg cursor-pointer text-slate-700 dark:text-gray-500 bg-inherit"
-                                        data-tab-target="" role="tab" aria-selected="false"
-                                        aria-controls="settings">
+                                        data-tab-target="" role="tab" aria-selected="false" aria-controls="settings">
                                         <span class="ml-1">معرفی محصول</span>
                                     </a>
                                 </li>
@@ -158,54 +157,57 @@
                                     </div>
 
                                     @foreach ($products->Subcomments as $comment)
-                                    <div
-                                        class="bg-gray-100 dark:bg-zinc-700 border dark:border-zinc-800 my-5 pb-5 rounded-md shadow-lg">
-                                        <div class="block md:flex items-center justify-between p-5">
-                                            <div class="flex items-center gap-x-2.5">
-                                                <div class="bg-white flex items-center p-2 rounded-full"><img
-                                                        src="./images/user.png" alt="" class=""
-                                                        style="width: 50px;"></div>
-                                                <span class="text-black dark:text-white">{{$comment->user->name}}</span>
-                                                <span class="text-black dark:text-white">{{ verta($comment->created_at)->format('%d  %B   %Y') }}</span>
+                                        <div
+                                            class="bg-gray-100 dark:bg-zinc-700 border dark:border-zinc-800 my-5 pb-5 rounded-md shadow-lg">
+                                            <div class="block md:flex items-center justify-between p-5">
+                                                <div class="flex items-center gap-x-2.5">
+                                                    <div class="bg-white flex items-center p-2 rounded-full"><img
+                                                            src="./images/user.png" alt="" class=""
+                                                            style="width: 50px;"></div>
+                                                    <span
+                                                        class="text-black dark:text-white">{{ $comment->user->name }}</span>
+                                                    <span
+                                                        class="text-black dark:text-white">{{ verta($comment->created_at)->format('%d  %B   %Y') }}</span>
+                                                </div>
+                                                <div>
+                                                    <div class="flex justify-end text-yellow-400">
+                                                        <svg
+                                                            class="w-4 h-4 md:w-6 md:h-6 text-gray-300 dark:text-gray-400">
+                                                            <use href="#star"></use>
+                                                        </svg>
+                                                        <svg class="w-4 h-4 md:w-6 md:h-6">
+                                                            <use href="#star"></use>
+                                                        </svg>
+                                                        <svg class="w-4 h-4 md:w-6 md:h-6">
+                                                            <use href="#star"></use>
+                                                        </svg>
+                                                        <svg class="w-4 h-4 md:w-6 md:h-6">
+                                                            <use href="#star"></use>
+                                                        </svg>
+                                                        <svg class="w-4 h-4 md:w-6 md:h-6">
+                                                            <use href="#star"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <div class="flex justify-end text-yellow-400">
-                                                    <svg class="w-4 h-4 md:w-6 md:h-6 text-gray-300 dark:text-gray-400">
-                                                        <use href="#star"></use>
-                                                    </svg>
-                                                    <svg class="w-4 h-4 md:w-6 md:h-6">
-                                                        <use href="#star"></use>
-                                                    </svg>
-                                                    <svg class="w-4 h-4 md:w-6 md:h-6">
-                                                        <use href="#star"></use>
-                                                    </svg>
-                                                    <svg class="w-4 h-4 md:w-6 md:h-6">
-                                                        <use href="#star"></use>
-                                                    </svg>
-                                                    <svg class="w-4 h-4 md:w-6 md:h-6">
-                                                        <use href="#star"></use>
-                                                    </svg>
+                                            <div class="pr-10">
+                                                <p class="text-black dark:text-white">{{ $comment->body }}</p>
+                                            </div>
+                                            <div class="pr-6 md:pr-10 pt-10">
+                                                <div
+                                                    class="flex gap-x-3 bg-emerald-200 w-[99%] md:w-[50%] py-2.5 px-2.5 rounded-xl mb-4 shadow-lg">
+                                                    <span class="font-DanaDemiBold">نقاط قوت</span>
+                                                    <span class="text-base ">سرعت در ارسال</span>
+                                                    <span class="text-base ">سرعت در ارسال</span>
+                                                </div>
+                                                <div
+                                                    class="flex gap-x-3 bg-red-200 w-[99%] md:w-[50%] py-2.5 px-2.5 rounded-xl shadow-lg">
+                                                    <span class="font-DanaDemiBold">نقاط قوت</span>
+                                                    <span class="text-base ">سرعت در ارسال</span>
+                                                    <span class="text-base ">سرعت در ارسال</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="pr-10">
-                                            <p class="text-black dark:text-white">{{$comment->body}}</p>
-                                        </div>
-                                        <div class="pr-6 md:pr-10 pt-10">
-                                            <div
-                                                class="flex gap-x-3 bg-emerald-200 w-[99%] md:w-[50%] py-2.5 px-2.5 rounded-xl mb-4 shadow-lg">
-                                                <span class="font-DanaDemiBold">نقاط قوت</span>
-                                                <span class="text-base ">سرعت در ارسال</span>
-                                                <span class="text-base ">سرعت در ارسال</span>
-                                            </div>
-                                            <div
-                                                class="flex gap-x-3 bg-red-200 w-[99%] md:w-[50%] py-2.5 px-2.5 rounded-xl shadow-lg">
-                                                <span class="font-DanaDemiBold">نقاط قوت</span>
-                                                <span class="text-base ">سرعت در ارسال</span>
-                                                <span class="text-base ">سرعت در ارسال</span>
-                                            </div>
-                                        </div>
-                                    </div>
                                     @endforeach
 
 

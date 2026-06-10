@@ -15,28 +15,26 @@
         .container {
             max-width: 1420px !important;
         }
-
-
     </style>
 
     @auth
-    @if (!count($carts) == 0)
-        <main>
-            <div class="md:mx-20">
-                <section class="category-banner mt-36 mb-36 md:my-36">
-                    <div class="md:pb-10">
-                        <ul class="flex gap-x-2.5 text-gray-500 dark:text-gray-100">
-                            <li><a href="">خانه</a></li>
-                            /
-                            <li><a href="">سبد خرید</a></li>
-                        </ul>
-                    </div>
+        @if (!count($carts) == 0)
+            <main>
+                <div class="md:mx-20">
+                    <section class="category-banner mt-36 mb-36 md:my-36">
+                        <div class="md:pb-10">
+                            <ul class="flex gap-x-2.5 text-gray-500 dark:text-gray-100">
+                                <li><a href="">خانه</a></li>
+                                /
+                                <li><a href="">سبد خرید</a></li>
+                            </ul>
+                        </div>
 
-                    <livewire:front.carts.cart-detail :carts="$carts" />
-                </section>
-            </div>
-        </main>
-    @endauth
+                        <livewire:front.carts.cart-detail :carts="$carts" />
+                    </section>
+                </div>
+            </main>
+        @endauth
     @else
         <main>
 

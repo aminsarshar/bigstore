@@ -298,21 +298,39 @@
                 </div>
                 <ul
                     class="flex gap-x-5 lg:gap-x-9 text-xl text-gray-300 tracking-tightest h-full child:leading-[56px]">
-                    <li class="font-DanaMedium text-orange-200">
-                        <a href="{{ route('home.index') }}">صفحه اصلی</a>
-                    </li>
                     <li>
-                        <a href="{{ route('home.shop') }}">فروشگاه</a>
+                        <a href="{{ route('home.index') }}"
+                            class="{{ request()->routeIs('home.index') ? 'text-orange-300 border-b-2 border-orange-300' : 'text-gray-300' }}">
+                            صفحه اصلی
+                        </a>
                     </li>
 
                     <li>
-                        <a href="{{ route('home.blogs') }}">بلاگ</a>
+                        <a href="{{ route('home.shop') }}"
+                            class="{{ request()->routeIs('home.shop') ? 'text-orange-300 border-b-2 border-orange-300' : 'text-gray-300' }}">
+                            فروشگاه
+                        </a>
                     </li>
+
                     <li>
-                        <a href="{{ route('home.about-us') }}">درباره ما</a>
+                        <a href="{{ route('home.blogs') }}"
+                            class="{{ request()->routeIs('home.blogs') ? 'text-orange-300 border-b-2 border-orange-300' : 'text-gray-300' }}">
+                            بلاگ
+                        </a>
                     </li>
+
                     <li>
-                        <a href="{{ route('home.contact-us') }}">تماس با ما</a>
+                        <a href="{{ route('home.about-us') }}"
+                            class="{{ request()->routeIs('home.about-us') ? 'text-orange-300 border-b-2 border-orange-300' : 'text-gray-300' }}">
+                            درباره ما
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('home.contact-us') }}"
+                            class="{{ request()->routeIs('home.contact-us') ? 'text-orange-300 border-b-2 border-orange-300' : 'text-gray-300' }}">
+                            تماس با ما
+                        </a>
                     </li>
 
                     <li class="cate relative">
@@ -500,7 +518,7 @@
             <ul class="child:pr-2.5 text-zinc-600 dark:text-white space-y-6">
                 <li
                     class="flex items-center rounded-md bg-orange-200/30 dark:bg-orange-200/20 text-orange-300 pr-0 h-10">
-                    <a href="#" class="flex items-center gap-x-2">
+                    <a href="{{ route('home.index') }}" class="flex items-center gap-x-2">
                         <svg class="w-5 h-5">
                             <use href="#home"></use>
                         </svg>
@@ -519,7 +537,7 @@
                             <svg class="w-5 h-5">
                                 <use href="#bag-cart"></use>
                             </svg>
-                            فروشگاه
+                            دسته بندی
                         </span>
 
                         <svg class="w-4 h-4 transition-transform duration-300 peer-checked:rotate-180">
@@ -567,7 +585,7 @@
                 </li>
                 <li>
                     <div class="flex items-center justify-between mt-4">
-                        <a href="#" class="flex items-center gap-x-2">
+                        <a href="{{ route('home.shop') }}" class="flex items-center gap-x-2">
                             <svg class="w-5 h-5">
                                 <use href="#bag-cart"></use>
                             </svg>

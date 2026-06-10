@@ -108,10 +108,10 @@
                     <div
                         class="group bg-white dark:bg-zinc-700 rounded-[30px] overflow-hidden shadow-sm hover:shadow-xl transition">
 
-                        <div class="overflow-hidden">
+                        <div class="overflow-hidden h-64 bg-[#f8f5f0] flex items-center justify-center">
 
                             <img src="{{ asset('admin/images/products/' . $product->image) }}"
-                                class="w-full h-64 object-contain p-4 group-hover:scale-110 transition duration-500">
+                                class="max-w-full max-h-full object-contain p-2 group-hover:scale-110 transition duration-500">
 
                         </div>
 
@@ -163,10 +163,10 @@
                             <div
                                 class="group bg-white dark:bg-zinc-700 rounded-[28px] overflow-hidden shadow-md hover:shadow-xl transition">
 
-                                <div class="overflow-hidden">
+                                <div class="overflow-hidden h-64 bg-[#f8f5f0] flex items-center justify-center">
 
                                     <img src="{{ asset('admin/images/products/' . $product->image) }}"
-                                        class="w-full h-56 object-contain p-4 group-hover:scale-110 transition duration-500">
+                                        class="max-w-full max-h-full object-contain p-2 group-hover:scale-110 transition duration-500">
 
                                 </div>
 

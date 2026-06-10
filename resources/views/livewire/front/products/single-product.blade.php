@@ -21,53 +21,50 @@
 
                 <div class="border border-orange-200 rounded-lg overflow-hidden">
 
-    <!-- Main -->
-    <div class="swiper mySwiper2" wire:ignore>
-        <div class="swiper-wrapper">
+                    <!-- Main -->
+                    <div class="swiper mySwiper2" wire:ignore>
+                        <div class="swiper-wrapper">
 
-            <div class="swiper-slide">
-                <img
-                    class="w-full h-[320px] object-contain !rounded-xl"
-                    src="{{ url('admin/images/products/' . $products->image) }}">
-            </div>
+                            <div class="swiper-slide">
+                                <img class="w-full h-[320px] object-contain !rounded-xl"
+                                    src="{{ url('admin/images/products/' . $products->image) }}">
+                            </div>
 
-            @foreach ($products->galleries as $gallery)
-                <div class="swiper-slide">
-                    <img
-                        class="w-full h-[320px] object-contain"
-                        src="{{ url('admin/images/ImageGalleries/' . $gallery->image) }}">
-                </div>
-            @endforeach
+                            @foreach ($products->galleries as $gallery)
+                                <div class="swiper-slide">
+                                    <img class="w-full h-[320px] object-contain"
+                                        src="{{ url('admin/images/ImageGalleries/' . $gallery->image) }}">
+                                </div>
+                            @endforeach
 
-        </div>
+                        </div>
 
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-    </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
 
-    <!-- Thumbs -->
-    <div class="swiper mySwiper px-3 pb-3 mt-2" wire:ignore style="    height: 93px;
+                    <!-- Thumbs -->
+                    <div class="swiper mySwiper px-3 pb-3 mt-2" wire:ignore
+                        style="    height: 93px;
     margin-top: -93px;">
-        <div class="swiper-wrapper">
+                        <div class="swiper-wrapper">
 
-            <div class="swiper-slide !w-20">
-                <img
-                    class="w-20 h-20 object-cover rounded-lg border"
-                    src="{{ url('admin/images/products/' . $products->image) }}">
-            </div>
+                            <div class="swiper-slide !w-20">
+                                <img class="w-20 h-20 object-cover rounded-lg border"
+                                    src="{{ url('admin/images/products/' . $products->image) }}">
+                            </div>
 
-            @foreach ($products->galleries as $gallery)
-                <div class="swiper-slide !w-20">
-                    <img
-                        class="w-20 h-20 object-cover rounded-lg border"
-                        src="{{ url('admin/images/ImageGalleries/' . $gallery->image) }}">
+                            @foreach ($products->galleries as $gallery)
+                                <div class="swiper-slide !w-20">
+                                    <img class="w-20 h-20 object-cover rounded-lg border"
+                                        src="{{ url('admin/images/ImageGalleries/' . $gallery->image) }}">
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+
                 </div>
-            @endforeach
-
-        </div>
-    </div>
-
-</div>
 
 
 
@@ -109,7 +106,7 @@
                 <ul
                     class="child:list-disc child:mr-[18px] child:gap-y-3 child:m-3 child:tracking-wide child:leading-7 child:font-medium">
                     <li class="text-zinc-500 dark:text-white">
-                       {!! $products->description !!}
+                        {!! $products->description !!}
                     </li>
                 </ul>
             </div>
@@ -171,8 +168,7 @@
                                 stroke-width="1.5" stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M6 6h.008v.008H6V6Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
                             </svg>
                             برچسب
                         </li>
@@ -196,8 +192,8 @@
                 </ul>
                 <div
                     class="flex items-center text-gray-600 dark:text-white py-4 border-b border-gray-200 dark:border-white/10">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
                     </svg>
@@ -221,12 +217,12 @@
                                 <span class="text-2xl">{{ number_format($product_guaranty->price) }}</span>
                                 <span>تومان</span>
                             </div>
-                            @if ($products->discount != 0 )
-                            <div class="offer mt-1.5">
-                                 <span
-                                     class="text-sm text-gray-400 mr-1.5">{{ number_format(($product_guaranty->price * 100) / (100 - $products->discount)) }}</span>
-                                 <span class="text-sm text-gray-400">تومان</span>
-                             </div>
+                            @if ($products->discount != 0)
+                                <div class="offer mt-1.5">
+                                    <span
+                                        class="text-sm text-gray-400 mr-1.5">{{ number_format(($product_guaranty->price * 100) / (100 - $products->discount)) }}</span>
+                                    <span class="text-sm text-gray-400">تومان</span>
+                                </div>
                             @endif
                         </div>
 
@@ -256,8 +252,7 @@
                 </div> --}}
 
                 <div class="pt-8">
-                    <a
-                        wire:click="addToCart({{$product_guaranty->color_id}} , {{$product_guaranty->guaranty_id}})"
+                    <a wire:click="addToCart({{ $product_guaranty->color_id }} , {{ $product_guaranty->guaranty_id }})"
                         class="cart-btn cursor-pointer bg-orange-300 hover:bg-orange-400 transition-all inline-flex items-center justify-center w-full p-[10px] rounded-lg mb-[15px]">
                         <svg class="w-5 h-5 ml-2">
                             <use href="#shopping-cart"></use>
@@ -295,8 +290,7 @@
                         d="M31.2867 36.3644H40.4259V38.7373L35.6342 50.5651H32.6806L37.3321 39.0425H31.2867V36.3644ZM27.6852 36.1119V38.7082H26.1693V41.1228H23.3558V38.7082H16.6643V36.1101L21.5378 26.6369H24.5296L19.6761 36.1101H23.3558V32.7434H26.1656V36.1119H27.6852ZM5.69066 41.121V39.0316L10.5223 34.0407C11.3909 33.3231 11.9664 32.313 12.1402 31.2009C12.1552 30.9554 12.118 30.7094 12.031 30.4793C11.9439 30.2491 11.8091 30.04 11.6353 29.8656C11.4615 29.6912 11.2527 29.5556 11.0226 29.4675C10.7925 29.3795 10.5463 29.3412 10.3003 29.355C9.78397 29.3623 9.28187 29.5251 8.85975 29.822C8.43763 30.119 8.11514 30.5362 7.93451 31.0192L5.58875 29.6402C5.98057 28.7331 6.63421 27.9632 7.46625 27.4286C8.2983 26.894 9.27101 26.619 10.2603 26.6387C10.8652 26.6062 11.4703 26.6978 12.0384 26.9079C12.6064 27.118 13.1253 27.4422 13.5629 27.8604C14.0006 28.2785 14.3477 28.7819 14.5828 29.3392C14.8179 29.8966 14.9361 30.4962 14.93 31.101C14.8624 31.974 14.6221 32.825 14.2229 33.6047C13.8236 34.3843 13.2735 35.0772 12.6042 35.6431L9.83442 38.4266H15.152V41.1246L5.69066 41.121Z"
                         fill="#3F3F46" />
                     <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M34.3803 27.1387L21.7579 50.5654H22.9809L35.5978 27.1405L34.3803 27.1387Z"
-                        fill="#EDB56A" />
+                        d="M34.3803 27.1387L21.7579 50.5654H22.9809L35.5978 27.1405L34.3803 27.1387Z" fill="#EDB56A" />
                 </g>
                 <defs>
                     <clipPath id="clip0_862_573">
@@ -305,8 +299,8 @@
                 </defs>
             </svg>
             <!-- Dark Theme -->
-            <svg class="hidden dark:inline-block" width="66" height="73" viewBox="0 0 66 73"
-                fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="hidden dark:inline-block" width="66" height="73" viewBox="0 0 66 73" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_1_845)">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M55.2976 53.8429C57.7466 53.8429 60.0952 52.8716 61.8269 51.1427C63.5586 49.4139 64.5315 47.069 64.5315 44.6241C64.5315 42.1791 63.5586 39.8343 61.8269 38.1054C60.0952 36.3765 57.7466 35.4053 55.2976 35.4053V53.8429Z"
@@ -327,8 +321,7 @@
                         d="M31.2865 36.3646H40.4258V38.7374L35.6341 50.5652H32.6805L37.332 39.0426H31.2865V36.3646ZM27.6851 36.112V38.7083H26.1692V41.1229H23.3557V38.7083H16.6641V36.1102L21.5377 26.637H24.5295L19.676 36.1102H23.3557V32.7435H26.1655V36.112H27.6851ZM5.69053 41.1211V39.0317L10.5222 34.0408C11.3908 33.3233 11.9663 32.3131 12.14 31.201C12.1551 30.9555 12.1178 30.7095 12.0308 30.4794C11.9438 30.2492 11.809 30.0401 11.6352 29.8657C11.4614 29.6913 11.2525 29.5557 11.0224 29.4677C10.7923 29.3797 10.5462 29.3413 10.3002 29.3551C9.78384 29.3624 9.28175 29.5252 8.85963 29.8221C8.4375 30.1191 8.11502 30.5364 7.93439 31.0193L5.58862 29.6403C5.98045 28.7332 6.63409 27.9633 7.46613 27.4287C8.29817 26.8941 9.27089 26.6191 10.2601 26.6389C10.865 26.6063 11.4702 26.6979 12.0383 26.908C12.6063 27.1181 13.1252 27.4423 13.5628 27.8605C14.0004 28.2787 14.3475 28.782 14.5827 29.3394C14.8178 29.8967 14.9359 30.4963 14.9298 31.1011C14.8623 31.9741 14.622 32.8251 14.2227 33.6048C13.8235 34.3845 13.2734 35.0773 12.6041 35.6433L9.8343 38.4267H15.1519V41.1248L5.69053 41.1211Z"
                         fill="white" />
                     <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M34.3804 27.1385L21.7581 50.5653H22.981L35.5979 27.1404L34.3804 27.1385Z"
-                        fill="#EDB56A" />
+                        d="M34.3804 27.1385L21.7581 50.5653H22.981L35.5979 27.1404L34.3804 27.1385Z" fill="#EDB56A" />
                 </g>
                 <defs>
                     <clipPath id="clip0_1_845">
@@ -400,8 +393,8 @@
                 </defs>
             </svg>
             <!-- Dark Theme -->
-            <svg class="hidden dark:inline-block" width="109" height="73" viewBox="0 0 109 73"
-                fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="hidden dark:inline-block" width="109" height="73" viewBox="0 0 109 73" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_1_876)">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M59.5096 8.66199L92.4432 18.9993V35.186L81.5471 38.7481V23.3622L47.2622 12.3863L59.5096 8.66199Z"
@@ -477,8 +470,8 @@
                     fill="#3F3F46" />
             </svg>
             <!-- Dark Theme -->
-            <svg class="hidden dark:inline-block" width="52" height="73" viewBox="0 0 52 73"
-                fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="hidden dark:inline-block" width="52" height="73" viewBox="0 0 52 73" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
                 <path d="M29.05 8.5V1.5H21.55V8.5L17.05 18L16.55 30H24.55V18L29.05 8.5Z" fill="#10B981" />
                 <path
                     d="M50.2009 16.1646L46.2333 8.22953V1.21667C46.2333 0.544762 45.6886 0 45.0167 0H6.08333C5.41143 0 4.86667 0.544762 4.86667 1.21667V8.22953L0.899117 16.1646C0.308882 17.3478 0.00121667 18.6518 0 19.974V71.7833C0 72.4552 0.544763 73 1.21667 73H49.8833C50.5552 73 51.1 72.4552 51.1 71.7833V19.974C51.0988 18.6518 50.7911 17.3478 50.2009 16.1646ZM30.4167 2.43333H43.8V7.3H30.4167V2.43333ZM23.0108 9.0155C23.0181 9.0009 23.0279 8.96197 23.0388 8.9352C23.0821 8.8181 23.1071 8.69491 23.113 8.5702C23.113 8.55317 23.1228 8.53978 23.1228 8.52275V2.43333H27.9894L27.9833 8.22953L24.0158 16.1646C23.4256 17.3478 23.1179 18.6518 23.1167 19.974V29.2H18.25V19.974C18.2515 19.0294 18.4713 18.0979 18.8924 17.2523L22.995 9.06052C23.0023 9.04592 23.0035 9.0301 23.0108 9.0155ZM7.3 2.43333H20.6833V7.3H7.3V2.43333ZM38.9333 19.974V70.5667H2.43333V19.974C2.43485 19.0294 2.65461 18.0979 3.07573 17.2523L6.83523 9.73333H19.9314L16.7158 16.1646C16.1256 17.3478 15.8179 18.6518 15.8167 19.974V30.4167C15.8167 31.0886 16.3614 31.6333 17.0333 31.6333H24.3333C25.0052 31.6333 25.55 31.0886 25.55 30.4167V19.974C25.5515 19.0294 25.7713 18.0979 26.1924 17.2523L29.9519 9.73333H43.0481L39.8325 16.1646C39.2422 17.3478 38.9346 18.6518 38.9333 19.974ZM48.6667 70.5667H41.3667V19.974C41.3682 19.0294 41.588 18.0979 42.0091 17.2523L45.0167 11.2371L48.0243 17.2523C48.4454 18.0979 48.6651 19.0294 48.6667 19.974V70.5667Z"
@@ -515,8 +508,8 @@
                     fill="#3F3F46" />
             </svg>
             <!-- Dark Theme -->
-            <svg class="hidden dark:inline-block" width="76" height="73" viewBox="0 0 76 73"
-                fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="hidden dark:inline-block" width="76" height="73" viewBox="0 0 76 73" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M19 35.5L10.5 33V64.5L11.5 68L16.5 72H52.0002L55.0002 70.5L58.0002 67V34.5L45.0002 31.5L35.0002 33L20.0002 35.5H19Z"
                     fill="#FDBA74" />
@@ -540,29 +533,29 @@
 </div>
 <style>
     .mySwiper {
-    margin-top: 10px;
-}
+        margin-top: 10px;
+    }
 
-.mySwiper .swiper-wrapper {
-    justify-content: center;
-}
+    .mySwiper .swiper-wrapper {
+        justify-content: center;
+    }
 
-.mySwiper .swiper-slide {
-    width: 80px !important;
-    height: 80px;
-    opacity: .6;
-    cursor: pointer;
-}
+    .mySwiper .swiper-slide {
+        width: 80px !important;
+        height: 80px;
+        opacity: .6;
+        cursor: pointer;
+    }
 
-.mySwiper .swiper-slide-thumb-active {
-    opacity: 1;
-}
+    .mySwiper .swiper-slide-thumb-active {
+        opacity: 1;
+    }
 
-.mySwiper .swiper-slide-thumb-active img {
-    border: 2px solid #f59e0b;
-}
+    .mySwiper .swiper-slide-thumb-active img {
+        border: 2px solid #f59e0b;
+    }
 
-.mySwiper2 {
-    margin-bottom: 0;
-}
+    .mySwiper2 {
+        margin-bottom: 0;
+    }
 </style>
