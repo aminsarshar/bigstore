@@ -5,6 +5,12 @@
 @endsection
 
 @section('content')
+
+<style>
+    .header{
+        display: none
+    }
+</style>
     <section class="relative overflow-hidden rounded-[40px] bg-zinc-900 mb-16">
 
         <div class="absolute inset-0">
@@ -47,7 +53,7 @@
     </section>
     <section class="mb-14">
 
-        <div class="flex flex-wrap justify-center gap-3 mb-12">
+        <div class="flex flex-wrap justify-center gap-3 mb-12 ">
 
             <button data-category="all"
                 class="category-btn px-5 py-2.5 rounded-2xl transition
@@ -102,43 +108,164 @@
     <section>
         <div id="category-all" class="category-content">
 
-            <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 lg:m-14">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-4 lg:px-14">
 
                 @foreach ($products as $product)
                     <div
-                        class="group bg-white dark:bg-zinc-700 rounded-[30px] overflow-hidden shadow-sm hover:shadow-xl transition">
+                        class="hidden md:block group relative overflow-hidden rounded-[28px]
+bg-white dark:bg-zinc-800
+borّder border-zinc-100 dark:border-zinc-700
+shadow-sm hover:shadow-2xl
+transition-all duration-500">
 
-                        <div class="overflow-hidden h-64 bg-[#f8f5f0] flex items-center justify-center">
+                        {{-- Image --}}
+                        <div class="relative aspect-square overflow-hidden bg-gradient-to-br from-[#faf7f2] to-[#f3ede4]">
 
-                            <img src="{{ asset('admin/images/products/' . $product->image) }}"
-                                class="max-w-full max-h-full object-contain p-2 group-hover:scale-110 transition duration-500">
+                            <img src="{{ asset('admin/images/products/' . $product->image) }}" alt="{{ $product->title }}"
+                                class="
+            h-full w-full
+            object-contain
+            p-5
+
+            transition-all
+            duration-700
+
+            group-hover:scale-110
+            group-hover:rotate-2">
+
+                            {{-- Floating Badge --}}
+                            <div
+                                class="
+            absolute
+            top-3
+            right-3
+
+            rounded-full
+
+            bg-white/90
+            dark:bg-zinc-900/90
+
+            backdrop-blur-md
+
+            px-3
+            py-1
+
+            text-[11px]
+            font-bold
+
+            text-orange-500
+            shadow-md">
+
+                                ☕ قهوه
+                            </div>
 
                         </div>
 
-                        <div class="p-5">
+                        {{-- Content --}}
+                        <div class="p-4 md:p-5">
 
-                            <h3 class="font-DanaDemiBold line-clamp-2 min-h-[56px]">
+                            <h3
+                                class="
+            text-sm
+            md:text-base
+
+            font-DanaDemiBold
+
+            text-zinc-800
+            dark:text-white
+
+            line-clamp-2
+
+            min-h-[52px]">
 
                                 {{ $product->title }}
 
                             </h3>
 
-                            <div class="mt-4 flex justify-between items-center">
+                            {{-- Price --}}
+                            <div
+                                class="
+            mt-4
 
-                                <span class="text-orange-500 font-DanaDemiBold">
+            flex
+            items-end
+            justify-between">
 
-                                    {{ number_format($product->price) }}
-                                </span>
+                                <div>
 
-                                <span class="text-sm text-gray-400">
+                                    <div
+                                        class="
+                    text-xl
+                    md:text-2xl
 
-                                    تومان
-                                </span>
+                    font-black
+
+                    text-orange-500">
+
+                                        {{ number_format($product->price) }}
+
+                                    </div>
+
+                                    <span class="
+                    text-xs
+                    text-zinc-400">
+
+                                        تومان
+
+                                    </span>
+
+                                </div>
+
+                                <div
+                                    class="
+                flex
+                items-center
+                justify-center
+
+                w-10
+                h-10
+
+                rounded-2xl
+
+                bg-orange-100
+                dark:bg-orange-500/20
+
+                text-orange-500">
+
+                                    →
+                                </div>
 
                             </div>
 
-                            <a href=""
-                                class="mt-5 flex justify-center items-center h-11 rounded-xl bg-orange-400 text-white hover:bg-orange-500">
+                            {{-- Button --}}
+                            <a href="{{ route('single.product', $product->slug) }}"
+                                class="
+            mt-5
+
+            flex
+            items-center
+            justify-center
+
+            h-12
+            w-full
+
+            rounded-2xl
+
+            bg-gradient-to-r
+            from-orange-500
+            to-orange-400
+
+            text-white
+            font-medium
+
+            shadow-lg
+            shadow-orange-500/20
+
+            transition-all
+            duration-300
+
+            hover:scale-[1.02]
+            hover:shadow-orange-500/40">
 
                                 مشاهده محصول
 
@@ -147,6 +274,145 @@
                         </div>
 
                     </div>
+
+                    <div class="block md:hidden">
+                        <div
+                            class="
+    flex
+    gap-3
+
+    p-3
+
+    rounded-3xl
+
+    bg-white
+    dark:bg-zinc-900
+
+    border
+    border-zinc-200
+    dark:border-zinc-800
+
+    shadow-sm
+    ">
+
+                            {{-- Content --}}
+                            <div class="flex-1 min-w-0">
+
+                                <h3
+                                    class="
+            text-sm
+            font-bold
+
+            text-zinc-800
+            dark:text-white
+
+            line-clamp-2
+            ">
+                                    {{$product->title}}
+                                </h3>
+
+                                <p
+                                    class="
+            mt-1
+
+            text-xs
+
+            text-zinc-500
+            dark:text-zinc-400
+            ">
+                                    قهوه سینگل اورجین
+                                </p>
+
+                                <div class="mt-4">
+
+                                    <div
+                                        class="
+                text-lg
+                font-black
+
+                text-orange-500
+                ">
+                                       {{ number_format($product->price) }}
+                                    </div>
+
+                                    <span class="
+                text-xs
+                text-zinc-400
+                ">
+                                        تومان
+                                    </span>
+
+                                </div>
+
+                                <button
+                                    class="
+            mt-4
+
+            flex
+            items-center
+            justify-center
+
+            gap-2
+
+            h-10
+
+            px-4
+
+            rounded-xl
+
+            bg-zinc-100
+            dark:bg-zinc-800
+
+            text-sm
+
+            transition-all
+
+            hover:bg-orange-500
+            hover:text-white
+            ">
+
+                                    افزودن
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 4v16m8-8H4" />
+
+                                    </svg>
+
+                                </button>
+
+                            </div>
+
+                            {{-- Image --}}
+                            <div
+                                class="
+        shrink-0
+
+        w-28
+        h-28
+
+        overflow-hidden
+
+        rounded-2xl
+
+        bg-zinc-100
+        dark:bg-zinc-800
+        ">
+
+                                <img src="{{ asset('admin/images/products/' . $product->image) }}"
+                                    alt="{{ $product->title }}"
+                                    class="
+            h-full
+            w-full
+
+            object-cover
+            ">
+                            </div>
+
+                        </div>
+                    </div>
                 @endforeach
 
             </div>
@@ -154,53 +420,169 @@
         </div>
 
         @foreach ($categories as $category)
-            <div id="category-{{ $category->id }}" class="category-content hidden">
+            <div id="category-{{ $category->id }}" class="category-content hidden ">
 
-                <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 lg:m-14">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-4 lg:px-14">
 
                     @foreach ($category->Categorychild as $child)
                         @foreach ($child->products as $product)
                             <div
-                                class="group bg-white dark:bg-zinc-700 rounded-[28px] overflow-hidden shadow-md hover:shadow-xl transition">
+                                class="group relative overflow-hidden rounded-[28px] hidden md:block
+    bg-white dark:bg-zinc-800
+    border border-zinc-100 dark:border-zinc-700
+    shadow-sm hover:shadow-2xl
+    transition-all duration-500">
 
-                                <div class="overflow-hidden h-64 bg-[#f8f5f0] flex items-center justify-center">
+                                {{-- Image --}}
+                                <div
+                                    class="relative aspect-square overflow-hidden bg-gradient-to-br from-[#faf7f2] to-[#f3ede4]">
 
                                     <img src="{{ asset('admin/images/products/' . $product->image) }}"
-                                        class="max-w-full max-h-full object-contain p-2 group-hover:scale-110 transition duration-500">
+                                        alt="{{ $product->title }}"
+                                        class="
+            h-full w-full
+            object-contain
+            p-5
+
+            transition-all
+            duration-700
+
+            group-hover:scale-110
+            group-hover:rotate-2">
+
+                                    {{-- Floating Badge --}}
+                                    <div
+                                        class="
+            absolute
+            top-3
+            right-3
+
+            rounded-full
+
+            bg-white/90
+            dark:bg-zinc-900/90
+
+            backdrop-blur-md
+
+            px-3
+            py-1
+
+            text-[11px]
+            font-bold
+
+            text-orange-500
+            shadow-md">
+
+                                        ☕ قهوه
+                                    </div>
 
                                 </div>
 
-                                <div class="p-5">
-
-                                    <span class="bg-orange-100 text-orange-500 text-xs px-3 py-1 rounded-full">
-
-                                        {{ $category->name }}
-
-                                    </span>
+                                {{-- Content --}}
+                                <div class="p-4 md:p-5">
 
                                     <h3
-                                        class="mt-4 text-sm md:text-base font-DanaDemiBold text-zinc-700 dark:text-white line-clamp-2 min-h-[50px]">
+                                        class="
+            text-sm
+            md:text-base
+
+            font-DanaDemiBold
+
+            text-zinc-800
+            dark:text-white
+
+            line-clamp-2
+
+            min-h-[52px]">
 
                                         {{ $product->title }}
 
                                     </h3>
 
-                                    <div class="mt-5 flex justify-between items-center">
+                                    {{-- Price --}}
+                                    <div
+                                        class="
+            mt-4
 
-                                        <div class="text-orange-500 font-DanaDemiBold">
+            flex
+            items-end
+            justify-between">
 
-                                            {{ number_format($product->price) }}
+                                        <div>
 
-                                            <span class="text-xs">
+                                            <div
+                                                class="
+                    text-xl
+                    md:text-2xl
+
+                    font-black
+
+                    text-orange-500">
+
+                                                {{ number_format($product->price) }}
+
+                                            </div>
+
+                                            <span class="
+                    text-xs
+                    text-zinc-400">
+
                                                 تومان
+
                                             </span>
 
                                         </div>
 
+                                        <div
+                                            class="
+                flex
+                items-center
+                justify-center
+
+                w-10
+                h-10
+
+                rounded-2xl
+
+                bg-orange-100
+                dark:bg-orange-500/20
+
+                text-orange-500">
+
+                                            →
+                                        </div>
+
                                     </div>
 
+                                    {{-- Button --}}
                                     <a href="{{ route('single.product', $product->slug) }}"
-                                        class="mt-5 flex items-center justify-center h-11 rounded-xl bg-orange-400 hover:bg-orange-500 text-white transition">
+                                        class="
+            mt-5
+
+            flex
+            items-center
+            justify-center
+
+            h-12
+            w-full
+
+            rounded-2xl
+
+            bg-gradient-to-r
+            from-orange-500
+            to-orange-400
+
+            text-white
+            font-medium
+
+            shadow-lg
+            shadow-orange-500/20
+
+            transition-all
+            duration-300
+
+            hover:scale-[1.02]
+            hover:shadow-orange-500/40">
 
                                         مشاهده محصول
 
@@ -209,12 +591,153 @@
                                 </div>
 
                             </div>
+                                                    <div class="block md:hidden">
+                        <div
+                            class="
+    flex
+    gap-3
+
+    p-3
+
+    rounded-3xl
+
+    bg-white
+    dark:bg-zinc-900
+
+    border
+    border-zinc-200
+    dark:border-zinc-800
+
+    shadow-sm
+    ">
+
+                            {{-- Content --}}
+                            <div class="flex-1 min-w-0">
+
+                                <h3
+                                    class="
+            text-sm
+            font-bold
+
+            text-zinc-800
+            dark:text-white
+
+            line-clamp-2
+            ">
+                                   {{$product->title}}
+                                </h3>
+
+                                <p
+                                    class="
+            mt-1
+
+            text-xs
+
+            text-zinc-500
+            dark:text-zinc-400
+            ">
+                                    قهوه سینگل اورجین
+                                </p>
+
+                                <div class="mt-4">
+
+                                    <div
+                                        class="
+                text-lg
+                font-black
+
+                text-orange-500
+                ">
+                                        {{ number_format($product->price) }}
+                                    </div>
+
+                                    <span class="
+                text-xs
+                text-zinc-400
+                ">
+                                        تومان
+                                    </span>
+
+                                </div>
+
+                                <button
+                                    class="
+            mt-4
+
+            flex
+            items-center
+            justify-center
+
+            gap-2
+
+            h-10
+
+            px-4
+
+            rounded-xl
+
+            bg-zinc-100
+            dark:bg-zinc-800
+
+            text-sm
+
+            transition-all
+
+            hover:bg-orange-500
+            hover:text-white
+            ">
+
+                                    افزودن
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 4v16m8-8H4" />
+
+                                    </svg>
+
+                                </button>
+
+                            </div>
+
+                            {{-- Image --}}
+                            <div
+                                class="
+        shrink-0
+
+        w-28
+        h-28
+
+        overflow-hidden
+
+        rounded-2xl
+
+        bg-zinc-100
+        dark:bg-zinc-800
+        ">
+
+                                <img src="{{ asset('admin/images/products/' . $product->image) }}"
+                                    alt="{{ $product->title }}"
+                                    class="
+            h-full
+            w-full
+
+            object-cover
+            ">
+                            </div>
+
+                        </div>
+                    </div>
                         @endforeach
+
                     @endforeach
 
                 </div>
 
             </div>
+
+
         @endforeach
 
     </section>

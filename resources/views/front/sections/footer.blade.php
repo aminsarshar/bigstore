@@ -131,11 +131,7 @@
     {{-- @include('sweetalert::alert') --}}
     @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 
-    @livewireScripts
-    <script src="{{asset('front/scripts/app.js')}}"></script>
-    <script src="{{asset('front/scripts/swiper-bundle.min.js')}}"></script>
-    <script src="{{asset('front/scripts/countdown.js')}}"></script>
-    <script src="{{asset('front/scripts/jquery-3.4.1.min.js')}}"></script>
+    @include('front.sections.js')
 
     <script>
         /*!

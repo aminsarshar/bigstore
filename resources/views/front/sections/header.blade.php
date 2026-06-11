@@ -4,25 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" href="{{ asset('front/styles/app.css') }}" />
-    <link rel="stylesheet" href="{{ asset('front/styles/swiper-bundle.min.css') }}" />
-    @livewireStyles
-    <link rel="icon" href="./front/images/fav-icon.png" type="image/png" />
-    {{-- @vite('resources/css/app.css') --}}
-    <title>coffee-shop</title>
-    <script>
-        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-        if (
-            localStorage.theme === "dark" ||
-            (!("theme" in localStorage) &&
-                window.matchMedia("(prefers-color-scheme: dark)").matches)
-        ) {
-            document.documentElement.classList.add("dark");
-        } else {
-            document.documentElement.classList.remove("dark");
-        }
-    </script>
+    @include('front.sections.css')
 </head>
 
 <body class="bg-gray-100 dark:bg-zinc-800 font-Dana">
