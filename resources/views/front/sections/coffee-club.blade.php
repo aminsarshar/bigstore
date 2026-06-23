@@ -5,7 +5,7 @@
                     <!-- Right Items -->
                     <div class="flex items-center gap-x-3 lg:gap-x-4 xl:gap-x-6 md:shrink-0">
                         <img src="{{ asset('front/images/club/diamond.png') }}" alt="coffee__club"
-                            class="w-[87px] lg:w-[100px] xl:w-[110px]">
+                        loading="lazy" class="w-[87px] lg:w-[100px] xl:w-[110px]">
                         <div>
                             <h4 class="font-MorabbaBold text-2xl md:text-5xl mb-2">کافی کلاب</h4>
                             <p class="font-MorabbaLight text-lg md:text-2xl">میدونستی میتونی با امتیاز هات قهوه بگیری ؟

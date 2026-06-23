@@ -22,7 +22,7 @@
                     <div>
                         <div class="relative mb-2 md:mb-5">
                             <img src="{{ asset('front/images/products/p1.png') }}" alt="product-1"
-                                class="w-32 md:w-auto mx-auto">
+                             loading="lazy" class="w-32 md:w-auto mx-auto">
                             <span
                                 class="absolute top-1.5 right-1.5 font-DanaDemiBold text-xs md:text-base text-white dark:text-zinc-700 px-2.5 md:px-3.5 rounded-full h-5 md:h-[30px] block bg-orange-300 leading-[25px] md:leading-[34px]">12%</span>
                         </div>
@@ -81,7 +81,7 @@
                     </div>
                     <div>
                         <div class="relative mb-2 md:mb-5">
-                            <img src="./images/products/p2.png" alt="product-1" class="w-32 md:w-auto mx-auto">
+                            <img src="./images/products/p2.png" alt="product-1" loading="lazy" class="w-32 md:w-auto mx-auto">
                             <!-- <span class="absolute top-1.5 right-1.5 font-DanaDemiBold text-xs md:text-base text-white dark:text-zinc-700 px-2.5 md:px-3.5 rounded-full h-5 md:h-[30px] block bg-orange-300 leading-[25px] md:leading-[34px]">12%</span> -->
                         </div>
                         <h5
@@ -139,7 +139,7 @@
                     </div>
                     <div>
                         <div class="relative mb-2 md:mb-5">
-                            <img src="./images/products/p3.png" alt="product-1" class="w-32 md:w-auto mx-auto">
+                            <img src="./images/products/p3.png" alt="product-1" loading="lazy" class="w-32 md:w-auto mx-auto">
                             <span
                                 class="absolute top-1.5 right-1.5 font-DanaDemiBold text-xs md:text-base text-white dark:text-zinc-700 px-2.5 md:px-3.5 rounded-full h-5 md:h-[30px] block bg-orange-300 leading-[25px] md:leading-[34px]">15%</span>
                         </div>
@@ -198,7 +198,7 @@
                     </div>
                     <div>
                         <div class="relative mb-2 md:mb-5">
-                            <img src="./images/products/p4.png" alt="product-1" class="w-32 md:w-auto mx-auto">
+                            <img src="./images/products/p4.png" alt="product-1" loading="lazy" class="w-32 md:w-auto mx-auto">
                             <!-- <span class="absolute top-1.5 right-1.5 font-DanaDemiBold text-xs md:text-base text-white dark:text-zinc-700 px-2.5 md:px-3.5 rounded-full h-5 md:h-[30px] block bg-orange-300 leading-[25px] md:leading-[34px]">12%</span> -->
                         </div>
                         <h5
@@ -256,7 +256,7 @@
                     </div>
                     <div>
                         <div class="relative mb-2 md:mb-5">
-                            <img src="./images/products/p5.png" alt="product-1" class="w-32 md:w-auto mx-auto">
+                            <img src="./images/products/p5.png" alt="product-1" loading="lazy" class="w-32 md:w-auto mx-auto">
                             <!-- <span class="absolute top-1.5 right-1.5 font-DanaDemiBold text-xs md:text-base text-white dark:text-zinc-700 px-2.5 md:px-3.5 rounded-full h-5 md:h-[30px] block bg-orange-300 leading-[25px] md:leading-[34px]">12%</span> -->
                         </div>
                         <h5
@@ -317,7 +317,7 @@
                     </div>
                     <div>
                         <div class="relative mb-2 md:mb-5">
-                            <img src="./images/products/p6.png" alt="product-1" class="w-32 md:w-auto mx-auto">
+                            <img src="./images/products/p6.png" alt="product-1" loading="lazy" class="w-32 md:w-auto mx-auto">
                             <!-- <span class="absolute top-1.5 right-1.5 font-DanaDemiBold text-xs md:text-base text-white dark:text-zinc-700 px-2.5 md:px-3.5 rounded-full h-5 md:h-[30px] block bg-orange-300 leading-[25px] md:leading-[34px]">12%</span> -->
                         </div>
                         <h5
@@ -375,7 +375,7 @@
                     </div>
                     <div>
                         <div class="relative mb-2 md:mb-5">
-                            <img src="./images/products/p7.png" alt="product-1" class="w-32 md:w-auto mx-auto">
+                            <img src="./images/products/p7.png" loading="lazy" alt="product-1" class="w-32 md:w-auto mx-auto">
                             <!-- <span class="absolute top-1.5 right-1.5 font-DanaDemiBold text-xs md:text-base text-white dark:text-zinc-700 px-2.5 md:px-3.5 rounded-full h-5 md:h-[30px] block bg-orange-300 leading-[25px] md:leading-[34px]">12%</span> -->
                         </div>
                         <h5

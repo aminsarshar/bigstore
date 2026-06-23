@@ -112,26 +112,12 @@
 
                 @foreach ($products as $product)
                     <div
-                        class="hidden md:block group relative overflow-hidden rounded-[28px]
-bg-white dark:bg-zinc-800
-borّder border-zinc-100 dark:border-zinc-700
-shadow-sm hover:shadow-2xl
-transition-all duration-500">
+                        class="hidden md:block group relative overflow-hidden rounded-[28px] bg-white dark:bg-zinc-800 borّder border-zinc-100 dark:border-zinc-700 shadow-sm hover:shadow-2xl transition-all duration-500">
 
                         {{-- Image --}}
                         <div class="relative aspect-square overflow-hidden bg-gradient-to-br from-[#faf7f2] to-[#f3ede4]">
 
-                            <img src="{{ asset('admin/images/products/' . $product->image) }}" alt="{{ $product->title }}"
-                                class="
-            h-full w-full
-            object-contain
-            p-5
-
-            transition-all
-            duration-700
-
-            group-hover:scale-110
-            group-hover:rotate-2">
+                            <img src="{{ asset('admin/images/products/' . $product->image) }}" alt="{{ $product->title }}" class="h-full w-full object-contain p-5 rounded-lg transition-all duration-700 group-hover:scale-110 group-hover:rotate-2">
 
                             {{-- Floating Badge --}}
                             <div
@@ -232,44 +218,12 @@ transition-all duration-500">
 
                 text-orange-500">
 
-                                    →
+                                    <a href="{{ route('single.product', $product->slug) }}">→</a>
                                 </div>
 
                             </div>
 
-                            {{-- Button --}}
-                            <a href="{{ route('single.product', $product->slug) }}"
-                                class="
-            mt-5
 
-            flex
-            items-center
-            justify-center
-
-            h-12
-            w-full
-
-            rounded-2xl
-
-            bg-gradient-to-r
-            from-orange-500
-            to-orange-400
-
-            text-white
-            font-medium
-
-            shadow-lg
-            shadow-orange-500/20
-
-            transition-all
-            duration-300
-
-            hover:scale-[1.02]
-            hover:shadow-orange-500/40">
-
-                                مشاهده محصول
-
-                            </a>
 
                         </div>
 
@@ -344,7 +298,8 @@ transition-all duration-500">
 
                                 </div>
 
-                                <button
+                                <a
+                                href="{{ route('single.product', $product->slug) }}"
                                     class="
             mt-4
 
@@ -371,7 +326,7 @@ transition-all duration-500">
             hover:text-white
             ">
 
-                                    افزودن
+                                    مشاهده محصول
 
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
@@ -381,7 +336,7 @@ transition-all duration-500">
 
                                     </svg>
 
-                                </button>
+                                </a>
 
                             </div>
 
@@ -401,14 +356,16 @@ transition-all duration-500">
         dark:bg-zinc-800
         ">
 
-                                <img src="{{ asset('admin/images/products/' . $product->image) }}"
-                                    alt="{{ $product->title }}"
-                                    class="
-            h-full
-            w-full
+                            <img src="{{ asset('admin/images/products/' . $product->image) }}" alt="{{ $product->title }}"
+                                class="
+            h-full w-full
+            object-contain
+            transition-all
+            duration-700
 
-            object-cover
-            ">
+            group-hover:scale-110
+            group-hover:rotate-2"
+            >
                             </div>
 
                         </div>
@@ -427,11 +384,7 @@ transition-all duration-500">
                     @foreach ($category->Categorychild as $child)
                         @foreach ($child->products as $product)
                             <div
-                                class="group relative overflow-hidden rounded-[28px] hidden md:block
-    bg-white dark:bg-zinc-800
-    border border-zinc-100 dark:border-zinc-700
-    shadow-sm hover:shadow-2xl
-    transition-all duration-500">
+                                class="group relative overflow-hidden rounded-[28px] hidden md:block m-5 bg-white dark:bg-zinc-800 border border-zinc-100 dark:border-zinc-700 shadow-sm hover:shadow-2xl transition-all duration-500">
 
                                 {{-- Image --}}
                                 <div
@@ -440,15 +393,15 @@ transition-all duration-500">
                                     <img src="{{ asset('admin/images/products/' . $product->image) }}"
                                         alt="{{ $product->title }}"
                                         class="
-            h-full w-full
-            object-contain
-            p-5
+h-full w-full
+object-contain
+p-5
 
-            transition-all
-            duration-700
+transition-all
+duration-700
 
-            group-hover:scale-110
-            group-hover:rotate-2">
+group-hover:scale-110
+group-hover:rotate-2">
 
                                     {{-- Floating Badge --}}
                                     <div
@@ -549,44 +502,11 @@ transition-all duration-500">
 
                 text-orange-500">
 
-                                            →
+                                            <a href="{{ route('single.product', $product->slug) }}">→</a>
                                         </div>
 
                                     </div>
 
-                                    {{-- Button --}}
-                                    <a href="{{ route('single.product', $product->slug) }}"
-                                        class="
-            mt-5
-
-            flex
-            items-center
-            justify-center
-
-            h-12
-            w-full
-
-            rounded-2xl
-
-            bg-gradient-to-r
-            from-orange-500
-            to-orange-400
-
-            text-white
-            font-medium
-
-            shadow-lg
-            shadow-orange-500/20
-
-            transition-all
-            duration-300
-
-            hover:scale-[1.02]
-            hover:shadow-orange-500/40">
-
-                                        مشاهده محصول
-
-                                    </a>
 
                                 </div>
 
@@ -660,7 +580,8 @@ transition-all duration-500">
 
                                 </div>
 
-                                <button
+                                <a
+                                href="{{ route('single.product', $product->slug) }}"
                                     class="
             mt-4
 
@@ -687,7 +608,7 @@ transition-all duration-500">
             hover:text-white
             ">
 
-                                    افزودن
+                                    مشاهده محصول
 
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
@@ -697,7 +618,7 @@ transition-all duration-500">
 
                                     </svg>
 
-                                </button>
+                                </a>
 
                             </div>
 
@@ -722,7 +643,6 @@ transition-all duration-500">
                                     class="
             h-full
             w-full
-
             object-cover
             ">
                             </div>

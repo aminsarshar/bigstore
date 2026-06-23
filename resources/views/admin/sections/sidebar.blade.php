@@ -127,6 +127,33 @@
                                             </ul>
                                           </li>
 
+                                          <li class="has-sub nav-item">
+    <a href="#">
+        <i class="icon-cup"></i>
+        <span class="menu-title">مدیریت سفارشات</span>
+    </a>
+
+    <ul class="menu-content">
+        <li>
+            <a href="{{ route('orders.create') }}" class="menu-item">
+                ثبت سفارش جدید
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('orders.index') }}" class="menu-item">
+                لیست سفارشات
+            </a>
+        </li>
+
+        <li>
+            {{-- <a href="{{ route('reports.daily') }}" class="menu-item">
+                گزارش فروش روزانه
+            </a> --}}
+        </li>
+    </ul>
+</li>
+
           <li class=" nav-item"><a href="cards.html"><i class="icon-layers"></i><span data-i18n="" class="menu-title">کارت ها</span></a>
           </li>
           <li class="has-sub nav-item"><a href="#"><i class="icon-puzzle"></i><span data-i18n="" class="menu-title">اجزاء</span></a>

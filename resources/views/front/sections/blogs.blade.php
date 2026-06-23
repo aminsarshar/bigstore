@@ -21,7 +21,7 @@
                             <div
                                 class="relative rounded-2xl rounded-bl-4xl overflow-hidden sm:mb-4 w-[130px] shrink-0 h-[130px] sm:h-auto sm:w-auto">
                                 <img src="{{ asset('front/images/blogs/blog-1.png') }}" alt="blog-1"
-                                    class="h-full object-cover sm:h-auto">
+                                 loading="lazy" class="h-full object-cover sm:h-auto">
                                 <div
                                     class="hover-blog absolute inset-0 h-full hidden md:flex-center  invisible opacity-0 group-hover:opacity-[0.8] group-hover:visible transition-all delay-75">
                                     <svg class="w-[138px] h-[54px] text-amber-900 opacity-1">
@@ -63,7 +63,7 @@
                             <div
                                 class="relative rounded-2xl rounded-bl-4xl overflow-hidden sm:mb-4 w-[130px] shrink-0 h-[130px] sm:h-auto sm:w-auto">
                                 <img src="{{ asset('front/images/blogs/blog-2.png') }}" alt="blog-1"
-                                    class="h-full object-cover sm:h-auto">
+                                    loading="lazy" class="h-full object-cover sm:h-auto">
                                 <div
                                     class="hover-blog absolute inset-0 h-full hidden md:flex-center  invisible opacity-0 group-hover:opacity-[0.8] group-hover:visible transition-all delay-75">
                                     <svg class="w-[138px] h-[54px] text-amber-900 opacity-1">
@@ -105,7 +105,7 @@
                             <div
                                 class="relative rounded-2xl rounded-bl-4xl overflow-hidden sm:mb-4 w-[130px] shrink-0 h-[130px] sm:h-auto sm:w-auto">
                                 <img src="{{ asset('front/images/blogs/blog-3.png') }}" alt="blog-1"
-                                    class="h-full object-cover sm:h-auto">
+                                loading="lazy" class="h-full object-cover sm:h-auto">
                                 <div
                                     class="hover-blog absolute inset-0 h-full hidden md:flex-center  invisible opacity-0 group-hover:opacity-[0.8] group-hover:visible transition-all delay-75">
                                     <svg class="w-[138px] h-[54px] text-amber-900 opacity-1">
@@ -147,7 +147,7 @@
                             <div
                                 class="relative rounded-2xl rounded-bl-4xl overflow-hidden sm:mb-4 w-[130px] shrink-0 h-[130px] sm:h-auto sm:w-auto">
                                 <img src="{{ asset('front/images/blogs/blog-4.png') }}" alt="blog-1"
-                                    class="h-full object-cover sm:h-auto">
+                                   loading="lazy" class="h-full object-cover sm:h-auto">
                                 <div
                                     class="hover-blog absolute inset-0 h-full hidden md:flex-center  invisible opacity-0 group-hover:opacity-[0.8] group-hover:visible transition-all delay-75">
                                     <svg class="w-[138px] h-[54px] text-amber-900 opacity-1">

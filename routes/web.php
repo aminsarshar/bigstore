@@ -1,24 +1,25 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ColorController;
+use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\Admin\GuarantyController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProductGuarantyController;
+use App\Http\Controllers\Admin\PropertyGroupController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Home\CartController;
 use App\Http\Controllers\Home\HomeController;
-use App\Http\Controllers\Admin\RoleController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\BrandController;
-use App\Http\Controllers\Admin\ColorController;
-use App\Http\Controllers\Admin\BannerController;
-use App\Http\Controllers\Admin\SliderController;
-use App\Http\Controllers\Admin\CommentController;
-use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Home\ShippingController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\GuarantyController;
-use App\Http\Controllers\Admin\PropertyGroupController;
-use App\Http\Controllers\Admin\ProductGuarantyController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,22 +35,22 @@ use App\Http\Controllers\Admin\ProductGuarantyController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/' , [HomeController::class , 'index'])->name('home.index');
-Route::get('/about-us' , [HomeController::class , 'aboutUs'])->name('home.about-us');
-Route::get('/contact-us' , [HomeController::class , 'contactUs'])->name('home.contact-us');
-Route::get('/blogs' , [HomeController::class , 'blogs'])->name('home.blogs');
-Route::get('/shop' , [HomeController::class , 'shop'])->name('home.shop');
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('home.about-us');
+Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('home.contact-us');
+Route::get('/blogs', [HomeController::class, 'blogs'])->name('home.blogs');
+Route::get('/shop', [HomeController::class, 'shop'])->name('home.shop');
 
 
 Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
-// Users Route
+    // Users Route
     Route::resource('users', UserController::class);
     Route::resource('roles', RoleController::class);
     Route::get('create_user_role/{id}', [UserController::class, 'CreateUserRole'])->name('user.create.role');
     Route::post('store_user_role/{id}', [UserController::class, 'StoreUserRole'])->name('user.store.role');
 
-// Products Route
+    // Products Route
     Route::resource('categories', CategoryController::class);
     Route::get('trashed_category', [CategoryController::class, 'trashed'])->name('categories.trashed');
     Route::resource('brands', BrandController::class);
@@ -72,15 +73,27 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
     Route::resource('property_groups', PropertyGroupController::class);
     Route::resource('sliders', SliderController::class);
 
+    // Orders
+    // Route::get('/orders/index', [OrderController::class, 'index']);
+    // Route::get('/orders/create', [OrderController::class, 'create']);
+    // Route::post('/orders/store', [OrderController::class, 'store'])
+    //     ->name('orders.store');
+    Route::resource('orders', OrderController::class);
+
+
+    Route::get(
+        '/orders/{order}/invoice',
+        [OrderController::class, 'invoice']
+    )
+        ->name('orders.invoice');
+
     // comments
-    Route::get('users_comments', [CommentController::class , 'userComments'])->name('user.comments');
-
-
+    Route::get('users_comments', [CommentController::class, 'userComments'])->name('user.comments');
 });
 
-Route::get('/products/{product:slug}', [HomeController::class,'singleProduct'])->name('single.product');
-Route::get('/cart', [CartController::class,'cart'])->middleware(['auth'])->name('cart');
-Route::get('/shipping', [ShippingController::class,'shipping'])->middleware(['auth'])->name('shipping');
+Route::get('/products/{product:slug}', [HomeController::class, 'singleProduct'])->name('single.product');
+Route::get('/cart', [CartController::class, 'cart'])->middleware(['auth'])->name('cart');
+Route::get('/shipping', [ShippingController::class, 'shipping'])->middleware(['auth'])->name('shipping');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

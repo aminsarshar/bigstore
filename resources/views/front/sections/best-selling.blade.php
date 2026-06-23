@@ -53,7 +53,7 @@
                                         <div class="overflow-hidden h-64">
 
                                             <img src="{{ asset('admin/images/products/' . $product->image) }}"
-                                                class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                                            loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
 
                                         </div>
 

@@ -1,7 +1,7 @@
         <section class="contact-us mb-16 md:mb-28">
             <div class="container">
                 <div class="flex flex-col lg:flex-row items-center lg:items-start gap-y-8 lg:gap-x-5">
-                    <img src="{{ asset('front/images/contact.png') }}" alt="" class="shrink-0 w-[296px]">
+                    <img src="{{ asset('front/images/contact.png') }}" alt="" loading="lazy" class="shrink-0 w-[296px]">
                     <div class="text-zinc-700 dark:text-white">
                         <h3 class="font-MorabbaMedium text-2xl md:text-5xl mb-0.5 md:mb-1.5">یکی از بهترین قهوه ها !</h3>
                         <span class="font-MorabbaLight text-lg md:text-3xl/[48px]">کیفیت قهوه را از ما بخواهید ...</span>
