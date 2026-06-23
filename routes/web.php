@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductGuarantyController;
 use App\Http\Controllers\Admin\PropertyGroupController;
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\TagController;
@@ -86,6 +87,12 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
         [OrderController::class, 'invoice']
     )
         ->name('orders.invoice');
+
+    Route::get(
+        '/reports/daily',
+        [ReportController::class, 'daily']
+    )
+        ->name('reports.daily');
 
     // comments
     Route::get('users_comments', [CommentController::class, 'userComments'])->name('user.comments');
