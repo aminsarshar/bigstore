@@ -1,464 +1,751 @@
-  <section class="category-banner mt-36 mb-36 md:my-36">
-      <div class="md:pb-10">
-          <ul class="flex gap-x-2.5 text-gray-500 dark:text-gray-100">
-              <li><a href="">خانه</a></li>
-              /
-              <li><a href="">سبد خرید</a></li>
-          </ul>
-      </div>
+<section class="category-banner mt-36 mb-36 md:my-36">
+    <div class="md:pb-10">
+        <ul class="flex gap-x-2.5 text-gray-500 dark:text-gray-100">
+            <li><a href="">خانه</a></li>
+            /
+            <li><a href="">سبد خرید</a></li>
+        </ul>
+    </div>
+    <div
+        class="mb-8 rounded-[32px] bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 shadow-sm p-6"
+    >
+        <div class="flex items-center justify-between">
+            <div>
+                <h1
+                    class="text-2xl font-DanaExtraBold text-zinc-800 dark:text-white"
+                >
+                    ارسال اطلاعات
+                </h1>
 
-      <div class="relative tab-group">
-          <div class="flex bg-slate-100 p-0.5 relative rounded-lg" role="tablist">
-              <div
-                  class="absolute top-1 left-0.5 h-8 bg-white rounded-md shadow-sm transition-all duration-300 transform scale-x-0 translate-x-0 tab-indicator z-0">
-              </div>
-          </div>
-          <div class="mt-4 tab-content-container">
-              <div id="tab1-group" class="tab-content text-slate-800 block">
-                  <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-                      <!-- ProductsSection -->
+                <p
+                    class="mt-2 text-sm text-zinc-500"
+                >محصولات انتخاب شده را بررسی و برای ادامه سفارش اطلاعات را تکمیل کنید.</p>
+            </div>
 
-                      <!-- BuyButtonSection -->
+            <div
+                class="hidden md:flex w-14 h-14 rounded-2xl bg-orange-100 dark:bg-orange-500/10 items-center justify-center"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-7 h-7 text-orange-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.8"
+                        d="M2.25 3h1.386a1.5 1.5 0 011.458 1.146L5.61 6H21l-1.5 7.5a1.5 1.5 0 01-1.47 1.2H8.25a1.5 1.5 0 01-1.47-1.2L5.16 4.5M8.25 21a1.125 1.125 0 100-2.25A1.125 1.125 0 008.25 21zm9 0a1.125 1.125 0 100-2.25A1.125 1.125 0 0017.25 21z"
+                    />
+                </svg>
+            </div>
+        </div>
 
-                      <div class="md:col-span-2 bg-white dark:bg-zinc-700 p-8 rounded-md shadow-md">
-                          <section class="" id="products-section">
-                              <div class="container">
-                                  <!-- Section Body -->
-                                  <div
-                                      class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-3.5 md:gap-5 child:md:p-5 child:p-2 child:bg-white child:dark:bg-zinc-700 child:rounded-2xl child:shadow-normal child:dark:shadow-normal">
-                                      @if (!$addresses->count = 0)
-                                      <livewire:front.order.address />
-                                      @endif
-                                      @foreach ($addresses as $address)
-                                          @if ($loop->first)
-                                              <div class="border border-gray-100">
-                                                  <div class="xl:flex xl:justify-between md:block mb-2 md:mb-5">
-                                                      <div>
-                                                          <span class="lg:text-xl xl:text-base">گیرنده :
-                                                              {{ $address->name }}
-                                                          </span>
-                                                          <span class="lg:text-xl xl:text-base"></span>
-                                                      </div>
-                                                  </div>
-                                                  <div class="xl:flex md:block mb-2 md:mb-5">
-                                                      <div>
-                                                          <span class="lg:text-lg xl:text-base">شماره تماس :
-                                                              {{ $address->moile }}
-                                                          </span>
-                                                          <span class="lg:text-lg xl:text-base xl:ml-[10px]"></span>
-                                                      </div>
-                                                      |
-                                                      <div>
-                                                          <span class="lg:text-lg xl:text-base xl:mr-[10px]">کد پستی :
-                                                              {{ $address->postal_code }}
-                                                          </span>
-                                                          <span class="lg:text-lg xl:text-base"></span>
-                                                      </div>
-                                                  </div>
-                                                  <div class="xl:flex md:block mb-2 md:mb-5">
-                                                      <div>
-                                                          <span class="lg:text-xl xl:text-base">استان :
-                                                              {{ province_name($address->province_id) }}
-                                                          </span>
-                                                          <span class="lg:text-xl xl:text-base"></span>
-                                                      </div>
-                                                      ,
-                                                      <div>
-                                                          <span class="lg:text-xl xl:text-base mr-4">شهر :
-                                                              {{ city_name($address->city_id) }}
-                                                          </span>
-                                                          <span class="lg:text-xl xl:text-base"></span>
-                                                      </div>
-                                                  </div>
+        <div class="mt-10">
+            <div class="relative flex items-center justify-between">
+                <div
+                    class="absolute top-6 left-0 right-0 h-1 bg-zinc-200 dark:bg-zinc-700 rounded-full"
+                >
+                    <div class="w-0 h-full bg-orange-500 rounded-full"></div>
+                </div>
 
-                                                  <div>
-                                                      <span class="lg:text-lg xl:text-base xl:mr-[10px]">آدرس:
-                                                          {{ $address->address }}
-                                                      </span>
-                                                      <span class="lg:text-lg xl:text-base"></span>
-                                                  </div>
-                                              </div>
-                                              <livewire:front.order.address />
-
-
-                                              <div class="w-full max-w-md">
-                                                  <!-- دکمه کوچک -->
-                                                  <button id="toggleBtn" aria-expanded="false"
-                                                      aria-controls="collapseContent"
-                                                      style="background-color: rgb(253 186 116 / 0.2);color: rgb(253 186 116 / var(--tw-text-opacity));"
-                                                      class="flex items-center gap-2 px-3 py-1.5 text-white rounded-md text-sm hover:bg-orange-400">
-                                                      <!-- آیکون کوچک -->
-                                                      <svg id="toggleIcon" class="w-4 h-4 chev2" fill="none"
-                                                          stroke="currentColor" viewBox="0 0 24 24"
-                                                          xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                                          <path stroke-linecap="round" stroke-linejoin="round"
-                                                              stroke-width="2" d="M19 9l-7 7-7-7" />
-                                                      </svg>
-
-                                                      <span>تغییر آدرس</span>
-                                                  </button>
-
-                                                  <!-- محتوای اسلایدی -->
-                                                  <div id="collapseContent"
-                                                      class="collapse-content mt-2 rounded-lg shadow bg-white">
-                                                      @foreach ($addresses as $address)
-                                                          <div class="border border-gray-100 p-3 mb-5">
-                                                              <div
-                                                                  class="xl:flex xl:justify-between md:block mb-2 md:mb-5">
-                                                                  <div>
-                                                                      <span class="lg:text-xl xl:text-base">گیرنده :
-                                                                          {{ $address->name }}
-                                                                      </span>
-                                                                      <span class="lg:text-xl xl:text-base"></span>
-                                                                  </div>
-                                                              </div>
-                                                              <div class="xl:flex md:block mb-2 md:mb-5">
-                                                                  <div>
-                                                                      <span class="lg:text-lg xl:text-base">شماره
-                                                                          تماس :
-                                                                          {{ $address->moile }}
-                                                                      </span>
-                                                                      <span
-                                                                          class="lg:text-lg xl:text-base xl:ml-[10px]"></span>
-                                                                  </div>
-                                                                  |
-                                                                  <div>
-                                                                      <span
-                                                                          class="lg:text-lg xl:text-base xl:mr-[10px]">کد
-                                                                          پستی : {{ $address->postal_code }}
-                                                                      </span>
-                                                                      <span class="lg:text-lg xl:text-base"></span>
-                                                                  </div>
-                                                              </div>
-                                                              <div class="xl:flex md:block mb-2 md:mb-5">
-                                                                  <div>
-                                                                      <span class="lg:text-xl xl:text-base">استان :
-                                                                          {{ province_name($address->province_id) }}
-                                                                      </span>
-                                                                      <span class="lg:text-xl xl:text-base"></span>
-                                                                  </div>
-                                                                  ,
-                                                                  <div>
-                                                                      <span class="lg:text-xl xl:text-base mr-4">شهر
-                                                                          :
-                                                                          {{ city_name($address->city_id) }}
-                                                                      </span>
-                                                                      <span class="lg:text-xl xl:text-base"></span>
-                                                                  </div>
-                                                              </div>
-
-                                                              <div>
-                                                                  <span
-                                                                      class="lg:text-lg xl:text-base xl:mr-[10px]">آدرس:
-                                                                      {{ $address->address }}
-                                                                  </span>
-                                                                  <span class="lg:text-lg xl:text-base"></span>
-                                                              </div>
-                                                          </div>
-                                                      @endforeach
-                                                  </div>
-                                              </div>
-
-                                              <style>
-                                                  /* انیمیشن نرم برای محتوا */
-                                                  .collapse-content,
-                                                  .collapse-content2 {
-                                                      max-height: 0;
-                                                      overflow: hidden;
-                                                      transition: max-height 350ms cubic-bezier(0.4,
-                                                              0,
-                                                              0.2,
-                                                              1);
-                                                  }
-
-                                                  /* انیمیشن چرخش آیکون */
-                                                  .chev,
-                                                  .chev2 {
-                                                      transition: transform 250ms ease;
-                                                      transform-origin: center;
-                                                      display: inline-block;
-                                                  }
-
-                                                  .chev.open {
-                                                      transform: rotate(180deg);
-                                                  }
-                                              </style>
-                                          @endif
-                                      @endforeach
-
-                                  </div>
-                              </div>
-                          </section>
-
-                          <hr class="mt-8">
-
-                          <section class="best-selling mb-8 md:mb-20">
-                              <div class="container">
-                                  <div class="flex justify-between items-end mt-5 md:mb-12">
-                                      <div class="flex items-center">
-                                          <div class="w-2 h-2 rounded-full ml-1 bg-gray-300"></div>
-                                          <div class="w-4 h-4 rounded-full ml-3 bg-gray-400"></div>
-                                          <span class="section-subtitle text-xl">مرسوله 1 از 1</span>
-                                      </div>
-                                  </div>
-                                  <div
-                                      class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5 md:gap-5 child:md:p-5 child:p-2 mt-10 child:bg-white child:dark:bg-zinc-700 child:rounded-2xl child:shadow-normal child:dark:shadow-normal">
-
-                                      @foreach ($carts as $cart)
-                                          <a href="{{ route('single.product', $cart->product->slug) }}">
-                                              <div
-                                                  style="box-shadow:3px 4px 14px 5px rgba(214,214,214,0.12);height: 360px !important">
-                                                  <div class="relative mb-2 md:mb-5">
-                                                      <img src="{{ asset('admin/images/products/' . $cart->product->image) }}"
-                                                          alt="product-1" class="w-32 md:w-auto md:h-auto mx-auto h-40">
-                                                  </div>
-                                                  <h5
-                                                      class="font-DanaMedium text-sm md:text-xl text-zinc-700 dark:text-white line-clamp-2 md:min-h-[56px] min-h-[40px]">
-                                                      {{ $cart->product->title }}</h5>
-
-
-                                              </div>
-                                          </a>
-                                      @endforeach
-
-                                  </div>
-                              </div>
-                          </section>
-                          {{-- <section class="best-selling mb-8 md:mb-20">
-                              <div class="container">
-                                  <!-- Section Head -->
-                                  <div class="flex justify-between items-end mb-5 md:mb-12">
-                                      <div>
-                                          <h3 class="section-title">محصولات پر فروش</h3>
-                                          <span class="section-subtitle">پیشنهاد قهوه خور ها ...</span>
-                                      </div>
-                                      <div class="flex gap-x-3 md:gap-x-[18px]">
-                                          <div class="swiper-button-prev-custom">
-                                              <svg class="w-5 h-5 md:w-[26px] md:h-[26px]">
-                                                  <use href="#chevron-right-mini"></use>
-                                              </svg>
-                                          </div>
-                                          <div class="swiper-button-next-custom">
-                                              <svg class="w-5 h-5 md:w-[26px] md:h-[26px]">
-                                                  <use href="#chevron-left-mini"></use>
-                                              </svg>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-                                  <!-- Slider main container -->
-                                  <div class="swiper">
-                                      <!-- Additional required wrapper -->
-                                      <div class="swiper-wrapper">
-                                          <!-- Slides -->
-                                          @foreach ($carts as $cart)
-                                            <div>
-                        <div class="relative mb-2 md:mb-5">
-                            <img src="{{ asset('admin/images/products/' . $cart->product->image) }}" alt="product-1" class="w-32 md:w-auto mx-auto">
-                            <!-- <span class="absolute top-1.5 right-1.5 font-DanaDemiBold text-xs md:text-base text-white dark:text-zinc-700 px-2.5 md:px-3.5 rounded-full h-5 md:h-[30px] block bg-orange-300 leading-[25px] md:leading-[34px]">12%</span> -->
-                        </div>
-                        <div class="flex gap-x-2 md:gap-x-2.5 mt-1.5 md:mt-2.5">
-                            <div class="text-teal-600 dark:text-emerald-500">
-                                <span class="text-base md:text-xl font-DanaDemiBold">124,000</span>
-                                <span class="text-xs md:text-sm tracking-tightest">تومان</span>
-                            </div>
-                            <!-- <div class="offer">
-                                <span class="text-xs md:text-xl">175,000</span>
-                                <span class="hidden lg:inline-block text-xs md:text-sm tracking-tightest">تومان</span>
-                              </div> -->
-                        </div>
-
-
-
-
+                {{-- مرحله 1 --}}
+                <a
+                    href="{{route('cart')}}"
+                    class="relative z-10 flex flex-col items-center flex-1"
+                >
+                    <div
+                        class="w-12 h-12 rounded-full bg-green-500 text-white flex items-center justify-center shadow-lg shadow-green-500/30"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="w-6 h-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2.5"
+                                d="M5 13l4 4L19 7"
+                            />
+                        </svg>
                     </div>
 
+                    <span class="mt-3 text-sm font-DanaDemiBold text-green-600">
+                        سبد خرید
+                    </span>
+                </a>
 
-                                          @endforeach
+                {{-- مرحله 2 --}}
+                <a
+                    href="{{ route('shipping') }}"
+                    class="relative z-10 flex flex-col items-center flex-1"
+                >
+                    <div
+                        class="w-12 h-12 rounded-full bg-orange-500 text-white flex items-center justify-center shadow-lg shadow-orange-500/30"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="w-6 h-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0L6.343 16.657A8 8 0 1117.657 16.657z"
+                            />
 
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                            />
+                        </svg>
+                    </div>
 
+                    <span
+                        class="mt-3 text-sm font-DanaDemiBold text-orange-500"
+                    >
+                        ارسال اطلاعات
+                    </span>
+                </a>
 
-                                      </div>
+                {{-- مرحله 3 --}}
+                <div class="relative z-10 flex flex-col items-center flex-1">
+                    <div
+                        class="w-12 h-12 rounded-full bg-zinc-200 dark:bg-zinc-700 text-zinc-500 flex items-center justify-center"
+                    >
+                        3
+                    </div>
 
-                                  </div>
-                              </div>
-                          </section> --}}
+                    <span class="mt-3 text-sm text-zinc-400"> پرداخت </span>
+                </div>
 
+                {{-- مرحله 4 --}}
+                <div class="relative z-10 flex flex-col items-center flex-1">
+                    <div
+                        class="w-12 h-12 rounded-full bg-zinc-200 dark:bg-zinc-700 text-zinc-500 flex items-center justify-center"
+                    >
+                        4
+                    </div>
 
+                    <span class="mt-3 text-sm text-zinc-400">
+                        تکمیل سفارش
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="relative tab-group">
+        <div class="flex bg-slate-100 p-0.5 relative rounded-lg" role="tablist">
+            <div
+                class="absolute top-1 left-0.5 h-8 bg-white rounded-md shadow-sm transition-all duration-300 transform scale-x-0 translate-x-0 tab-indicator z-0"
+            ></div>
+        </div>
+        <div class="mt-4 tab-content-container">
+            <div id="tab1-group" class="tab-content text-slate-800 block">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                    <!-- ProductsSection -->
 
-                      </div>
-                      <div class="flex flex-col">
-                          <div class="">
-                              <div
-                                  class="border border-orange-200 dark:border-zinc-800 rounded-lg p-[10px] bg-white dark:bg-zinc-800/10 shadow-md md:w-[70%]">
-                                  <ul
-                                      class="text-gray-600 dark:text-gray-100 border-b border-gray-200 dark:border-gray-600">
-                                      <div class="flex text-sm mb-[10px]">
-                                          <li class="flex">
-                                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                  stroke-width="1.5" stroke="currentColor" class="size-6">
-                                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" />
-                                              </svg>
-                                              دسته بندی
-                                          </li>
-                                          :
-                                          <li>قهوه عربیکا</li>
-                                      </div>
-                                      <div class="flex text-sm mb-[10px]">
-                                          <li class="flex">
-                                              <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                  class="size-6">
-                                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                              </svg>
-                                              گارانتی
-                                          </li>
-                                          :
-                                          <li>دارد</li>
-                                      </div>
-                                      <div class="flex text-sm mb-[10px]">
-                                          <li class="flex">
-                                              <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                  class="size-6">
-                                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
-                                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M6 6h.008v.008H6V6Z" />
-                                              </svg>
-                                              برچسب
-                                          </li>
-                                          :
-                                          <li>قهوه عربیکا</li>
-                                          ,
-                                          <li>قهوه عربیکا</li>
-                                      </div>
-                                      <div class="flex text-sm mb-[10px]">
-                                          <li class="flex">
-                                              <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                  class="size-6">
-                                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" />
-                                              </svg>
-                                              دسته بندی
-                                          </li>
-                                          :
-                                          <li>قهوه عربیکا</li>
-                                      </div>
-                                  </ul>
-                                  <div
-                                      class="flex items-center text-gray-600 dark:text-white py-4 border-b border-gray-200 dark:border-white/10">
-                                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                          stroke-width="1.5" stroke="currentColor" class="size-6">
-                                          <path stroke-linecap="round" stroke-linejoin="round"
-                                              d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
-                                      </svg>
-                                      گارانتی اصالت و سلامت فیزیکی کالا
-                                  </div>
+                    <!-- BuyButtonSection -->
 
-                                  <ul>
-                                      <li>
-                                          <div
-                                              class="flex justify-between font-DanaDemiBold items-center text-gray-500 py-2">
-                                              <div class="flex items-center gap-x-1">
-                                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                      viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                      class="size-6">
-                                                      <path stroke-linecap="round" stroke-linejoin="round"
-                                                          d="M14.121 7.629A3 3 0 0 0 9.017 9.43c-.023.212-.002.425.028.636l.506 3.541a4.5 4.5 0 0 1-.43 2.65L9 16.5l1.539-.513a2.25 2.25 0 0 1 1.422 0l.655.218a2.25 2.25 0 0 0 1.718-.122L15 15.75M8.25 12H12m9 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                                  </svg>
-                                                  مبلغ کل
-                                              </div>
+                    <div
+                        class="md:col-span-2 bg-white dark:bg-zinc-700 p-8 rounded-md shadow-md"
+                    >
+                        <section class="" id="products-section">
+                            <div class="container">
+                                <!-- Section Body -->
+                                <div
+                                    class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-3.5 md:gap-5 child:md:p-5 child:p-2 child:bg-white child:dark:bg-zinc-700 child:rounded-2xl child:shadow-normal child:dark:shadow-normal"
+                                >
+                                    @if (!$addresses->count = 0)
+                                        <livewire:front.order.address />
+                                    @endif
+                                    @foreach ($addresses as $address)
+                                        @if ($loop->first)
+                                            <div class="space-y-5">
+                                                <div
+                                                    class="flex items-center justify-between"
+                                                >
+                                                    <div>
+                                                        <h2
+                                                            class="text-xl font-DanaDemiBold text-zinc-800 dark:text-white"
+                                                        >
+                                                            آدرس ارسال
+                                                        </h2>
 
-                                              <div>
-                                                  <span>{{ number_format($total_price) }}</span>
-                                                  <span>تومان</span>
-                                              </div>
-                                          </div>
-                                      </li>
+                                                        <p class="text-sm text-zinc-500 mt-1">آدرس موردنظر برای ارسال سفارش را انتخاب کنید.</p>
+                                                    </div>
 
-                                      <li>
-                                          <div
-                                              class="flex justify-between font-DanaDemiBold items-center text-orange-300 py-1">
-                                              <div class="flex items-center gap-x-1">
-                                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                      viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                      class="size-6">
-                                                      <path stroke-linecap="round" stroke-linejoin="round"
-                                                          d="M14.121 7.629A3 3 0 0 0 9.017 9.43c-.023.212-.002.425.028.636l.506 3.541a4.5 4.5 0 0 1-.43 2.65L9 16.5l1.539-.513a2.25 2.25 0 0 1 1.422 0l.655.218a2.25 2.25 0 0 0 1.718-.122L15 15.75M8.25 12H12m9 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                                  </svg>
-                                                  سود شما از خرید
-                                              </div>
+                                                    <a
+                                                        href="#"
+                                                        class="hidden md:flex items-center gap-2 px-4 h-11 rounded-2xl border border-orange-200 text-orange-500 hover:bg-orange-500 hover:text-white transition"
+                                                    >
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            class="w-5 h-5"
+                                                            fill="none"
+                                                            viewBox="0 0 24 24"
+                                                            stroke="currentColor"
+                                                        >
+                                                            <path
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M12 4v16m8-8H4"
+                                                            />
+                                                        </svg>
 
-                                              <div>
-                                                  <span>{{ number_format($discount_price) }}</span>
-                                                  <span>تومان</span>
-                                              </div>
-                                          </div>
+                                                        افزودن آدرس
+                                                    </a>
+                                                </div>
 
-                                          <div
-                                              class="flex justify-between font-DanaDemiBold items-center text-gray-500 py-1">
-                                              <div class="flex items-center gap-x-1">
-                                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                      viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                      class="size-6">
-                                                      <path stroke-linecap="round" stroke-linejoin="round"
-                                                          d="M14.121 7.629A3 3 0 0 0 9.017 9.43c-.023.212-.002.425.028.636l.506 3.541a4.5 4.5 0 0 1-.43 2.65L9 16.5l1.539-.513a2.25 2.25 0 0 1 1.422 0l.655.218a2.25 2.25 0 0 0 1.718-.122L15 15.75M8.25 12H12m9 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                                  </svg>
-                                                  هزینه ارسال
-                                              </div>
+                                                <div class="grid gap-5">
+                                                    @foreach ($addresses as $address)
+                                                        <label
+                                                            class="group cursor-pointer rounded-3xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 p-6 transition-all hover:border-orange-400 hover:shadow-xl hover:-translate-y-1"
+                                                        >
+                                                            <input
+                                                                type="radio"
+                                                                name="address_id"
+                                                                value="{{ $address->id }}"
+                                                                class="hidden peer"
+                                                                {{ $loop->first ? 'checked' : '' }}
+                                                            />
 
-                                              <div>
-                                                  <span>2,850,000 </span>
-                                                  <span>تومان</span>
-                                              </div>
-                                          </div>
-                                      </li>
-                                  </ul>
+                                                            <div
+                                                                class="flex items-start justify-between"
+                                                            >
+                                                                <div
+                                                                    class="flex gap-4"
+                                                                >
+                                                                    <div
+                                                                        class="w-12 h-12 rounded-2xl bg-orange-100 dark:bg-orange-500/10 flex items-center justify-center text-orange-500"
+                                                                    >
+                                                                        <svg
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            class="w-6 h-6"
+                                                                            fill="none"
+                                                                            viewBox="0 0 24 24"
+                                                                            stroke="currentColor"
+                                                                        >
+                                                                            <path
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round"
+                                                                                stroke-width="1.8"
+                                                                                d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0L6.343 16.657A8 8 0 1117.657 16.657z"
+                                                                            />
 
-                                  <div class="flex justify-center flex-wrap md:justify-between text-gray-700 py-3">
-                                      <div>
-                                          <span class="block text-sm">نوع آسیاب</span>
-                                          <select
-                                              class="rounded-md w-40 border border-orange-200 dark:border-gray-600 focus:outline-none bg-white dark:bg-zinc-600 dark:text-white"
-                                              name="" id="">
-                                              <option>انتخاب کنید</option>
-                                              <option value="">
-                                                  ریز
-                                              </option>
-                                              <option value="">
-                                                  درشت
-                                              </option>
-                                          </select>
-                                      </div>
-                                      <div>
-                                          <span class="block text-sm">تعداد</span>
-                                          <input type="number"
-                                              class="rounded-md w-40 border border-orange-200 dark:border-gray-600 focus:outline-none bg-white dark:bg-zinc-600 dark:text-white"
-                                              name="" id="" value="1" />
-                                          <!-- </input> -->
-                                      </div>
-                                  </div>
+                                                                            <path
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round"
+                                                                                stroke-width="1.8"
+                                                                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                                                            />
+                                                                        </svg>
+                                                                    </div>
 
-                                  <div class="">
-                                      <a href=""
-                                          class="cart-btn bg-orange-300 hover:bg-orange-400 transition-all inline-flex items-center justify-center w-full p-[10px] rounded-lg mb-[15px]">
-                                          <svg class="w-5 h-5 ml-2">
-                                              <use href="#shopping-cart"></use>
-                                          </svg>
-                                          تایید و ادامه ثبت سفارش
-                                      </a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
+                                                                    <div>
+                                                                        <h3
+                                                                            class="font-DanaDemiBold text-zinc-800 dark:text-white"
+                                                                        >
+                                                                            {{ $address->receiver_name }}
+                                                                        </h3>
+
+                                                                        <p class="mt-2 text-sm leading-7 text-zinc-500 dark:text-zinc-400">
+                                                                            {{ $address->province }}
+
+                                                                            -
+
+                                                                            {{ $address->city }}
+
+                                                                            -
+
+                                                                            {{ $address->address }}
+                                                                        </p>
+
+                                                                        <div
+                                                                            class="mt-4 flex flex-wrap gap-2"
+                                                                        >
+                                                                            <span
+                                                                                class="px-3 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center text-xs"
+                                                                            >
+                                                                                📞 {{ $address->phone }}
+                                                                            </span>
+
+                                                                            <span
+                                                                                class="px-3 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center text-xs"
+                                                                            >
+                                                                                کدپستی: {{ $address->postal_code }}
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div
+                                                                    class="w-6 h-6 rounded-full border-2 border-zinc-300 peer-checked:border-orange-500 peer-checked:bg-orange-500 transition"
+                                                                ></div>
+                                                            </div>
+                                                        </label>
+
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                            <livewire:front.order.address />
+
+                                            <div class="w-full max-w-md">
+                                                <!-- دکمه کوچک -->
+                                                <button
+                                                    id="toggleBtn"
+                                                    aria-expanded="false"
+                                                    aria-controls="collapseContent"
+                                                    style="
+                                                        background-color: rgb(
+                                                            253 186 116 / 0.2
+                                                        );
+                                                        color: rgb(
+                                                            253 186 116 /
+                                                                var(
+                                                                    --tw-text-opacity
+                                                                )
+                                                        );
+                                                    "
+                                                    class="flex items-center gap-2 px-3 py-1.5 text-white rounded-md text-sm hover:bg-orange-400"
+                                                >
+                                                    <!-- آیکون کوچک -->
+                                                    <svg
+                                                        id="toggleIcon"
+                                                        class="w-4 h-4 chev2"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        aria-hidden="true"
+                                                    >
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M19 9l-7 7-7-7"
+                                                        />
+                                                    </svg>
+
+                                                    <span>تغییر آدرس</span>
+                                                </button>
+
+                                                <!-- محتوای اسلایدی -->
+                                                <div
+                                                    id="collapseContent"
+                                                    class="collapse-content mt-2 rounded-lg shadow bg-white"
+                                                >
+                                                    @foreach ($addresses as $address)
+                                                        <div class="space-y-5">
+                                                            <div
+                                                                class="flex items-center justify-between"
+                                                            >
+                                                                <div>
+                                                                    <h2
+                                                                        class="text-xl font-DanaDemiBold text-zinc-800 dark:text-white"
+                                                                    >
+                                                                        آدرس
+                                                                        ارسال
+                                                                    </h2>
+
+                                                                    <p class="text-sm text-zinc-500 mt-1">آدرس موردنظر برای ارسال سفارش را انتخاب کنید.</p>
+                                                                </div>
+
+                                                                <a
+                                                                    href="#"
+                                                                    class="hidden md:flex items-center gap-2 px-4 h-11 rounded-2xl border border-orange-200 text-orange-500 hover:bg-orange-500 hover:text-white transition"
+                                                                >
+                                                                    <svg
+                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                        class="w-5 h-5"
+                                                                        fill="none"
+                                                                        viewBox="0 0 24 24"
+                                                                        stroke="currentColor"
+                                                                    >
+                                                                        <path
+                                                                            stroke-linecap="round"
+                                                                            stroke-linejoin="round"
+                                                                            stroke-width="2"
+                                                                            d="M12 4v16m8-8H4"
+                                                                        />
+                                                                    </svg>
+
+                                                                    افزودن آدرس
+                                                                </a>
+                                                            </div>
+
+                                                            <div
+                                                                class="grid gap-5"
+                                                            >
+                                                                @foreach ($addresses as $address)
+                                                                    <label
+                                                                        class="group cursor-pointer rounded-3xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 p-6 transition-all hover:border-orange-400 hover:shadow-xl hover:-translate-y-1"
+                                                                    >
+                                                                        <input
+                                                                            type="radio"
+                                                                            name="address_id"
+                                                                            value="{{ $address->id }}"
+                                                                            class="hidden peer"
+                                                                            {{ $loop->first ? 'checked' : '' }}
+                                                                        />
+
+                                                                        <div
+                                                                            class="flex items-start justify-between"
+                                                                        >
+                                                                            <div
+                                                                                class="flex gap-4"
+                                                                            >
+                                                                                <div
+                                                                                    class="w-12 h-12 rounded-2xl bg-orange-100 dark:bg-orange-500/10 flex items-center justify-center text-orange-500"
+                                                                                >
+                                                                                    <svg
+                                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                                        class="w-6 h-6"
+                                                                                        fill="none"
+                                                                                        viewBox="0 0 24 24"
+                                                                                        stroke="currentColor"
+                                                                                    >
+                                                                                        <path
+                                                                                            stroke-linecap="round"
+                                                                                            stroke-linejoin="round"
+                                                                                            stroke-width="1.8"
+                                                                                            d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0L6.343 16.657A8 8 0 1117.657 16.657z"
+                                                                                        />
+
+                                                                                        <path
+                                                                                            stroke-linecap="round"
+                                                                                            stroke-linejoin="round"
+                                                                                            stroke-width="1.8"
+                                                                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                                                                        />
+                                                                                    </svg>
+                                                                                </div>
+
+                                                                                <div>
+                                                                                    <h3
+                                                                                        class="font-DanaDemiBold text-zinc-800 dark:text-white"
+                                                                                    >
+                                                                                        {{ $address->receiver_name }}
+                                                                                    </h3>
+
+                                                                                    <p class="mt-2 text-sm leading-7 text-zinc-500 dark:text-zinc-400">
+                                                                                        {{ $address->province }}
+
+                                                                                        -
+
+                                                                                        {{ $address->city }}
+
+                                                                                        -
+
+                                                                                        {{ $address->address }}
+                                                                                    </p>
+
+                                                                                    <div
+                                                                                        class="mt-4 flex flex-wrap gap-2"
+                                                                                    >
+                                                                                        <span
+                                                                                            class="px-3 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center text-xs"
+                                                                                        >
+                                                                                            📞 {{ $address->phone }}
+                                                                                        </span>
+
+                                                                                        <span
+                                                                                            class="px-3 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center text-xs"
+                                                                                        >
+                                                                                            کدپستی: {{ $address->postal_code }}
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div
+                                                                                class="w-6 h-6 rounded-full border-2 border-zinc-300 peer-checked:border-orange-500 peer-checked:bg-orange-500 transition"
+                                                                            ></div>
+                                                                        </div>
+                                                                    </label>
+
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+
+                                            <style>
+                                                /* انیمیشن نرم برای محتوا */
+                                                .collapse-content,
+                                                .collapse-content2 {
+                                                    max-height: 0;
+                                                    overflow: hidden;
+                                                    transition: max-height 350ms
+                                                        cubic-bezier(
+                                                            0.4,
+                                                            0,
+                                                            0.2,
+                                                            1
+                                                        );
+                                                }
+
+                                                /* انیمیشن چرخش آیکون */
+                                                .chev,
+                                                .chev2 {
+                                                    transition: transform 250ms
+                                                        ease;
+                                                    transform-origin: center;
+                                                    display: inline-block;
+                                                }
+
+                                                .chev.open {
+                                                    transform: rotate(180deg);
+                                                }
+                                            </style>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        </section>
+
+                        <hr class="mt-8" />
+
+                        <section class="best-selling my-8 md:mb-20">
+                            <div class="space-y-5">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h2
+                                            class="text-xl font-DanaDemiBold text-zinc-800 dark:text-white"
+                                        >
+                                            محصولات سفارش
+                                        </h2>
+
+                                        <p class="text-sm text-zinc-500 mt-1">
+                                            {{ count($carts) }} محصول در سبد
+                                            خرید شما
+                                        </p>
+                                    </div>
+                                </div>
+
+                                @foreach ($carts as $item)
+                                    <div
+                                        class="group rounded-3xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 p-4 transition-all duration-300 hover:shadow-xl hover:border-orange-300"
+                                    >
+                                        <div
+                                            class="flex flex-col md:flex-row gap-5"
+                                        >
+                                            {{-- تصویر --}}
+                                            <div
+                                                class="w-full md:w-36 aspect-square rounded-2xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center overflow-hidden shrink-0"
+                                            >
+                                                <img
+                                                    src="{{ asset('admin/images/products/'.$item->product->image) }}"
+                                                    alt="{{ $item->product->title }}"
+                                                    loading="lazy"
+                                                    decoding="async"
+                                                    class="max-w-full max-h-full object-contain transition duration-500 group-hover:scale-105"
+                                                />
+                                            </div>
+
+                                            {{-- اطلاعات --}}
+                                            <div
+                                                class="flex-1 flex flex-col justify-between"
+                                            >
+                                                <div>
+                                                    <h3
+                                                        class="text-lg font-DanaDemiBold text-zinc-800 dark:text-white"
+                                                    >
+                                                        {{ $item->product->title }}
+                                                    </h3>
+
+                                                    <div
+                                                        class="mt-4 flex flex-wrap gap-2"
+                                                    >
+                                                        @if ($item->grind)
+                                                            <span
+                                                                class="px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-xs"
+                                                            >
+                                                                آسیاب: {{ $item->grind }}
+                                                            </span>
+
+                                                        @endif
+
+                                                        <span
+                                                            class="px-3 py-1 rounded-full bg-orange-100 text-orange-600 text-xs"
+                                                        >
+                                                            تعداد: {{ $item->qty }}
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="mt-6 flex items-center justify-between"
+                                                >
+                                                    <div>
+                                                        <div
+                                                            class="text-2xl font-black text-orange-500"
+                                                        >
+                                                            {{ number_format($item->price) }}
+                                                        </div>
+
+                                                        <div
+                                                            class="text-xs text-zinc-400"
+                                                        >
+                                                            تومان
+                                                        </div>
+                                                    </div>
+
+                                                    <a
+                                                        href="{{ route('single.product',$item->product->slug) }}"
+                                                        class="w-11 h-11 rounded-2xl bg-orange-500 text-white flex items-center justify-center transition hover:scale-110"
+                                                    >
+                                                        →
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                @endforeach
+                            </div>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="">
+                            <div
+                                class="lg:sticky lg:top-24 rounded-[32px] bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 shadow-sm overflow-hidden"
+                            >
+                                {{-- Header --}}
+                                <div
+                                    class="p-6 border-b border-zinc-100 dark:border-zinc-800"
+                                >
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-12 h-12 rounded-2xl bg-orange-100 dark:bg-orange-500/10 flex items-center justify-center"
+                                        >
+                                            💳
+                                        </div>
+
+                                        <div>
+                                            <h3
+                                                class="font-DanaDemiBold text-zinc-800 dark:text-white"
+                                            >
+                                                خلاصه سفارش
+                                            </h3>
+
+                                            <p
+                                                class="text-xs text-zinc-400"
+                                            >بررسی نهایی قبل از پرداخت</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- Prices --}}
+                                <div class="p-6 space-y-5">
+                                    <div class="flex justify-between">
+                                        <span class="text-zinc-500">
+                                            مبلغ کالاها
+                                        </span>
+
+                                        <span class="font-bold">
+                                            {{ number_format($total_price) }}
+
+                                            تومان
+                                        </span>
+                                    </div>
+
+                                    <div class="flex justify-between">
+                                        <span class="text-zinc-500">
+                                            تخفیف
+                                        </span>
+
+                                        <span class="font-bold text-green-600">
+                                            {{ number_format($discount_price) }}
+
+                                            تومان
+                                        </span>
+                                    </div>
+
+                                    <div class="flex justify-between">
+                                        <span class="text-zinc-500">
+                                            هزینه ارسال
+                                        </span>
+
+                                        <span class="font-bold"> رایگان </span>
+                                    </div>
+
+                                    <div
+                                        class="border-t border-dashed border-zinc-200 dark:border-zinc-700 pt-5"
+                                    >
+                                        <div
+                                            class="flex justify-between items-center"
+                                        >
+                                            <div>
+                                                <p
+                                                    class="text-sm text-zinc-500"
+                                                >قابل پرداخت</p>
+
+                                                <div
+                                                    class="mt-1 text-3xl font-black text-orange-500"
+                                                >
+                                                    {{ number_format($total_price) }}
+                                                </div>
+                                            </div>
+
+                                            <span
+                                                class="px-4 py-2 rounded-full bg-orange-100 text-orange-600 text-sm"
+                                            >
+                                                نهایی
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- Button --}}
+                                <div class="p-6 pt-0">
+                                    <button
+                                        type="submit"
+                                        class="w-full h-14 rounded-2xl bg-orange-500 text-white font-DanaDemiBold transition-all hover:bg-orange-600 hover:shadow-xl hover:shadow-orange-500/30"
+                                    >
+                                        ادامه فرآیند پرداخت
+                                    </button>
+                                </div>
+
+                                {{-- Footer --}}
+                                <div class="px-6 pb-6">
+                                    <div
+                                        class="rounded-2xl bg-zinc-50 dark:bg-zinc-800 p-4"
+                                    >
+                                        <div
+                                            class="flex items-center gap-2 text-sm text-zinc-500"
+                                        >
+                                            🛡️ تضمین اصالت کالا
+                                        </div>
+
+                                        <div
+                                            class="mt-2 flex items-center gap-2 text-sm text-zinc-500"
+                                        >
+                                            🚚 ارسال سریع و مطمئن
+                                        </div>
+
+                                        <div
+                                            class="mt-2 flex items-center gap-2 text-sm text-zinc-500"
+                                        >
+                                            🔒 پرداخت امن
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -410,9 +410,9 @@
 
                                 </div>
                             @endif
-
+                          @if (auth()->user()->is_admin == 1)
                             <div class="relative group">
-                                <a href="#"
+                                <a href="{{route('orders.index')}}" target="__blank"
                                     class="flex items-center gap-x-2 child:text-zinc-600 child:dark:text-white">
                                     <svg class="w-6 h-6">
                                         <use href="#buy-cart"></use>
@@ -423,15 +423,15 @@
                                 </a>
 
                             </div>
-
+                            @endif
                             <div class="relative group">
-                                <a href="#"
+                                <a href="{{route('reports.daily')}}" target="_blank"
                                     class="flex items-center gap-x-2 child:text-zinc-600 child:dark:text-white">
                                     <svg class="w-6 h-6">
                                         <use href="#comments"></use>
                                     </svg>
                                     <span>
-                                        کامنت ها
+                                         گزارش فروش
                                     </span>
                                 </a>
 

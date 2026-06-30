@@ -94,6 +94,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
     )
         ->name('reports.daily');
 
+    
     // comments
     Route::get('users_comments', [CommentController::class, 'userComments'])->name('user.comments');
 });

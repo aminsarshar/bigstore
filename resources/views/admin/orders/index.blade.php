@@ -73,10 +73,6 @@
 
                         <td>
 
-                            <a href="{{ route('orders.show',$order->id) }}"
-                               class="btn btn-info btn-sm">
-                                مشاهده
-                            </a>
 
                             <a href="{{ route('orders.invoice',$order->id) }}"
                                class="btn btn-success btn-sm">

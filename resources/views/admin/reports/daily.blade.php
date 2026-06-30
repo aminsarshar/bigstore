@@ -2,60 +2,6 @@
 
 @section('content')
 
-{{-- <div class="card mb-3">
-
-    <div class="card-header">
-        <h4>فیلتر گزارش</h4>
-    </div>
-
-    <div class="card-body">
-
-        <form action="{{ route('reports.daily') }}" method="GET">
-
-            <div class="row">
-
-                <div class="col-md-4">
-
-                    <label>از تاریخ</label>
-
-                    <input type="text"
-                           class="form-control"
-                           id="from_date"
-                           name="from_date"
-                           value="{{ request('from_date') }}">
-
-                </div>
-
-                <div class="col-md-4">
-
-                    <label>تا تاریخ</label>
-
-                    <input type="text"
-                           class="form-control"
-                           id="to_date"
-                           name="to_date"
-                           value="{{ request('to_date') }}">
-
-                </div>
-
-                <div class="col-md-4">
-
-                    <br>
-
-                    <button class="btn btn-primary">
-                        جستجو
-                    </button>
-
-                </div>
-
-            </div>
-
-        </form>
-
-    </div>
-
-
-</div> --}}
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -397,6 +343,85 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 </div>
 
+<div class="row mt-3">
+
+    <div class="col-md-12">
+
+        <div class="card">
+
+            <div class="card-header">
+                <h4>مقایسه فروش امروز با دیروز</h4>
+            </div>
+
+            <div class="card-body">
+
+                <div class="row text-center">
+
+                    <div class="col-md-4">
+
+                        <h5>فروش امروز</h5>
+
+                        <h3 class="text-success">
+
+                            {{ number_format($totalSales) }}
+
+                        </h3>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <h5>فروش دیروز</h5>
+
+                        <h3 class="text-primary">
+
+                            {{ number_format($yesterdaySales) }}
+
+                        </h3>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <h5>تغییر فروش</h5>
+
+                        @if($difference >= 0)
+
+                            <h3 class="text-success">
+
+                                ▲ {{ number_format($difference) }}
+
+                                <br>
+
+                                {{ $growthPercent }}%
+
+                            </h3>
+
+                        @else
+
+                            <h3 class="text-danger">
+
+                                ▼ {{ number_format(abs($difference)) }}
+
+                                <br>
+
+                                {{ abs($growthPercent) }}%
+
+                            </h3>
+
+                        @endif
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 @endsection
 
@@ -527,5 +552,19 @@ new Chart(bestProductsCtx, {
     }
 
 });
+</script>
+
+<script>
+
+kamaDatepicker('from_date',{
+    buttonsColor: "blue",
+    forceFarsiDigits:true
+});
+
+kamaDatepicker('to_date',{
+    buttonsColor: "blue",
+    forceFarsiDigits:true
+});
+
 </script>
 @endsection

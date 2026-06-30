@@ -7,12 +7,15 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+// use Morilog\Jalali\Jalalian;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ReportController extends Controller
 {
 
     public function daily()
     {
+
         $salesChart = [];
 
         for ($i = 6; $i >= 0; $i--) {
@@ -39,6 +42,22 @@ class ReportController extends Controller
         $totalItems = OrderItem::whereDate('created_at', today())
             ->sum('quantity');
 
+        $yesterdaySales = Order::whereDate(
+            'created_at',
+            today()->subDay()
+        )->sum('total_price');
+
+        $difference = $totalSales - $yesterdaySales;
+
+        $growthPercent = 0;
+
+        if ($yesterdaySales > 0) {
+
+            $growthPercent = round(
+                (($totalSales - $yesterdaySales) / $yesterdaySales) * 100,
+                1
+            );
+        }
         $bestProducts = OrderItem::select(
             'product_id',
             DB::raw('SUM(quantity) as total_quantity'),
@@ -56,9 +75,13 @@ class ReportController extends Controller
             'totalOrders',
             'totalItems',
             'bestProducts',
-            'salesChart'
+            'salesChart',
+            'yesterdaySales',
+            'difference',
+            'growthPercent'
         ));
     }
+
 
 
 }
