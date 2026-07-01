@@ -17,6 +17,7 @@
         "melipayamak/laravel": "1.0.0",
         "morilog/jalali": "^3.5",
         "realrashid/sweet-alert": "^7.2",
+        "shetabit/payment": "^6.4",
         "spatie/laravel-permission": "^6.4",
         "yoeunes/toastr": "^2.3"
     },

@@ -166,7 +166,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
                         </td>
 
                         <td>
-                            {{ $order->customer_name ?: 'مشتری حضوری' }}
+                            {{ $order->customer_name ?: auth()->user()->name }}
                         </td>
 
                         <td>

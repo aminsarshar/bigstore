@@ -81,7 +81,7 @@ class HomeController extends Controller
             ->where('parent_id', 0)
             ->get();
         $carts = Cart::query()->get();
-$products = Product::query()->latest()->get();
+        $products = Product::query()->latest()->get();
         return view('front.shop', compact(
             'categories',
             'carts',

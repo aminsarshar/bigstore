@@ -42,7 +42,7 @@ class CartDetail extends Component
             ->where('color_id', $color_id)
             ->where('guaranty_id', $guaranty_id)
             ->first();
-        if ($cart && $cart->count > 0) {
+        if ($cart && $cart->count > 1) {
             $cart->update([
 
                 'count' => $cart->count - 1,

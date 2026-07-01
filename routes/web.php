@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Home\CartController;
 use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\Home\PaymentController;
 use App\Http\Controllers\Home\ShippingController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -94,7 +95,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
     )
         ->name('reports.daily');
 
-    
+
     // comments
     Route::get('users_comments', [CommentController::class, 'userComments'])->name('user.comments');
 });
@@ -102,6 +103,9 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
 Route::get('/products/{product:slug}', [HomeController::class, 'singleProduct'])->name('single.product');
 Route::get('/cart', [CartController::class, 'cart'])->middleware(['auth'])->name('cart');
 Route::get('/shipping', [ShippingController::class, 'shipping'])->middleware(['auth'])->name('shipping');
+Route::get('/payment', [PaymentController::class, 'payment'])->middleware(['auth'])->name('payment');
+Route::get('/payment/callback', [PaymentController::class, 'callback'])->name('callback');
+// Route::get('/payment/success', [PaymentController::class, 'success'])->name('success');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

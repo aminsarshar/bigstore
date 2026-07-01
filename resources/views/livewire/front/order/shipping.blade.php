@@ -708,14 +708,14 @@
                                 </div>
 
                                 {{-- Button --}}
-                                <div class="p-6 pt-0">
+                                <a href="{{route('payment')}}" class="p-6 pt-0">
                                     <button
                                         type="submit"
                                         class="w-full h-14 rounded-2xl bg-orange-500 text-white font-DanaDemiBold transition-all hover:bg-orange-600 hover:shadow-xl hover:shadow-orange-500/30"
                                     >
                                         ادامه فرآیند پرداخت
                                     </button>
-                                </div>
+                                </a>
 
                                 {{-- Footer --}}
                                 <div class="px-6 pb-6">
