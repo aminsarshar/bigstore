@@ -11,7 +11,7 @@
 
         @include('front.sections.best-selling')
 
-        {{-- @include('front.sections.products') --}}
+        @include('front.sections.products')
 
         {{-- <section class="best-selling my-8 md:my-20 bg-orange-200 p-14 rounded-lg h-[630px]">
             <div class="md:mx-30">

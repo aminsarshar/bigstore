@@ -53,6 +53,7 @@ class PaymentController extends Controller
                 'order_id' => $order->id,
                 'product_id' => $cart->product_id,
                 'price' => $total_price,
+                'quantity' => $cart->count,
 
 
             ]);
@@ -69,24 +70,73 @@ class PaymentController extends Controller
 
 
     public function callback(Request $request)
-{
-    $authority = $request->Authority;
+    {
+        $authority = $request->Authority;
 
-    $order = Order::where('transaction_id', $authority)->first();
+        $order = Order::where('transaction_id', $authority)->first();
 
-    if (!$order) {
-        abort(404);
-    }
+        if (!$order) {
+            abort(404);
+        }
 
-    $categories = Category::with('Categorychild')
-        ->where('parent_id', 0)
-        ->get();
+        $categories = Category::with('Categorychild')
+            ->where('parent_id', 0)
+            ->get();
 
-    $carts = Cart::all();
+        $carts = Cart::all();
 
-    if ($request->Status != "OK") {
+        if ($request->Status != "OK") {
 
-        $result = "failed";
+            $result = "failed";
+
+            return view('front.shipping.shipping_result', compact(
+                'result',
+                'order',
+                'categories',
+                'carts'
+            ));
+        }
+
+        DB::beginTransaction();
+
+        try {
+
+            $order->update([
+                'status' => 1,
+            ]);
+
+            $orderItems = OrderItem::where('order_id', $order->id)->get();
+
+            foreach ($orderItems as $item) {
+
+                $product = ProductGuaranty::where([
+                    'product_id'  => $item->product_id,
+                    'color_id'    => $item->color_id,
+                    'guaranty_id' => $item->guaranty_id,
+                ])->first();
+
+                if (!$product) {
+                    continue;
+                }
+
+                $product->decrement('count', $item->count);
+            }
+
+            Cart::where('type', 'main')
+                ->where('user_id', $order->user_id)
+                ->delete();
+
+            DB::commit();
+
+            $result = "successful";
+        } catch (\Exception $e) {
+
+            DB::rollBack();
+
+            report($e);
+
+            $result = "failed";
+        }
 
         return view('front.shipping.shipping_result', compact(
             'result',
@@ -95,56 +145,6 @@ class PaymentController extends Controller
             'carts'
         ));
     }
-
-    DB::beginTransaction();
-
-    try {
-
-        $order->update([
-            'status' => 1,
-        ]);
-
-        $orderItems = OrderItem::where('order_id', $order->id)->get();
-
-        foreach ($orderItems as $item) {
-
-            $product = ProductGuaranty::where([
-                'product_id'  => $item->product_id,
-                'color_id'    => $item->color_id,
-                'guaranty_id' => $item->guaranty_id,
-            ])->first();
-
-            if (!$product) {
-                continue;
-            }
-
-            $product->decrement('count', $item->count);
-        }
-
-        Cart::where('type', 'main')
-            ->where('user_id', $order->user_id)
-            ->delete();
-
-        DB::commit();
-
-        $result = "successful";
-
-    } catch (\Exception $e) {
-
-        DB::rollBack();
-
-        report($e);
-
-        $result = "failed";
-    }
-
-    return view('front.shipping.shipping_result', compact(
-        'result',
-        'order',
-        'categories',
-        'carts'
-    ));
-}
 
     public function success()
     {

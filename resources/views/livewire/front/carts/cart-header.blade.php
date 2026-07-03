@@ -3,7 +3,7 @@
     <!-- Cart Header-->
     @auth
         <div class="flex items-center justify-between tracking-tighter font-DanaMedium text-xs">
-            <span class="text-gray-300">1 مورد</span>
+            <span class="text-gray-300">{{ $carts->sum('count') }} مورد</span>
             <a href="{{ route('cart') }}" class="flex items-center text-orange-300">
                 مشاهده سبد خرید
                 <svg class="w-4 h-4">

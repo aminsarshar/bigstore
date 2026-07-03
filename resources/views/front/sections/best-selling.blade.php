@@ -1,6 +1,5 @@
-<section class="best-selling  mt-8 md:mt-20">
+<section class="best-selling mt-8 md:mt-20">
     <div class="container">
-
         <!-- Header -->
         <div class="flex justify-between items-end mb-5 md:mb-12">
             <div>
@@ -26,11 +25,13 @@
         <!-- دکمه دسته ها -->
         <div class="flex flex-wrap gap-2 mb-8">
             @foreach ($categories as $category)
-                <button data-category="{{ $category->id }}"
+                <button
+                    data-category="{{ $category->id }}"
                     class="category-btn px-4 py-2 rounded-lg transition
                 {{ $loop->first
                     ? 'bg-orange-300 text-white shadow-md'
-                    : 'bg-zinc-100 dark:bg-zinc-700 text-zinc-700 dark:text-white' }}">
+                    : 'bg-zinc-100 dark:bg-zinc-700 text-zinc-700 dark:text-white' }}"
+                >
                     {{ $category->name }}
                 </button>
             @endforeach
@@ -38,68 +39,71 @@
 
         <!-- اسلایدر هر دسته -->
         @foreach ($categories as $category)
-            <div id="category-{{ $category->id }}" class="category-slider {{ !$loop->first ? 'hidden' : '' }}">
-
+            <div
+                id="category-{{ $category->id }}"
+                class="category-slider {{ !$loop->first ? 'hidden' : '' }}"
+            >
                 <div class="swiper categorySwiper">
-
                     <div class="swiper-wrapper">
-
                         @foreach ($category->Categorychild as $child)
                             @foreach ($child->products as $product)
                                 <div class="swiper-slide rounded-2xl">
                                     <div
-                                        class="group bg-white dark:bg-zinc-700 rounded-[30px] overflow-hidden shadow-sm hover:shadow-xl transition">
-
+                                        class="group bg-white dark:bg-zinc-700 rounded-[30px] overflow-hidden shadow-sm hover:shadow-xl transition"
+                                    >
                                         <div class="overflow-hidden h-64">
-
-                                            <img src="{{ asset('admin/images/products/' . $product->image) }}"
-                                            loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-
+                                            <img
+                                                src="{{ asset('admin/images/products/' . $product->image) }}"
+                                                loading="lazy"
+                                                class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                                            />
                                         </div>
 
                                         <div class="p-5">
-
-                                            <h3 class="font-DanaDemiBold line-clamp-2 min-h-[56px]">
-
+                                            <h3
+                                                class="font-DanaDemiBold line-clamp-2 min-h-[56px]"
+                                            >
                                                 {{ $product->title }}
-
                                             </h3>
 
-                                            <div class="mt-4 flex justify-between items-center">
-
-                                                <span class="text-orange-500 font-DanaDemiBold">
-
+                                            <div
+                                                class="mt-4 flex justify-between items-center"
+                                            >
+                                                <span
+                                                    class="text-orange-500 font-DanaDemiBold"
+                                                >
                                                     {{ number_format($product->price) }}
                                                 </span>
 
-                                                <span class="text-sm text-gray-400">
-
+                                                <span
+                                                    class="text-sm text-gray-400"
+                                                >
                                                     تومان
                                                 </span>
-
                                             </div>
 
-                                            <a href="{{ route('single.product', $product->slug) }}"
-                                                class="mt-5 flex justify-center items-center h-11 rounded-xl bg-orange-400 text-white hover:bg-orange-500">
+                                            <div class="mt-5 flex items-center gap-3">
 
-                                                مشاهده محصول
+    {{-- مشاهده محصول --}}
+    <a href="{{ route('single.product', $product->slug) }}"
+       class="flex-1 h-11 rounded-xl border border-orange-400 text-orange-500 hover:bg-orange-50 transition flex items-center justify-center font-DanaMedium">
 
-                                            </a>
+        مشاهده محصول
 
+    </a>
+
+    {{-- افزودن به سبد خرید --}}
+    @livewire('front.add-to-cart-button', ['product' => $product], key('cart-'.$product->id))
+
+</div>
                                         </div>
-
                                     </div>
-
                                 </div>
                             @endforeach
                         @endforeach
-
                     </div>
-
                 </div>
-
             </div>
         @endforeach
-
     </div>
 </section>

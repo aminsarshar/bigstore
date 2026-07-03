@@ -9,6 +9,10 @@ use App\Models\ProductGuaranty;
 
 class CartHeader extends Component
 {
+protected $listeners = [
+    'refreshCartHeader' => '$refresh',
+];
+
     public function deleteCart($cart_id)
     {
 
