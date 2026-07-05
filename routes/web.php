@@ -19,8 +19,8 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Home\CartController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\PaymentController;
+use App\Http\Controllers\Home\ProfileController;
 use App\Http\Controllers\Home\ShippingController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,8 +43,7 @@ Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('home.cont
 Route::get('/blogs', [HomeController::class, 'blogs'])->name('home.blogs');
 Route::get('/shop', [HomeController::class, 'shop'])->name('home.shop');
 
-
-Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () {
+Route::prefix('dashboard')->middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
     // Users Route
     Route::resource('users', UserController::class);
@@ -74,12 +73,6 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
 
     Route::resource('property_groups', PropertyGroupController::class);
     Route::resource('sliders', SliderController::class);
-
-    // Orders
-    // Route::get('/orders/index', [OrderController::class, 'index']);
-    // Route::get('/orders/create', [OrderController::class, 'create']);
-    // Route::post('/orders/store', [OrderController::class, 'store'])
-    //     ->name('orders.store');
     Route::resource('orders', OrderController::class);
 
 
@@ -94,6 +87,12 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
         [ReportController::class, 'daily']
     )
         ->name('reports.daily');
+    // Orders
+    // Route::get('/orders/index', [OrderController::class, 'index']);
+    // Route::get('/orders/create', [OrderController::class, 'create']);
+    // Route::post('/orders/store', [OrderController::class, 'store'])
+    //     ->name('orders.store');
+
 
 
     // comments
@@ -107,10 +106,20 @@ Route::get('/payment', [PaymentController::class, 'payment'])->middleware(['auth
 Route::get('/payment/callback', [PaymentController::class, 'callback'])->name('callback');
 // Route::get('/payment/success', [PaymentController::class, 'success'])->name('success');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::middleware(['auth'])->prefix('profile')->group(function () {
+
+    Route::get('/', [ProfileController::class, 'index'])->name('profile');
+
+    Route::get('/orders', [ProfileController::class, 'orders'])->name('profile.orders');
+
+    Route::get('/addresses', [ProfileController::class, 'addresses'])->name('profile.addresses');
+
+    Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+
+    Route::post('/update', [ProfileController::class, 'update'])->name('profile.update');
+    
+    Route::get('/orders/{order}', [ProfileController::class, 'showOrder'])
+        ->name('profile.order.show');
 });
 
 
