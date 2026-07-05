@@ -1,7 +1,8 @@
 @extends('front.layouts.home')
 @section('content')
 @if ($result === 'successful')
-<div class="container mx-auto px-4 py-16">
+
+<div class="container mx-auto px-4 py-16 my-28">
 
     <div class="mx-auto max-w-2xl">
 
@@ -91,7 +92,7 @@
 
                 </a>
 
-                <a href=""
+                <a href="{{route('home.shop')}}"
                    class="rounded-2xl border border-zinc-300 dark:border-zinc-700 px-8 py-3 text-zinc-700 dark:text-zinc-300 transition hover:bg-zinc-100 dark:hover:bg-zinc-800">
 
                     بازگشت به فروشگاه
@@ -106,7 +107,7 @@
 
 </div>
 @else
-<div class="container mx-auto px-4 py-16">
+<div class="container mx-auto px-4 py-16 my-28">
 
     <div class="mx-auto max-w-2xl">
 

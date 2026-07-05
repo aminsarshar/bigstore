@@ -3,14 +3,15 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Support\Facades\Hash;
-use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Intervention\Image\Facades\Image;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Intervention\Image\Facades\Image;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
@@ -50,31 +51,15 @@ class User extends Authenticatable
     }
 
 
-    // public static function saveImage($image){
-    //     if($image){
-    //         $name = $image->hashName();
-    //         $smallImage = Image::make($image->getRealPath());
-    //         $bigImage = Image::make($image->getRealPath());
-    //         $smallImage->resize(256,256, function ($constraint){
-    //             $constraint->aspectRatio();
-    //         });
+public function orders()
+{
+    return $this->hasMany(Order::class);
+}
 
-    //         Storage::disk('local')->put('users/small/'.$name, (string) $smallImage->encode('png',90));
-    //         Storage::disk('local')->put('users/big/'.$name, (string) $bigImage->encode('png',90));
-    //         return $name;
-    //     }else{
-    //         return "";
-    //     }
-    //  }
+public function carts()
+{
+    return $this->hasMany(Cart::class);
+}
 
-    //  public static function createUser($request)
-    //  {
-    //      User::query()->create([
-    //          'name'=>$request->input('name'),
-    //          'email'=>$request->input('email'),
-    //          'mobile'=>$request->input('mobile'),
-    //          'password'=> Hash::make($request->input('password')) ,
-    //          'image'=>self::saveImage($request->image),
-    //      ]);
-    //  }
+
 }
