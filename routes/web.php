@@ -114,10 +114,11 @@ Route::middleware(['auth'])->prefix('profile')->group(function () {
 
     Route::get('/addresses', [ProfileController::class, 'addresses'])->name('profile.addresses');
 
-    Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/edit', [ProfileController::class, 'edit'])
+        ->name('profile.edit');
 
     Route::post('/update', [ProfileController::class, 'update'])->name('profile.update');
-    
+
     Route::get('/orders/{order}', [ProfileController::class, 'showOrder'])
         ->name('profile.order.show');
 });

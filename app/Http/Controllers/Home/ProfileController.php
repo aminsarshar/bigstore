@@ -62,6 +62,21 @@ class ProfileController extends Controller
             ->latest()
             ->get();
 
-        return view('front.profile.addresses', compact('addresses' , 'categories', 'carts'));
+        return view('front.profile.addresses', compact('addresses', 'categories', 'carts'));
+    }
+
+    public function edit()
+    {
+        $categories = Category::query()
+            ->with('Categorychild')
+            ->where('parent_id', 0)
+            ->get();
+
+        $carts = Cart::query()->get();
+        $addresses = auth()->user()
+            ->addresses()
+            ->latest()
+            ->get();
+        return view('front.profile.edit' , compact('categories', 'carts'));
     }
 }
