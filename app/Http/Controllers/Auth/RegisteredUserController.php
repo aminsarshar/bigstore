@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
-use Illuminate\View\View;
-use Illuminate\Http\Request;
-use App\Models\VerificationCode;
-use Illuminate\Validation\Rules;
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
+use App\Models\Category;
+use App\Models\User;
+use App\Models\VerificationCode;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Auth\Events\Registered;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\Rules;
+use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
@@ -22,7 +24,13 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $categories = Category::query()
+            ->with('Categorychild')
+            ->where('parent_id', 0)
+            ->get();
+        $carts = Cart::query()->get();
+
+        return view('auth.register' , compact('carts' , 'categories'));
     }
 
     /**
@@ -38,9 +46,9 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        Session::put('name' , $request->name);
-        Session::put('mobile' , $request->mobile);
-        Session::put('password' , $request->password);
+        Session::put('name', $request->name);
+        Session::put('mobile', $request->mobile);
+        Session::put('password', $request->password);
 
         $user = User::create([
             'name' => $request->name,
@@ -65,7 +73,7 @@ class RegisteredUserController extends Controller
 
 
 
-        toastr()->success('کاربر با موفقیت ثبت نام شد!', 'موفق', ['timeOut' => 5000 , 'positionClass' => 'toast-top-center']);
+        toastr()->success('کاربر با موفقیت ثبت نام شد!', 'موفق', ['timeOut' => 5000, 'positionClass' => 'toast-top-center']);
         return redirect(route('home.index'));
     }
 }
