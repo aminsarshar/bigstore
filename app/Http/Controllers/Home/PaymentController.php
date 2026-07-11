@@ -8,6 +8,7 @@ use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Product;
 use App\Models\ProductGuaranty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -120,6 +121,10 @@ class PaymentController extends Controller
                 }
 
                 $product->decrement('count', $item->count);
+
+
+                Product::where('id', $item->product_id)
+                    ->increment('sold', $item->quantity);
             }
 
             Cart::where('type', 'main')

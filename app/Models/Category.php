@@ -79,5 +79,20 @@ class Category extends Model
         });
     }
 
+public function getChildrenIds()
+{
+    $ids = [$this->id];
+
+    foreach ($this->childCategory as $child) {
+
+        $ids = array_merge($ids, $child->getChildrenIds());
+
+    }
+
+    return $ids;
+}
+
+
+
 
 }

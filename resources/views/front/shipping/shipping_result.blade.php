@@ -85,7 +85,7 @@
 
             <div class="flex flex-wrap justify-center gap-4 p-8 border-t border-zinc-100 dark:border-zinc-800">
 
-                <a href=""
+                <a href="{{route('profile.orders')}}"
                    class="rounded-2xl bg-emerald-600 px-8 py-3 text-white transition hover:bg-emerald-700">
 
                     مشاهده سفارش

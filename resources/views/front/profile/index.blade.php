@@ -103,57 +103,93 @@
 
                         </thead>
 
-                        <tbody>
+<tbody>
 
-                        @foreach(auth()->user()->orders()->latest()->take(5)->get() as $order)
+    @forelse(auth()->user()->orders()->latest()->take(5)->get() as $order)
 
-                            <tr class="border-b">
+        <tr class="border-b last:border-b-0">
 
-                                <td class="p-4">
+            <td class="p-4">
+                #{{ $order->order_code }}
+            </td>
 
-                                    #{{ $order->order_code }}
+            <td class="p-4">
+                {{ number_format($order->total_price) }}
+            </td>
 
-                                </td>
+            <td class="p-4">
 
-                                <td>
+                @if($order->status)
 
-                                    {{ number_format($order->total_price) }}
+                    <span class="bg-green-100 text-green-600 rounded-full px-3 py-1 text-sm">
+                        پرداخت شده
+                    </span>
 
-                                </td>
+                @else
 
-                                <td>
+                    <span class="bg-red-100 text-red-600 rounded-full px-3 py-1 text-sm">
+                        ناموفق
+                    </span>
 
-                                    @if($order->status)
+                @endif
 
-                                        <span class="bg-green-100 text-green-600 rounded-full px-3 py-1">
+            </td>
 
-                                            پرداخت شده
+            <td class="p-4">
+                {{ verta($order->created_at)->format('Y/m/d') }}
+            </td>
 
-                                        </span>
+        </tr>
 
-                                    @else
+    @empty
 
-                                        <span class="bg-red-100 text-red-600 rounded-full px-3 py-1">
+        <tr>
 
-                                            ناموفق
+            <td colspan="4" class="py-16">
 
-                                        </span>
+                <div class="flex flex-col items-center justify-center text-center">
 
-                                    @endif
+                    <div class="w-20 h-20 rounded-full bg-orange-100 flex items-center justify-center mb-5">
 
-                                </td>
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             class="w-10 h-10 text-orange-500"
+                             fill="none"
+                             viewBox="0 0 24 24"
+                             stroke="currentColor">
 
-                                <td>
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="1.8"
+                                  d="M3 7h18M6 7V5a2 2 0 012-2h8a2 2 0 012 2v2m-1 0v12a2 2 0 01-2 2H8a2 2 0 01-2-2V7"/>
 
-                                    {{ verta($order->created_at)->format('Y/m/d') }}
+                        </svg>
 
-                                </td>
+                    </div>
 
-                            </tr>
+                    <h4 class="font-DanaDemiBold text-xl text-zinc-700">
+                        هنوز سفارشی ثبت نکرده‌اید
+                    </h4>
 
-                        @endforeach
+                    <p class="text-gray-400 mt-2">
+                        پس از ثبت اولین سفارش، اطلاعات آن در این قسمت نمایش داده می‌شود.
+                    </p>
 
-                        </tbody>
+                    <a href="{{ route('home.shop') }}"
+                       class="mt-6 inline-flex items-center justify-center h-11 px-6 rounded-xl bg-orange-500 text-white hover:bg-orange-600 transition">
+
+                        شروع خرید
+
+                    </a>
+
+                </div>
+
+            </td>
+
+        </tr>
+
+    @endforelse
+
+</tbody>
 
                     </table>
 

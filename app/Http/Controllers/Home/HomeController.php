@@ -89,4 +89,21 @@ class HomeController extends Controller
             'products',
         ));
     }
+
+        public function categories()
+    {
+
+        $categories = Category::query()
+            ->with('Categorychild')
+            ->where('parent_id', 0)
+            ->get();
+        $carts = Cart::query()->get();
+        $products = Product::query()->latest()->get();
+        return view('front.sections.categories.index', compact(
+            'categories',
+            'carts',
+            'products',
+        ));
+    }
+
 }

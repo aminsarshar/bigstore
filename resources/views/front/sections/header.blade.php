@@ -550,16 +550,19 @@
 
                         @foreach ($categories as $category)
                             <details class="category-item hidden">
-                                <summary
-                                    class="block py-2 text-orange-500 cursor-pointer list-none"
-                                >
-                                    {{ $category->name }}
-                                </summary>
-
+                                {{-- <a
+                                    href="{{ route('category.show',$category->slug) }}"
+                                > --}}
+                                    <summary
+                                        class="block py-2 text-orange-500 cursor-pointer list-none"
+                                    >
+                                  <a href="{{ route('category.show',$category->slug) }}"> {{ $category->name }}</a>
+                                    </summary>
+                                {{-- </a> --}}
                                 <div class="submenu pr-4">
                                     @foreach ($category->Categorychild as $categorychild)
                                         <a
-                                            href="#"
+                                            href="{{ route('category.show',$categorychild->slug) }}"
                                             class="block py-1"
                                             style="color: #fb923c !important"
                                         >
@@ -582,12 +585,14 @@
                 <div class="flex items-center gap-x-4 lg:gap-x-5">
                     <!-- Cart   -->
                     <div class="relative group">
-                        <div class="py-3 cursor-pointer">
-                            <!-- Cart Icon Hover-->
-                            <svg class="w-8 h-8 cursor-pointer">
-                                <use href="#shopping-cart"></use>
-                            </svg>
-                        </div>
+                        <a href="{{route('cart')}}">
+                            <div class="py-3 cursor-pointer">
+                                <!-- Cart Icon Hover-->
+                                <svg class="w-8 h-8 cursor-pointer">
+                                    <use href="#shopping-cart"></use>
+                                </svg>
+                            </div>
+                        </a>
                         <livewire:front.carts.cart-header :carts="$carts" />
                     </div>
 
@@ -827,9 +832,10 @@
                                 <summary
                                     class="flex items-center justify-between cursor-pointer list-none px-3 py-2"
                                 >
-                                    <span class="text-sm">
-                                        {{ $category->name }}
-                                    </span>
+                                <a href="{{ route('category.show',$category->slug) }}">{{ $category->name }}</a>
+                                    {{-- <span class="text-sm">
+
+                                    </span> --}}
 
                                     <svg class="w-4 h-4 transition-transform duration-300 group-open:rotate-180">
                                         <use href="#chevron-down"></use>

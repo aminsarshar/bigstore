@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Home\CartController;
+use App\Http\Controllers\Home\CateController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\PaymentController;
 use App\Http\Controllers\Home\ProfileController;
@@ -105,6 +106,10 @@ Route::get('/shipping', [ShippingController::class, 'shipping'])->middleware(['a
 Route::get('/payment', [PaymentController::class, 'payment'])->middleware(['auth'])->name('payment');
 Route::get('/payment/callback', [PaymentController::class, 'callback'])->name('callback');
 // Route::get('/payment/success', [PaymentController::class, 'success'])->name('success');
+
+// Route::get('/categories', [HomeController::class, 'categories'])->name('categories');
+Route::get('/category/{slug}', [CateController::class, 'show'])
+    ->name('category.show');
 
 Route::middleware(['auth'])->prefix('profile')->group(function () {
 

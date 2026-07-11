@@ -30,6 +30,7 @@
                             <div class="flex gap-x-2.5">
                                 @if ($cart->product)
                                     <img
+                                    class="w-25"س
                                         src="{{ asset('admin/images/products/'.$cart->product->image) }}"
                                     />
                                 @endif
