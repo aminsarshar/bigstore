@@ -1,5 +1,5 @@
-@extends('front.layouts.home')
-@section('script')
+@extends ('front.layouts.home')
+@section ('script')
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const btn = document.getElementById("toggleBtn");
@@ -114,7 +114,7 @@
         });
     </script>
 @endsection
-@section('content')
+@section ('content')
     <main>
         <div class="md:mx-20">
             <livewire:front.order.shipping :carts="$carts" />

@@ -11,13 +11,7 @@
                         >
                             فروش ویژه
                         </div>
-                        {{-- <div class="countdown-timer mt-3 text-black dark:text-white" countdown wire:ignore
-                            data-date="{{ $product_guaranty->special_expiration }}">
-                            <span data-days>0</span>:
-                            <span data-hours>0</span>:
-                            <span data-minutes>0</span>:
-                            <span data-seconds>0</span>
-                        </div> --}}
+
                     </div>
                 @endif
 
@@ -305,25 +299,7 @@
                 </div>
 
                 <hr />
-                {{-- <div class="flex justify-center flex-wrap md:justify-between text-gray-700 py-3 hidden">
-                    <div>
-                        <span class="block text-sm">نوع آسیاب</span>
-                        <select
-                            class="rounded-md w-40 border border-orange-200 dark:border-gray-600 focus:outline-none bg-white dark:bg-zinc-600 dark:text-white"
-                            name="" id="">
-                            <option>انتخاب کنید</option>
-                            <option value="">ریز</option>
-                            <option value="">درشت</option>
-                        </select>
-                    </div>
-                    <div>
-                        <span class="block text-sm">تعداد</span>
-                        <input type="number"
-                            class="rounded-md w-40 border border-orange-200 dark:border-gray-600 focus:outline-none bg-white dark:bg-zinc-600 dark:text-white"
-                            name="" id="" value="1" />
-                        <!-- </input> -->
-                    </div>
-                </div> --}}
+
                 <div class="flex items-center justify-between mt-6">
                     <span class="text-sm text-zinc-500"> تعداد </span>
 
@@ -338,7 +314,9 @@
                             -
                         </button>
 
-                        <span class="w-14 text-center font-black text-lg text-black">
+                        <span
+                            class="w-14 text-center font-black text-lg text-black"
+                        >
                             {{ $count }}
                         </span>
 

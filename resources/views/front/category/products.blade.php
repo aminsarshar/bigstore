@@ -29,88 +29,68 @@
         </nav>
 
         {{-- Header --}}
-<div class="bg-white rounded-[32px] shadow-sm border border-zinc-100 p-8 mb-8">
+        <div
+            class="bg-white rounded-[32px] shadow-sm border border-zinc-100 p-8 mb-8"
+        >
+            <div
+                class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6"
+            >
+                <div>
+                    <div
+                        class="flex items-center gap-2 text-sm text-zinc-400 mb-3"
+                    >
+                        <a
+                            href="{{ route('home.index') }}"
+                            class="hover:text-orange-500"
+                        >
+                            خانه
+                        </a>
 
-    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                        <span>/</span>
 
-        <div>
+                        <span class="text-zinc-600">
+                            {{ $category->name }}
+                        </span>
+                    </div>
 
-            <div class="flex items-center gap-2 text-sm text-zinc-400 mb-3">
-
-                <a href="{{ route('home.index') }}" class="hover:text-orange-500">
-                    خانه
-                </a>
-
-                <span>/</span>
-
-                <span class="text-zinc-600">
-                    {{ $category->name }}
-                </span>
-
-            </div>
-
-            <h1 class="text-3xl font-DanaDemiBold text-zinc-800">
-
-                {{ $category->name }}
-
-            </h1>
-
-            @if($category->description)
-
-                <p class="mt-3 text-zinc-400 leading-8">
-
-                    {{ $category->description }}
-
-                </p>
-
-            @else
-
-                <p class="mt-3 text-zinc-400">
-
-                    مشاهده و خرید انواع
-                    <span class="font-DanaMedium">
+                    <h1 class="text-3xl font-DanaDemiBold text-zinc-800">
                         {{ $category->name }}
-                    </span>
-                    با بهترین قیمت و ضمانت اصالت کالا.
+                    </h1>
 
-                </p>
+                    @if ($category->description)
+                        <p class="mt-3 text-zinc-400 leading-8">
+                            {{ $category->description }}
+                        </p>
 
-            @endif
+                    @else
+                        <p class="mt-3 text-zinc-400">مشاهده و خرید انواع
+                        <span class="font-DanaMedium"> {{ $category->name }} </span>
+                        با بهترین قیمت و ضمانت اصالت کالا.</p>
 
+                    @endif
+                </div>
+
+                <div class="flex flex-wrap items-center gap-3">
+                    <div
+                        class="rounded-2xl bg-orange-50 text-orange-600 px-5 py-3 font-DanaMedium"
+                    >
+                        {{ $products->total() }} محصول
+                    </div>
+
+                    <div
+                        class="rounded-2xl bg-zinc-100 text-zinc-700 px-5 py-3"
+                    >
+                        صفحه {{ $products->currentPage() }} از {{ $products->lastPage() }}
+                    </div>
+
+                    <div
+                        class="rounded-2xl bg-emerald-50 text-emerald-600 px-5 py-3"
+                    >
+                        نمایش {{ $products->firstItem() ?? 0 }} - {{ $products->lastItem() ?? 0 }}
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="flex flex-wrap items-center gap-3">
-
-            <div class="rounded-2xl bg-orange-50 text-orange-600 px-5 py-3 font-DanaMedium">
-
-                {{ $products->total() }}
-                محصول
-
-            </div>
-
-            <div class="rounded-2xl bg-zinc-100 text-zinc-700 px-5 py-3">
-
-                صفحه
-                {{ $products->currentPage() }}
-                از
-                {{ $products->lastPage() }}
-
-            </div>
-
-            <div class="rounded-2xl bg-emerald-50 text-emerald-600 px-5 py-3">
-
-                نمایش
-                {{ $products->firstItem() ?? 0 }}
-                -
-                {{ $products->lastItem() ?? 0 }}
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
 
         {{-- Toolbar --}}
         <div
@@ -394,11 +374,7 @@
 
             {{-- Products --}}
 
-
-                    <livewire:front.category.products-list
-                        :category="$category"
-                    />
-
+            <livewire:front.category.products-list :category="$category" />
         </div>
     </div>
 

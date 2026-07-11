@@ -1,31 +1,20 @@
-@extends('front.layouts.home')
+@extends ('front.layouts.home')
 
-@section('content')
+@section ('content')
+    <main class="mt-40 mb-20">
+        <div class="container">
+            <div class="grid lg:grid-cols-4 gap-8">
+                {{-- Sidebar --}}
+                <div>
+                    @include ('front.profile.partials.sidebar')
+                </div>
 
-<main class="mt-40 mb-20">
-
-    <div class="container">
-
-        <div class="grid lg:grid-cols-4 gap-8">
-
-            {{-- Sidebar --}}
-            <div>
-
-                @include('front.profile.partials.sidebar')
-
+                {{-- Content --}}
+                <div class="lg:col-span-3">
+                    @yield ('profile-content')
+                </div>
             </div>
-
-            {{-- Content --}}
-            <div class="lg:col-span-3">
-
-                @yield('profile-content')
-
-            </div>
-
         </div>
-
-    </div>
-
-</main>
+    </main>
 
 @endsection

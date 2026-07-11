@@ -1,56 +1,55 @@
 <section class="col-span-12 lg:col-span-9">
-    <div class="flex items-center gap-3 mb-8" style="align-items: baseline;justify-content: space-between;">
+    <div
+        class="flex items-center gap-3 mb-8"
+        style="align-items: baseline; justify-content: space-between"
+    >
         <div>
-                <button
+            <button
                 wire:click="$set('sort','latest')"
-                class="{{ $sort=='latest' ? 'bg-orange-500 text-white' : 'bg-white' }} px-5 h-11 rounded-xl border">
-
+                class="{{ $sort=='latest' ? 'bg-orange-500 text-white' : 'bg-white' }} px-5 h-11 rounded-xl border"
+            >
                 جدیدترین
-
             </button>
 
             <button
                 wire:click="$set('sort','cheap')"
-                class="{{ $sort=='cheap' ? 'bg-orange-500 text-white' : 'bg-white' }} px-5 h-11 rounded-xl border">
-
+                class="{{ $sort=='cheap' ? 'bg-orange-500 text-white' : 'bg-white' }} px-5 h-11 rounded-xl border"
+            >
                 ارزان‌ترین
-
             </button>
 
             <button
                 wire:click="$set('sort','expensive')"
-                class="{{ $sort=='expensive' ? 'bg-orange-500 text-white' : 'bg-white' }} px-5 h-11 rounded-xl border">
-
+                class="{{ $sort=='expensive' ? 'bg-orange-500 text-white' : 'bg-white' }} px-5 h-11 rounded-xl border"
+            >
                 گران‌ترین
-
             </button>
         </div>
         {{ $products->links('pagination::tailwind') }}
+    </div>
+    <div class="relative w-[100%] mb-10">
+        <input
+            wire:model.live.debounce.500ms="search"
+            type="text"
+            placeholder="جستجوی محصول..."
+            class="w-full h-12 rounded-2xl border border-zinc-200 pr-12 pl-4 focus:border-orange-500 focus:ring-4 focus:ring-orange-100"
+        />
 
-
-</div>
-<div class="relative w-[100%] mb-10">
-
-    <input
-        wire:model.live.debounce.500ms="search"
-        type="text"
-        placeholder="جستجوی محصول..."
-        class="w-full h-12 rounded-2xl border border-zinc-200 pr-12 pl-4 focus:border-orange-500 focus:ring-4 focus:ring-orange-100">
-
-    <svg xmlns="http://www.w3.org/2000/svg"
-         class="w-5 h-5 absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"
-         fill="none"
-         viewBox="0 0 24 24"
-         stroke="currentColor">
-
-        <path stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M21 21l-4.35-4.35m1.35-5.65a7 7 0 11-14 0 7 7 0 0114 0z"/>
-
-    </svg>
-
-</div>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 h-5 absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-4.35-4.35m1.35-5.65a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+        </svg>
+    </div>
     <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         @foreach ($products as $product)
             <div
@@ -113,13 +112,8 @@
                         {{ $product->title }}
                     </h3>
 
-  
-
-
                     {{-- Price --}}
                     <div class="mt-6">
-
-
                         <div class="flex items-center justify-between mt-2">
                             <div>
                                 <span
@@ -139,5 +133,4 @@
 
         @endforeach
     </div>
-
 </section>

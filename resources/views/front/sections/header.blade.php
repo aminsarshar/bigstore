@@ -553,11 +553,15 @@
                                 {{-- <a
                                     href="{{ route('category.show',$category->slug) }}"
                                 > --}}
-                                    <summary
-                                        class="block py-2 text-orange-500 cursor-pointer list-none"
+                                <summary
+                                    class="block py-2 text-orange-500 cursor-pointer list-none"
+                                >
+                                    <a
+                                        href="{{ route('category.show',$category->slug) }}"
                                     >
-                                  <a href="{{ route('category.show',$category->slug) }}"> {{ $category->name }}</a>
-                                    </summary>
+                                        {{ $category->name }}</a
+                                    >
+                                </summary>
                                 {{-- </a> --}}
                                 <div class="submenu pr-4">
                                     @foreach ($category->Categorychild as $categorychild)
@@ -832,10 +836,11 @@
                                 <summary
                                     class="flex items-center justify-between cursor-pointer list-none px-3 py-2"
                                 >
-                                <a href="{{ route('category.show',$category->slug) }}">{{ $category->name }}</a>
-                                    {{-- <span class="text-sm">
+                                    <a
+                                        href="{{ route('category.show',$category->slug) }}"
+                                        >{{ $category->name }}</a
+                                    >
 
-                                    </span> --}}
 
                                     <svg class="w-4 h-4 transition-transform duration-300 group-open:rotate-180">
                                         <use href="#chevron-down"></use>

@@ -1,4 +1,4 @@
-@extends('front.layouts.home')
+@extends ('front.layouts.home')
 
 @section ('content')
     <main class="my-60">

@@ -82,20 +82,20 @@
                                                 </span>
                                             </div>
 
-                                            <div class="mt-5 flex items-center gap-3">
+                                            <div
+                                                class="mt-5 flex items-center gap-3"
+                                            >
+                                                {{-- مشاهده محصول --}}
+                                                <a
+                                                    href="{{ route('single.product', $product->slug) }}"
+                                                    class="flex-1 h-11 rounded-xl border border-orange-400 text-orange-500 hover:bg-orange-50 transition flex items-center justify-center font-DanaMedium"
+                                                >
+                                                    مشاهده محصول
+                                                </a>
 
-    {{-- مشاهده محصول --}}
-    <a href="{{ route('single.product', $product->slug) }}"
-       class="flex-1 h-11 rounded-xl border border-orange-400 text-orange-500 hover:bg-orange-50 transition flex items-center justify-center font-DanaMedium">
-
-        مشاهده محصول
-
-    </a>
-
-    {{-- افزودن به سبد خرید --}}
-    @livewire('front.add-to-cart-button', ['product' => $product], key('cart-'.$product->id))
-
-</div>
+                                                {{-- افزودن به سبد خرید --}}
+                                                @livewire ('front.add-to-cart-button', ['product' => $product], key('cart-'.$product->id))
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
