@@ -585,31 +585,43 @@
                 class="flex gap-x-4 lg:gap-x-5 xl:gap-x-10 text-orange-200 text-xl"
                 id="head-sec"
             >
-                <!-- Cart Icon & Theme Swich -->
-                <div class="flex items-center gap-x-4 lg:gap-x-5">
-                    <!-- Cart   -->
-                    <div class="relative group">
-                        <a href="{{route('cart')}}">
-                            <div class="py-3 cursor-pointer">
-                                <!-- Cart Icon Hover-->
-                                <svg class="w-8 h-8 cursor-pointer">
-                                    <use href="#shopping-cart"></use>
-                                </svg>
-                            </div>
-                        </a>
-                        <livewire:front.carts.cart-header :carts="$carts" />
-                    </div>
+<!-- Cart Icon & Theme Swich -->
+<div class="flex items-center gap-x-4 lg:gap-x-5">
 
-                    <!-- Theme Swich Btn -->
-                    <div class="toggle-theme cursor-pointer">
-                        <svg class="inline-block dark:hidden w-8 h-8">
-                            <use href="#moon"></use>
-                        </svg>
-                        <svg class="hidden dark:inline-block w-8 h-8">
-                            <use href="#sun"></use>
-                        </svg>
-                    </div>
-                </div>
+    <!-- Cart -->
+    <div class="relative group">
+
+        <a href="{{ route('cart') }}" class="relative block">
+
+            <div class="py-3 cursor-pointer relative">
+
+                <!-- Cart Icon -->
+                <svg class="w-8 h-8">
+                    <use href="#shopping-cart"></use>
+                </svg>
+
+
+
+            </div>
+
+        </a>
+
+        <livewire:front.carts.cart-header />
+
+    </div>
+
+    <!-- Theme Swich Btn -->
+    <div class="toggle-theme cursor-pointer">
+        <svg class="inline-block dark:hidden w-8 h-8">
+            <use href="#moon"></use>
+        </svg>
+
+        <svg class="hidden dark:inline-block w-8 h-8">
+            <use href="#sun"></use>
+        </svg>
+    </div>
+
+</div>
 
                 <!-- Divide Border -->
                 <span class="block w-px h-14 bg-white/20"></span>
@@ -716,17 +728,25 @@
                             @endif
 
                             <hr class="bg-zinc-500" />
-                            <div class="relative group">
-                                <a
-                                    href="{{ route('logout') }}"
-                                    class="flex items-center gap-x-2 child:text-red-600"
-                                >
-                                    <svg class="w-6 h-6">
-                                        <use href="#arrow-right-login"></use>
-                                    </svg>
-                                    <span> خروج </span>
-                                </a>
-                            </div>
+<div class="relative group">
+
+    <a href="javascript:void(0)"
+       onclick="confirmLogout()"
+       class="flex items-center gap-x-2 child:text-red-600">
+
+        <svg class="w-6 h-6">
+            <use href="#arrow-right-login"></use>
+        </svg>
+
+        <span>خروج</span>
+
+    </a>
+
+    <form id="logout-form-header" action="{{ route('logout') }}" method="POST" class="hidden">
+        @csrf
+    </form>
+
+</div>
                         </div>
                     </li>
                 @else
@@ -1252,3 +1272,34 @@
             background: #f97316;
         }
     </style>
+
+<script>
+function confirmLogout() {
+
+    Swal.fire({
+        title: 'از حساب کاربری خارج می‌شوید؟',
+        text: 'برای ورود مجدد باید دوباره وارد شوید.',
+        icon: 'warning',
+
+        showCancelButton: true,
+
+        confirmButtonText: 'بله، خارج شو',
+        cancelButtonText: 'انصراف',
+
+        confirmButtonColor: '#f97316',
+        cancelButtonColor: '#6b7280',
+
+        reverseButtons: true,
+
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+
+            document.getElementById('logout-form-header').submit();
+
+        }
+
+    });
+
+}
+</script>

@@ -65,7 +65,7 @@
     <!-- BEGIN VENDOR JS-->
     @livewireScripts
     {{-- @include('sweetalert::alert') --}}
-    @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9'])
+    <script src="/admin/js/sweetalert2.all.min.js"></script>
     <style>
         .upload-box {
             width: 100%;

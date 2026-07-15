@@ -123,17 +123,17 @@
                         <svg class="w-5 md:w-6 h-5 md:h-6 shrink-0">
                             <use href="#map"></use>
                         </svg>
-                        بلوار میرداماد، خیابان البرز، کوچه قبادیان شرقی، پلاک ۳۳
+                        کرج چهارباغ ملک آباد خیابان شهید قره حسن پور نرسیده به گلستان 19 جنب سوپرمارکت جوانی
                     </span>
                     <div class="flex flex-wrap font-DanaMedium gap-x-5 gap-y-4">
                         <a
-                            href="mailto:info@Coffee.com"
+                            href="mailto:sarsharamin85@gmail.com"
                             class="flex items-center gap-x-2 md:gap-x-3 text-orange-300"
                         >
                             <svg class="w-5 md:w-6 h-5 md:h-6">
                                 <use href="#email"></use>
                             </svg>
-                            info@Coffee.com
+                            sarsharamin85@gmail.com
                         </a>
                         <div class="flex items-center gap-x-2 md:gap-x-3">
                             <svg class="w-5 md:w-6 h-5 md:h-6">
@@ -151,7 +151,7 @@
                         href=""
                         class="telegram-btn flex-center flex-grow gap-x-2 h-12 rounded-xl text-zinc-700"
                     >
-                        @golden_coffee
+                        @hirmancafe
                         <svg class="w-[26px] h-[26px] md:w-[38px] md:h-[38px]">
                             <use href="#telegram"></use>
                         </svg>
@@ -160,7 +160,7 @@
                         href=""
                         class="flex-center flex-grow gap-x-2 h-12 border border-orange-200 text-orange-200 rounded-xl"
                     >
-                        @golden_coffee
+                        @aminsarshar
                         <svg class="w-[26px] h-[26px] md:w-[38px] md:h-[38px]">
                             <use href="#instagram"></use>
                         </svg>
@@ -175,7 +175,7 @@
         >
             <div>
                 <div></div>
-                <p class="text-center">تمام حقوق این رابط کاربری متعلق به <span class="text-orange-200">سبزلرن</span> میباشد و دانشجوی این دوره اجازه استفاده آن را در مصارف شخصی و تجاری ندارد.</p>
+                <p class="text-center">تمام حقوق این رابط کاربری متعلق به <span class="text-orange-200">امین سرشار</span>است و هرگونه کپی برداری غیر مجاز میباشد</p>
             </div>
             <span class="ltr-text"
                 >Copyright © 2023 Golden Coffee. All rights reserved.</span

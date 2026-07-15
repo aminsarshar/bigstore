@@ -9,6 +9,7 @@ use App\Models\ProductGuaranty;
 
 class CartHeader extends Component
 {
+    public $cartCount = 0;
 protected $listeners = [
     'refreshCartHeader' => '$refresh',
 ];
@@ -19,7 +20,7 @@ protected $listeners = [
         $cart = Cart::query()->find($cart_id);
         $cart->delete();
 
-        $this->emit('refreshCart');
+        $this->emitSelf('$refresh');
     }
 
     public function render()
@@ -39,7 +40,7 @@ protected $listeners = [
             $discount_price += ($product->main_price - $product->price) * $cart->count;
         }
 
-
+$this->cartCount = $carts->sum('count');
         return view('livewire.front.carts.cart-header', compact('carts', 'total_price', 'discount_price'));
     }
 }

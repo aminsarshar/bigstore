@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\GuarantyController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\PostCategoryController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductGuarantyController;
 use App\Http\Controllers\Admin\PropertyGroupController;
@@ -16,6 +18,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Home\BlogController;
 use App\Http\Controllers\Home\CartController;
 use App\Http\Controllers\Home\CateController;
 use App\Http\Controllers\Home\HomeController;
@@ -76,6 +79,9 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'role:admin'])->grou
     Route::resource('sliders', SliderController::class);
     Route::resource('orders', OrderController::class);
 
+    Route::resource('posts', PostController::class);
+
+    Route::resource('post-categories', PostCategoryController::class);
 
     Route::get(
         '/orders/{order}/invoice',
@@ -88,11 +94,6 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'role:admin'])->grou
         [ReportController::class, 'daily']
     )
         ->name('reports.daily');
-    // Orders
-    // Route::get('/orders/index', [OrderController::class, 'index']);
-    // Route::get('/orders/create', [OrderController::class, 'create']);
-    // Route::post('/orders/store', [OrderController::class, 'store'])
-    //     ->name('orders.store');
 
 
 
@@ -110,6 +111,10 @@ Route::get('/payment/callback', [PaymentController::class, 'callback'])->name('c
 // Route::get('/categories', [HomeController::class, 'categories'])->name('categories');
 Route::get('/category/{slug}', [CateController::class, 'show'])
     ->name('category.show');
+        Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+
+    Route::get('/blog/{post:slug}', [BlogController::class, 'show'])
+        ->name('blog.show');
 
 Route::middleware(['auth'])->prefix('profile')->group(function () {
 
@@ -126,6 +131,8 @@ Route::middleware(['auth'])->prefix('profile')->group(function () {
 
     Route::get('/orders/{order}', [ProfileController::class, 'showOrder'])
         ->name('profile.order.show');
+
+
 });
 
 

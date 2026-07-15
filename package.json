@@ -15,6 +15,7 @@
         "vite": "^7.1.4"
     },
     "dependencies": {
-        "download": "^8.0.0"
+        "download": "^8.0.0",
+        "sweetalert2": "^11.26.25"
     }
 }

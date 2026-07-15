@@ -75,10 +75,12 @@
                 ⚙️ اطلاعات حساب
             </a>
 
-            <form method="POST" action="{{ route('logout') }}">
+            <form id="logout-form" method="POST" action="{{ route('logout') }}">
                 @csrf
 
                 <button
+                    type="button"
+                    onclick="confirmLogout()"
                     class="w-full flex items-center gap-3 h-12 rounded-2xl px-4 transition hover:bg-red-50 text-red-500"
                 >
                     🚪 خروج
@@ -87,3 +89,32 @@
         </div>
     </div>
 </div>
+<script>
+    function confirmLogout() {
+        Swal.fire({
+            title: "خروج از حساب کاربری؟",
+            text: "برای استفاده مجدد باید دوباره وارد حساب شوید.",
+            icon: "warning",
+
+            showCancelButton: true,
+
+            confirmButtonColor: "#f97316",
+            cancelButtonColor: "#6b7280",
+
+            confirmButtonText: "بله، خارج شو",
+            cancelButtonText: "انصراف",
+
+            reverseButtons: true,
+
+            customClass: {
+                popup: "rounded-3xl",
+                confirmButton: "px-6",
+                cancelButton: "px-6",
+            },
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById("logout-form").submit();
+            }
+        });
+    }
+</script>

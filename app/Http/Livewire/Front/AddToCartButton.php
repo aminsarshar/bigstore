@@ -50,7 +50,7 @@ class AddToCartButton extends Component
             ]);
         }
 
-        $this->dispatchBrowserEvent('cart-added');
+        $this->emit('refreshCartHeader');
 
         toastr()->success('محصول به سبد خرید اضافه شد.');
     }

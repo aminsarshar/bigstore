@@ -5,7 +5,7 @@
         </div>
     @endif
 
-    <div class="bg-white rounded-3xl shadow-sm overflow-hidden">
+    <div class="bg-white rounded-3xl shadow-sm overflow-hidden p-5">
         <div class="p-8 border-b">
             <h2 class="text-2xl font-DanaDemiBold">اطلاعات حساب</h2>
         </div>
